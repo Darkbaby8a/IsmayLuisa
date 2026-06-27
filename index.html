@@ -3,72 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - Ismael & Luisa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Pirata+One&family=UnifrakturMaguntia&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>Eternamente Juntos - Ismael & Luisa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="contenedor-sobre" id="contenedorSobre">
         <div class="sobre" id="botonAbrir">
-            <img src="Imagenes/Sobreprincipal.png" alt="Sobre" class="sobre-base">
+            <img src="Imagenes/Sobreprincipal.png" alt="Sobre Cerrado" class="sobre-base">
             <img src="Imagenes/solpaApertura.png" alt="Solapa" class="sobre-solapa">
-            <div class="sello-cera"></div>
-            <div class="texto-click">Toca para descubrir nuestro destino</div>
+            <div class="sello-cera">
+                <span class="iniciales-sello">I & L</span>
+            </div>
+            <div class="texto-click">Toca para abrir la invitación</div>
         </div>
     </div>
 
     <div class="contenido-principal" id="contenidoPrincipal">
-        <div class="invitacion-pergamino">
+        <div class="pergamino-elegante">
             
-            <header>
-                <p class="intro">Bajo la luz de lo eterno...</p>
-                <h1 class="nombres">Ismael <span class="ampersand">&</span> Luisa</h1>
+            <header class="seccion-intro">
+                <div class="ornamento-superior">✦ ⚜ ✦</div>
+                <p class="frase-goth">"En la quietud de la noche y el latido de lo eterno, nuestras almas se unen para siempre."</p>
+                <h1 class="nombres-principales">Ismael <span class="ampersand">&</span> Luisa</h1>
+                <p class="Subtitulo">Nuestra Unión Eterna</p>
             </header>
 
-            <div class="contenedor-foto">
-                <img src="Imagenes/novios.png" alt="Los Novios" class="foto-goth">
+            <div class="marco-foto principal">
+                <img src="Imagenes/novios.png" alt="Ismael & Luisa" class="foto-boda">
             </div>
 
-            <section class="detalles">
-                <div class="adorno"></div>
-                <p class="texto-invitacion">
-                    Tenemos el honor de invitaros a celebrar el inicio de nuestra eternidad.
-                </p>
+            <section class="seccion-historia">
+                <h2 class="titulo-elegante">Nuestra Historia</h2>
+                <p class="texto-comun">Cada paso en la penumbra nos guió hacia la luz del otro. Hoy decidimos entrelazar nuestros destinos bajo la promesa de la eternidad.</p>
                 
-                <div class="info-boda">
-                    <div class="bloque">
-                        <h3>Ceremonia</h3>
-                        <p>Catedral de la Oscuridad</p>
-                        <p>18 de Diciembre, 2026</p>
-                        <p>20:00 Horas</p>
+                <div class="galeria-fotos">
+                    <div class="marco-foto miniatura">
+                        <img src="Imagenes/foto1.png" alt="Momento Nuestro 1" class="foto-boda">
                     </div>
-                    <div class="bloque">
-                        <h3>Recepción</h3>
-                        <p>Castillo de los Susurros</p>
-                        <p>A partir de las 22:30 Horas</p>
+                    <div class="marco-foto miniatura">
+                        <img src="Imagenes/foto2.png" alt="Momento Nuestro 2" class="foto-boda">
                     </div>
-                </div>
-
-                <div class="cuenta-regresiva">
-                    <h3>Tiempo para el encuentro</h3>
-                    <div class="contador" id="contador">
-                        <div class="box"> <span id="dias">00</span> <p>Días</p> </div>
-                        <div class="box"> <span id="horas">00</span> <p>Hrs</p> </div>
-                        <div class="box"> <span id="minutos">00</span> <p>Min</p> </div>
-                        <div class="box"> <span id="segundos">00</span> <p>Seg</p> </div>
-                    </div>
-                </div>
-
-                <div class="rsvp">
-                    <button class="btn-goth">Confirmar Asistencia</button>
                 </div>
             </section>
 
-            <footer class="final">
-                <div class="adorno volteado"></div>
-                <p>Vestimenta: Gala Negra / Formal</p>
+            <section class="seccion-detalles">
+                <h2 class="titulo-elegante">El Encuentro</h2>
+                
+                <div class="bloques-info">
+                    <div class="bloque">
+                        <div class="icono-goth">✙</div>
+                        <h3>La Ceremonia</h3>
+                        <p class="lugar">Santuario de la Sagrada Unión</p>
+                        <p class="direccion">Av. de la Eternidad #1313, Col. Centro</p>
+                        <p class="hora">20:00 Horas</p>
+                    </div>
+                    
+                    <div class="bloque">
+                        <div class="icono-goth">🏰</div>
+                        <h3>La Recepción</h3>
+                        <p class="lugar">Castillo de los Susurros</p>
+                        <p class="direccion">Salón Gótico Principal, Planta Alta</p>
+                        <p class="hora">A partir de las 22:30 Horas</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="seccion-contador">
+                <h3 class="titulo-contador">El Tiempo Restante</h3>
+                <div class="contador" id="contador">
+                    <div class="tiempo-caja">
+                        <span id="dias">00</span>
+                        <p>Días</p>
+                    </div>
+                    <div class="tiempo-caja">
+                        <span id="horas">00</span>
+                        <p>Horas</p>
+                    </div>
+                    <div class="tiempo-caja">
+                        <span id="minutos">00</span>
+                        <p>Minutos</p>
+                    </div>
+                    <div class="tiempo-caja">
+                        <span id="segundos">00</span>
+                        <p>Segundos</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="seccion-vestimenta">
+                <h2 class="titulo-elegante">Código de Vestimenta</h2>
+                <div class="icono-goth">🤵🏻‍♀️ 🤵🏻‍♂️</div>
+                <p class="gala">Etiqueta Rigurosa / Gala Oscura</p>
+                <p class="texto-comun">Le solicitamos cordialmente asistir vistiendo en tonalidades de <strong>Negro, Guinda o Borgoña</strong> para acompañar la sintonía mística de nuestra velada.</p>
+            </section>
+
+            <section class="seccion-regalos">
+                <h2 class="titulo-elegante">Mesa de Regalos</h2>
+                <p class="texto-comun">Su presencia es nuestro mayor obsequio; no obstante, si desea tener un detalle con nosotros, le compartimos nuestras opciones:</p>
+                <div class="opciones-regalo">
+                    <div class="regalo-box">
+                        <p><strong>Lover's Gift Card</strong></p>
+                        <p>Evento: 748291</p>
+                    </div>
+                    <div class="regalo-box">
+                        <p><strong>Lluvia de Sobres</strong></p>
+                        <p>Habilitaremos un baúl en la entrada de la recepción.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="seccion-rsvp">
+                <h2 class="titulo-elegante">Confirmación</h2>
+                <p class="texto-comun">Agradecemos confirmar su asistencia antes del 31 de Octubre para asegurar su lugar en el banquete.</p>
+                <a href="https://wa.me/TU_NUMERO_AQUI" target="_blank" class="boton-elegante">Confirmar por WhatsApp</a>
+            </section>
+
+            <footer class="pergamino-footer">
+                <div class="ornamento-inferior">✦ ⚜ ✦</div>
+                <p class="gracias">Ismael & Luisa</p>
             </footer>
+
         </div>
     </div>
 
