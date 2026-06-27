@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             contenedorSobre.classList.add("oculto");
             document.body.classList.add("mostrar-boda");
-        }, 800); // 800 milisegundos
+        }, 6000); // 800 milisegundos
     });
 
     // Contador regresivo dinámico
