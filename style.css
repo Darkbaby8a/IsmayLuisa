@@ -1,3 +1,5 @@
+/* Paleta: Negro #000, Guinda #4a0404, Crema #f5f5dc */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,163 +7,235 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #000;
+    color: #f5f5dc;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
-/* --- CONTENEDOR Y COBERTURA DEL SOBRE --- */
+/* --- ESTILO DEL SOBRE --- */
 .contenedor-sobre {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #f4f1ea;
+    background-color: #0a0a0a;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
-    padding: 20px;
-    transition: opacity .8s ease, visibility .8s;
+    transition: opacity 1s ease;
 }
 
 .sobre {
     position: relative;
-    width: 100%;
-    max-width: 550px; /* Tamaño máximo del sobre */
-    height: auto;
+    width: 90%;
+    max-width: 500px;
     cursor: pointer;
-    perspective: 1500px; /* Incrementado para mejor efecto 3D */
+    perspective: 1500px;
 }
 
-/* Ajuste para que las imágenes se extiendan correctamente */
 .sobre-base, .sobre-solapa {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain; /* Evita que la imagen se deforme o se corte */
+    object-fit: contain;
 }
 
 .sobre-base {
     position: relative;
     z-index: 2;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.5s ease;
 }
 
-/* Solapa oculta por defecto al inicio */
 .sobre-solapa {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 3;
-    opacity: 0; 
+    opacity: 0;
     transform-origin: top center;
-    transition: transform 6s ease-in-out, opacity .2s ease;
+    /* EFECTO DE 6 SEGUNDOS SOLICITADO */
+    transition: transform 6s ease-in-out, opacity 0.3s ease;
+}
+
+.sello-cera {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: #4a0404;
+    border-radius: 50%;
+    z-index: 4;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border: 2px solid #2a0202;
 }
 
 .texto-click {
     position: absolute;
-    bottom: -40px; /* Ubicado abajo del sobre para no estorbar el diseño */
+    bottom: -50px;
     width: 100%;
     text-align: center;
-    font-size: 14px;
+    font-family: 'Cinzel Decorative', cursive;
+    color: #4a0404;
     letter-spacing: 2px;
-    color: #666;
-    animation: pulse 1.5s infinite;
+    animation: pulse 2s infinite;
 }
 
-/* --- ESTADOS DE ANIMACIÓN AL DAR CLICK --- */
-
-/* Cuando se hace click: aparece la solapa y empieza a rotar */
+/* Animación de apertura */
 .contenedor-sobre.animar .sobre-solapa {
     opacity: 1;
     transform: rotateX(180deg);
 }
-
-/* El sobre principal se desvanece */
-.contenedor-sobre.animar .sobre-base {
+.contenedor-sobre.animar .sobre-base, 
+.contenedor-sobre.animar .sello-cera {
     opacity: 0;
 }
-
-/* Todo el contenedor del sobre se desvanece por completo */
 .contenedor-sobre.oculto {
     opacity: 0;
     visibility: hidden;
 }
 
-/* --- CONTENIDO DE LA INVITACIÓN --- */
+/* --- INVITACIÓN GÓTICA --- */
 .contenido-principal {
     opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
+    padding: 40px 20px;
     width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 body.mostrar-boda .contenido-principal {
     opacity: 1;
-    transform: scale(1);
+    transition: opacity 2s ease;
 }
 
-.titulo {
-    font-size: 2.8rem;
-    color: #8a7355;
-    margin-bottom: 25px;
-}
-
-.contenedor-novios {
+.invitacion-pergamino {
+    background-color: #f5f5dc; /* Crema */
+    color: #000;
     width: 100%;
-    max-width: 450px;
-    margin: 0 auto 30px auto;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    max-width: 600px;
+    border: 10px double #4a0404; /* Guinda */
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 30px rgba(74, 4, 4, 0.4);
 }
 
-.foto-novios {
+.nombres {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 4rem;
+    color: #4a0404;
+    margin: 10px 0;
+}
+
+.ampersand {
+    font-family: 'Cinzel Decorative';
+    font-size: 2.5rem;
+}
+
+.intro {
+    font-family: 'Pirata One', cursive;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.contenedor-foto {
+    margin: 25px 0;
+    border: 3px solid #4a0404;
+    padding: 5px;
+    background: #000;
+}
+
+.foto-goth {
     width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+    filter: sepia(0.3) contrast(1.1);
 }
 
-/* Contador Estilizado */
+/* Adornos Góticos */
+.adorno {
+    width: 100%;
+    height: 50px;
+    background-image: url('https://www.transparenttextures.com/patterns/black-linen.png'); /* Puedes usar un SVG de ornato aquí */
+    margin: 20px 0;
+    border-bottom: 2px solid #4a0404;
+}
+
+.info-boda {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.bloque h3 {
+    font-family: 'Cinzel Decorative';
+    color: #4a0404;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #4a0404;
+}
+
+/* Contador Gótico */
+.cuenta-regresiva h3 {
+    font-family: 'Pirata One';
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
 .contador {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
 }
 
-.tiempo-box {
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    min-width: 75px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+.box {
+    background: #000;
+    color: #f5f5dc;
+    padding: 10px;
+    min-width: 60px;
 }
 
-.tiempo-box span {
-    font-size: 2rem;
+.box span {
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #444;
+    display: block;
 }
 
-.tiempo-box p {
-    font-size: 0.75rem;
-    color: #888;
+.box p {
+    font-size: 0.7rem;
     text-transform: uppercase;
-    margin-top: 5px;
+}
+
+.btn-goth {
+    background: #4a0404;
+    color: #f5f5dc;
+    border: none;
+    padding: 15px 30px;
+    font-family: 'Cinzel Decorative';
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: 0.3s;
+}
+
+.btn-goth:hover {
+    background: #000;
+    letter-spacing: 2px;
 }
 
 @keyframes pulse {
-    0% { opacity: 0.4; }
+    0% { opacity: 0.3; }
     50% { opacity: 1; }
-    100% { opacity: 0.4; }
+    100% { opacity: 0.3; }
+}
+
+@media (max-width: 600px) {
+    .nombres { font-size: 2.5rem; }
+    .info-boda { flex-direction: column; gap: 20px; }
 }
