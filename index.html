@@ -3,125 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternamente Juntos - Ismael & Luisa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>Coral & Daniel - Nuestra Boda</title>
+    <!-- Fuentes elegantes para el look Gótico-Formal -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- CONTENEDOR DEL SOBRE (Efecto de apertura lenta) -->
     <div class="contenedor-sobre" id="contenedorSobre">
         <div class="sobre" id="botonAbrir">
-            <img src="Imagenes/Sobreprincipal.png" alt="Sobre Cerrado" class="sobre-base">
+            <img src="Imagenes/Sobreprincipal.png" alt="Sobre" class="sobre-base">
             <img src="Imagenes/solpaApertura.png" alt="Solapa" class="sobre-solapa">
+            <div class="sello-cera">
+                <span class="iniciales-sello">C & D</span>
+            </div>
             <div class="texto-click">Toca para abrir la invitación</div>
         </div>
     </div>
 
+    <!-- CONTENIDO PRINCIPAL DE LA INVITACIÓN -->
     <div class="contenido-principal" id="contenidoPrincipal">
-        <div class="pergamino-elegante">
-            
-            <header class="seccion-intro">
-                <div class="ornamento-superior">✦ ⚜ ✦</div>
-                <p class="frase-goth">"En la quietud de la noche y el latido de lo eterno, nuestras almas se unen para siempre."</p>
-                <h1 class="nombres-principales">Ismael <span class="ampersand">&</span> Luisa</h1>
-                <p class="Subtitulo">Nuestra Unión Eterna</p>
-            </header>
-
-            <div class="marco-foto principal">
-                <img src="Imagenes/novios.png" alt="Ismael & Luisa" class="foto-boda">
+        
+        <!-- HERO / PORTADA -->
+        <header class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h2>Save The Date</h2>
+                <h1>Coral & Daniel</h1>
+                <p class="fecha-hero">26.04.2026</p>
+                <div class="countdown" id="timer">
+                    <div class="countdown-item"><span id="dias">00</span>Días</div>
+                    <div class="countdown-item"><span id="horas">00</span>Hrs</div>
+                    <div class="countdown-item"><span id="minutos">00</span>Min</div>
+                    <div class="countdown-item"><span id="segundos">00</span>Seg</div>
+                </div>
             </div>
+        </header>
 
-            <section class="seccion-historia">
-                <h2 class="titulo-elegante">Nuestra Historia</h2>
-                <p class="texto-comun">Cada paso en la penumbra nos guió hacia la luz del otro. Hoy decidimos entrelazar nuestros destinos bajo la promesa de la eternidad.</p>
+        <!-- SECCIÓN DE BIENVENIDA Y PADRES -->
+        <section class="wedding-section">
+            <div class="ornamental-frame"></div>
+            <div class="content-wrapper">
+                <h2 class="reveal-item">Nuestra Boda</h2>
+                <div class="separator-gold reveal-item">✦</div>
                 
-                <div class="galeria-fotos">
-                    <div class="marco-foto miniatura">
-                        <img src="Imagenes/foto1.png" alt="Momento Nuestro 1" class="foto-boda">
+                <div class="parents-container">
+                    <div class="parents-group reveal-item">
+                        <p class="role">Padres del Novio</p>
+                        <h3 class="name">Ascención Ochoa</h3>
+                        <h3 class="name">María Inés Covarrubias</h3>
                     </div>
-                    <div class="marco-foto miniatura">
-                        <img src="Imagenes/foto2.png" alt="Momento Nuestro 2" class="foto-boda">
+                    <div class="divider-vertical reveal-item"></div>
+                    <div class="parents-group reveal-item">
+                        <p class="role">Padres de la Novia</p>
+                        <h3 class="name">Norma Leticia Contreras</h3>
+                        <h3 class="name">René Hamlet González</h3>
                     </div>
                 </div>
-            </section>
-
-            <section class="seccion-detalles">
-                <h2 class="titulo-elegante">El Encuentro</h2>
                 
-                <div class="bloques-info">
-                    <div class="bloque">
-                        <div class="icono-goth">✙</div>
-                        <h3>La Ceremonia</h3>
-                        <p class="lugar">Santuario de la Sagrada Unión</p>
-                        <p class="direccion">Av. de la Eternidad #1313, Col. Centro</p>
-                        <p class="hora">20:00 Horas</p>
+                <div class="verse reveal-item">
+                    <span class="quote-mark">“</span> 
+                    <p>Y de veras te comprometeré conmigo para tiempo indefinido…<br> sí, de veras te comprometeré conmigo en fidelidad.</p>
+                    <span class="bible-ref">Oseas 2:19–20</span> 
+                </div>
+            </div>
+        </section>
+
+        <hr class="separador-goth">
+
+        <!-- ITINERARIO / EVENTOS -->
+        <section class="schedule-section">
+            <div class="event-card">
+                <div class="event-image" style="background-image: url('PRY_6779.jpg');"></div>
+                <div class="event-info">
+                    <span class="time-tag">3:00 PM</span> 
+                    <h3>Conferencia Bíblica</h3>
+                    <p>Un momento especial en el que, con base en las Escrituras, compartiremos un mensaje que marcará el inicio de nuestra vida juntos.</p>
+                    <p><b>Lugar:</b> Salón del Reino de los Testigos de Jehová<br>Congregación Nueva Zelanda</p>
+                    <p class="event-address">C. Ceilán 6311A, 32690 Juárez, Chih.</p>
+                </div>
+            </div>
+            
+            <div class="event-card">
+                <div class="event-image" style="background-image: url('PRY_6687.jpg');"></div>
+                <div class="event-info">
+                    <span class="time-tag">6:00 PM</span> 
+                    <h3>Recepción</h3>
+                    <p>Celebramos el inicio de nuestra vida juntos y nos encantaría compartirlo contigo en una velada de música, baile y gratos momentos.</p>
+                    <p><b>Lugar:</b> Salón de Eventos SUTM</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="separador-goth">
+
+        <!-- UBICACIÓN (MAPA) -->
+        <section class="maps-section">
+            <h2 class="titulo-goth">Ubicación</h2>
+            <p class="texto-goth">Acompáñanos en este lugar especial:</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3392.9310855028803!2d-106.4747700243794!3d31.745081974111915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75922b1235667%3A0x3e611a20b768aaf5!2sSindicato%20%C3%9Anico%20de%20Trabajadores%20Municipales%20(%20Sal%C3%B3n%20SUTM%20)!5e0!3m2!1ses-419!2smx!4v1767591909835!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <hr class="separador-goth">
+
+        <!-- CÓDIGO DE VESTIMENTA -->
+        <section class="dress-code">
+            <h2 class="titulo-goth">Código de Vestimenta</h2>
+            <p class="dress-type">Formal · Etiqueta</p>
+            <p class="dress-note">Para mantener la armonía visual del evento, agradecemos respetar los colores reservados.</p>
+            <p class="reserved-title">Colores reservados para la Familia</p>
+            <div class="dress-code-colors">
+                <div class="color-circle" style="background-color:#630d16;" title="Vino / Guinda"></div>
+                <div class="color-circle bride" title="Blanco (Novia)"></div>
+            </div>
+            <p class="bride-note">* El color blanco está reservado exclusivamente para la novia.</p>
+        </section>
+
+        <hr class="separador-goth">
+
+        <!-- GALERÍA / RECUERDOS -->
+        <section class="section-floral">
+            <h2 class="titulo-goth">Nuestros Momentos</h2>
+            <p class="texto-goth">Algunos recuerdos que nos trajeron hasta aquí 💍</p>
+            <div class="galeria"> 
+                <div class="marco-foto"><img src="FotoPrincipal.jpg" alt="Recuerdo 1"></div>
+                <div class="marco-foto"><img src="PRY_6704.jpg" style="object-position: right;" alt="Recuerdo 2"></div>
+                <div class="marco-foto"><img src="PRY_6766.jpg" alt="Recuerdo 3"></div>
+                <div class="marco-foto"><img src="PRY_6760.jpg" style="object-position: right;" alt="Recuerdo 4"></div>
+            </div>
+        </section>
+
+        <!-- MESA DE REGALOS -->
+        <section class="gifts-section" id="gifts">
+            <div class="parallax-bg"></div>
+            <div class="overlay"></div>
+            <div class="gifts-content">
+                <h2 class="reveal-item">Mesa de Regalos</h2>
+                <div class="separator-gold reveal-item">✦</div>
+                <p class="intro-text reveal-item">Lo más importante para nosotros es contar con su compañía en este día tan especial.</p>
+                
+                <div class="cards-container">
+                    <div class="gift-card reveal-item">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <h3>Lluvia de Sobres</h3>
+                        <p>Si desean hacernos un presente en efectivo, encontrarán un buzón especial en la recepción.</p>
                     </div>
-                    
-                    <div class="bloque">
-                        <div class="icono-goth">🏰</div>
-                        <h3>La Recepción</h3>
-                        <p class="lugar">Castillo de los Susurros</p>
-                        <p class="direccion">Salón Gótico Principal, Planta Alta</p>
-                        <p class="hora">A partir de las 22:30 Horas</p>
+                    <div class="gift-card reveal-item">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polyline points="20 12 20 22 4 22 4 12"/>
+                                <rect x="2" y="7" width="20" height="5"/>
+                                <line x1="12" y1="22" x2="12" y2="7"/>
+                                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                            </svg>
+                        </div>
+                        <h3>Regalos</h3>
+                        <p>También dispondremos de una mesa para colocar cualquier obsequio que deseen entregarnos.</p>
                     </div>
                 </div>
-            </section>
+                <p class="footer-note reveal-item">¡Gracias por el detalle!</p>
+            </div>
+        </section>
 
-            <section class="seccion-contador">
-                <h3 class="titulo-contador">El Tiempo Restante</h3>
-                <div class="contador" id="contador">
-                    <div class="tiempo-caja">
-                        <span id="dias">00</span>
-                        <p>Días</p>
-                    </div>
-                    <div class="tiempo-caja">
-                        <span id="horas">00</span>
-                        <p>Horas</p>
-                    </div>
-                    <div class="tiempo-caja">
-                        <span id="minutos">00</span>
-                        <p>Minutos</p>
-                    </div>
-                    <div class="tiempo-caja">
-                        <span id="segundos">00</span>
-                        <p>Segundos</p>
-                    </div>
+        <hr class="separador-goth">
+
+        <!-- ASISTENCIA / PASES -->
+        <section class="attendance" id="attendance">
+            <h2>¡Te Esperamos!</h2>
+            <p class="attendance-text" id="attendanceText">Será un honor contar con tu presencia y compartir este momento tan especial.</p>
+            <div class="passes-box" id="passesBox">
+                <p class="passes-label">Esta invitación es para</p>
+                <h3 class="family-name" id="familyName">Familia Ochoa Covarrubias</h3>
+                <p class="passes-count" id="passesCount">Pases Disponibles: 2</p>
+                <p class="passes-label sub">Los pases son personales e intransferibles.</p>
+            </div>
+            <div id="qrContainer" class="qr-box" style='display:none;'>
+                <p class="qr-title">Este será su pase de entrada</p>
+                <div class="qr-frame">
+                    <div id="qrCode"></div>
                 </div>
-            </section>
+                <p class="qr-note">Presente este código al ingresar</p>
+            </div>
+            <button class="btn-rsvp" id="btnAceptar">Confirmar asistencia</button> 
+        </section>
 
-            <section class="seccion-vestimenta">
-                <h2 class="titulo-elegante">Código de Vestimenta</h2>
-                <div class="icono-goth">🤵🏻‍♀️ 🤵🏻‍♂️</div>
-                <p class="gala">Etiqueta Rigurosa / Gala Oscura</p>
-                <p class="texto-comun">Le solicitamos cordialmente asistir vistiendo en tonalidades de <strong>Negro, Guinda o Borgoña</strong> para acompañar la sintonía mística de nuestra velada.</p>
-            </section>
+    </div>
 
-            <section class="seccion-regalos">
-                <h2 class="titulo-elegante">Mesa de Regalos</h2>
-                <p class="texto-comun">Su presencia es nuestro mayor obsequio; no obstante, si desea tener un detalle con nosotros, le compartimos nuestras opciones:</p>
-                <div class="opciones-regalo">
-                    <div class="regalo-box">
-                        <p><strong>Lover's Gift Card</strong></p>
-                        <p>Evento: 748291</p>
-                    </div>
-                    <div class="regalo-box">
-                        <p><strong>Lluvia de Sobres</strong></p>
-                        <p>Habilitaremos un baúl en la entrada de la recepción.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="seccion-rsvp">
-                <h2 class="titulo-elegante">Confirmación</h2>
-                <p class="texto-comun">Agradecemos confirmar su asistencia antes del 31 de Octubre para asegurar su lugar en el banquete.</p>
-                <a href="https://wa.me/TU_NUMERO_AQUI" target="_blank" class="boton-elegante">Confirmar por WhatsApp</a>
-            </section>
-
-            <footer class="pergamino-footer">
-                <div class="ornamento-inferior">✦ ⚜ ✦</div>
-                <p class="gracias">Ismael & Luisa</p>
-            </footer>
-
+    <!-- MODAL RSVP -->
+    <div id="confirmModal" class="rsvp-modal">
+        <div class="rsvp-modal-content paper">
+            <small class="modal-subtitle">CONFIRMACIÓN</small>
+            <h2>¿Nos acompañarán?</h2>
+            <p class="modal-text">Su presencia es muy importante para nosotros. Por favor confirme su asistencia.</p>
+            <div class="modal-buttons">
+                <button id="btnSi" class="btn-modal yes">Confirmar Asistencia</button>
+                <button id="btnNo" class="btn-modal no">No podremos asistir</button>
+            </div>
+            <button id="btnCerrar" class="modal-close">Cancelar</button>
         </div>
     </div>
 
