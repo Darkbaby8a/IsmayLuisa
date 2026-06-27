@@ -1,0 +1,150 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fcfbfa;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- ESTILOS DEL SOBRE --- */
+.contenedor-sobre {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #f4f1ea; /* Fondo detrás del sobre */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 1s ease, visibility 1s;
+}
+
+.sobre {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Ajusta según el tamaño de tu imagen */
+    cursor: pointer;
+    perspective: 1000px; /* Necesario para el efecto 3D de la solapa */
+}
+
+.sobre-base {
+    width: 100%;
+    display: block;
+    z-index: 2;
+    position: relative;
+}
+
+.sobre-solapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    transform-origin: top center; /* La solapa se abre desde arriba */
+    transition: transform 0.8s ease-in-out;
+}
+
+.texto-click {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #666;
+    animation: pulse 1.5s infinite;
+    z-index: 4;
+}
+
+/* Animación al abrir */
+.contenedor-sobre.abierto .sobre-solapa {
+    transform: rotateX(180deg); /* Gira la solapa hacia arriba */
+}
+
+.contenedor-sobre.oculto {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.contenido-principal {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1.2s ease 0.5s, transform 1.2s ease 0.5s; /* Espera a que el sobre actúe */
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+}
+
+body.mostrar-boda .contenido-principal {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Detalles de la Invitación */
+.titulo {
+    font-size: 2.5rem;
+    color: #8a7355; /* Tono elegante/dorado opaco */
+    margin-bottom: 20px;
+}
+
+.contenedor-novios {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 30px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.foto-novios {
+    width: 100%;
+    display: block;
+}
+
+/* Contador */
+.contador {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.tiempo-box {
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    min-width: 70px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tiempo-box span {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.tiempo-box p {
+    font-size: 0.8rem;
+    color: #777;
+    text-transform: uppercase;
+}
+
+/* Animación simple de pulso */
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
