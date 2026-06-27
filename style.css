@@ -148,7 +148,7 @@ body.mostrar-boda .contenido-principal {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('/Imagenes/novios.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('Imagenes/novios.jpg') center/cover no-repeat;
 }
 
 .hero-content h2 {
