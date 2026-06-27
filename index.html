@@ -1,143 +1,38 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Save The Date - Coral & Daniel</title>
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-      <link rel="manifest" href="/site.webmanifest">
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-      <link rel="stylesheet" href="/styles.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-   </head>
-   <body>
-      
-      <!-- SOBRE INICIAL -->
-      <div class="envelope" id="invitationCover">
-         <div class="envelope-back"></div>
-         <div class="envelope-flap"> 
-            <img src="flap.png" alt="Solapa del sobre"> 
-         </div>
-         <div class="envelope-paper">
-            <small>Save the Date</small> 
-            <h2>Coral & Daniel</h2>
-            <p>26 · 04 · 2026</p>
-         </div>
-      </div>
+    <div class="contenedor-sobre" id="contenedorSobre">
+        <div class="sobre" id="botonAbrir">
+            <img src="/Imagenes/Sobreprincipal.png" alt="Sobre" class="sobre-base">
+            <img src="/Imagenes/solpaApertura.png" alt="Solapa" class="sobre-solapa">
+            <div class="texto-click">Click para abrir</div>
+        </div>
+    </div>
 
-      <!-- HERO / PORTADA -->
-      <header class="hero">
-         <div class="hero-overlay"></div>
-         <div class="hero-content">
-            <h2>Save The Date</h2>
-            <h1>Coral & Daniel</h1>
-            <p style="font-size: 1.5rem; color: var(--dorado); margin: 10px 0;">26.04.2026</p>
-            <div class="countdown" id="timer">
-               <div class="countdown-item"><span id="days">00</span>Días</div>
-               <div class="countdown-item"><span id="hours">00</span>Hrs</div>
-               <div class="countdown-item"><span id="minutes">00</span>Min</div>
-               <div class="countdown-item"><span id="seconds">00</span>Seg</div>
+    <div class="contenido-principal" id="contenidoPrincipal">
+        <div class="invitacion-box">
+            <h1 class="titulo">Ismael & Luisa</h1>
+            
+            <div class="contenedor-novios">
+                <img src="/Imagenes/novios.png" alt="Ismael y Luisa" class="foto-novios">
             </div>
-         </div>
-      </header>
 
-      <!-- SECCIÓN PADRES / VERSÍCULO -->
-      <section class="wedding-section">
-         <div class="ornamental-frame"></div>
-         <div class="content-wrapper">
-            <h2 class="reveal-item">Nuestra Boda</h2>
-            <div class="separator-gold reveal-item">✦</div>
-            <div class="parents-container">
-               <div class="parents-group reveal-item">
-                  <p class="role">Padres del Novio</p>
-                  <h3 class="name">Ascención Ochoa</h3>
-                  <h3 class="name">María Inés Covarrubias</h3>
-               </div>
-               <div class="divider-vertical reveal-item"></div>
-               <div class="parents-group reveal-item">
-                  <p class="role">Padres de la Novia</p>
-                  <h3 class="name">Norma Leticia Contreras</h3>
-                  <h3 class="name">René Hamlet González</h3>
-               </div>
+            <div class="contador">
+                <div class="tiempo-box"><span id="dias">00</span><p>Días</p></div>
+                <div class="tiempo-box"><span id="horas">00</span><p>Horas</p></div>
+                <div class="tiempo-box"><span id="minutos">00</span><p>Min</p></div>
+                <div class="tiempo-box"><span id="segundos">00</span><p>Seg</p></div>
             </div>
-            <div class="verse reveal-item">
-               <span class="quote-mark">“</span> 
-               <p>Y de veras te comprometeré conmigo para tiempo indefinido…<br> sí, de veras te comprometeré conmigo en fidelidad.</p>
-               <span class="bible-ref">Oseas 2:19–20</span> 
-            </div>
-         </div>
-      </section>
+        </div>
+    </div>
 
-      <hr style="width: 50px; border: 1px solid var(--vino); margin: 40px auto;">
-
-      <!-- SECCIÓN EVENTOS -->
-      <section class="schedule-section">
-         <div class="event-card">
-            <div class="event-image" style="background-image: url('PRY_6632.jpg');"></div>
-            <div class="event-info">
-               <span>Ceremonia & Recepción</span>
-               <h3>Los detalles del gran día</h3>
-               <p>Muy pronto compartiremos aquí los horarios y ubicaciones exactas para que nos acompañes a celebrar.</p>
-            </div>
-         </div>
-      </section>
-
-      <!-- CÓDIGO DE VESTIMENTA -->
-      <section class="dress-code">
-         <h2>Código de Vestimenta</h2>
-         <div class="dress-type">Formal Guinda & Negro</div>
-         <p class="dress-note">Hemos seleccionado una paleta especial para que nuestro entorno luzca en perfecta sintonía durante este día inolvidable.</p>
-         <p class="reserved-title">Colores sugeridos:</p>
-         <div class="dress-code-colors">
-            <div class="color-circle" style="background-color: #000;"></div>
-            <div class="color-circle" style="background-color: #630d16;"></div>
-            <div class="color-circle" style="background-color: #3a3a3a;"></div>
-         </div>
-         <div class="color-circle bride"></div>
-         <p class="bride-note">Agradecemos reservar el color blanco exclusivamente para la novia.</p>
-      </section>
-
-      <!-- ASISTENCIA / PASES -->
-      <section class="attendance">
-         <h2>Confirmación de Asistencia</h2>
-         <p class="attendance-text">Tu presencia es nuestro mejor regalo. Por favor, ayúdanos confirmando los lugares asignados para tu familia.</p>
-         <div class="passes-box">
-            <p class="passes-label">Pase de Entrada Especial</p>
-            <h3 class="family-name">Familia Invitada</h3>
-            <p class="passes-count">Lugares reservados: <strong>2</strong></p>
-         </div>
-         <a href="#" class="btn-rsvp">Confirmar Asistencia</a>
-      </section>
-
-      <!-- SECCIÓN DE REGALOS -->
-      <section class="gifts-section">
-         <div class="parallax-bg"></div>
-         <div class="overlay"></div>
-         <div class="gifts-content">
-            <h2>Mesa de Regalos</h2>
-            <p class="intro-text">Su compañía es nuestro mayor obsequio, pero si desean tener un detalle con nosotros, les dejamos nuestras opciones:</p>
-            <div class="cards-container">
-               <div class="gift-card">
-                  <div class="icon-box">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.5v15m7.5-7.5h-15" /></svg>
-                  </div>
-                  <h3>Lluvia de Sobres</h3>
-                  <p>Dispondremos de un cofre especial el día del evento para recibir sus buenos deseos en efectivo.</p>
-               </div>
-               <div class="gift-card">
-                  <div class="icon-box">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.5a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" /></svg>
-                  </div>
-                  <h3>Mesa Departamental</h3>
-                  <p>Muy pronto les compartiremos el enlace directo a nuestra lista de obsequios seleccionados.</p>
-               </div>
-            </div>
-            <div class="footer-note">✦</div>
-         </div>
-      </section>
-
-   </body>
-   <script src="/scripts.js"></script>
+    <script href="script.js"></script>
+</body>
 </html>
