@@ -27,7 +27,7 @@ body {
     align-items: center;
     z-index: 100;
     padding: 20px;
-    transition: opacity 6s ease, visibility 6s;
+    transition: opacity .8s ease, visibility .8s;
 }
 
 .sobre {
@@ -50,7 +50,7 @@ body {
 .sobre-base {
     position: relative;
     z-index: 2;
-    transition: opacity 6s ease;
+    transition: opacity 0.6s ease;
 }
 
 /* Solapa oculta por defecto al inicio */
@@ -61,7 +61,7 @@ body {
     z-index: 3;
     opacity: 0; 
     transform-origin: top center;
-    transition: transform 6s ease-in-out, opacity 3s ease;
+    transition: transform 6s ease-in-out, opacity .2s ease;
 }
 
 .texto-click {
@@ -98,7 +98,7 @@ body {
 .contenido-principal {
     opacity: 0;
     transform: scale(0.9);
-    transition: opacity 6s ease , transform 6s ease ;
+    transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
     width: 100%;
     max-width: 600px;
     padding: 20px;
