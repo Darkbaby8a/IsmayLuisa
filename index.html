@@ -3,33 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación Ismael & Luisa</title>
+    <title>Nuestra Boda - Ismael & Luisa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Pirata+One&family=UnifrakturMaguntia&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="contenedor-sobre" id="contenedorSobre">
         <div class="sobre" id="botonAbrir">
-            <img src="Imagenes/Sobreprincipal.png" alt="Sobre Principal" class="sobre-base">
+            <img src="Imagenes/Sobreprincipal.png" alt="Sobre" class="sobre-base">
             <img src="Imagenes/solpaApertura.png" alt="Solapa" class="sobre-solapa">
-            <div class="texto-click">Click para abrir</div>
+            <div class="sello-cera"></div>
+            <div class="texto-click">Toca para descubrir nuestro destino</div>
         </div>
     </div>
 
     <div class="contenido-principal" id="contenidoPrincipal">
-        <div class="invitacion-box">
-            <h1 class="titulo">Ismael & Luisa</h1>
+        <div class="invitacion-pergamino">
             
-            <div class="contenedor-novios">
-                <img src="Imagenes/novios.png" alt="Ismael y Luisa" class="foto-novios">
+            <header>
+                <p class="intro">Bajo la luz de lo eterno...</p>
+                <h1 class="nombres">Ismael <span class="ampersand">&</span> Luisa</h1>
+            </header>
+
+            <div class="contenedor-foto">
+                <img src="Imagenes/novios.png" alt="Los Novios" class="foto-goth">
             </div>
 
-            <div class="contador">
-                <div class="tiempo-box"><span id="dias">00</span><p>Días</p></div>
-                <div class="tiempo-box"><span id="horas">00</span><p>Horas</p></div>
-                <div class="tiempo-box"><span id="minutos">00</span><p>Min</p></div>
-                <div class="tiempo-box"><span id="segundos">00</span><p>Seg</p></div>
-            </div>
+            <section class="detalles">
+                <div class="adorno"></div>
+                <p class="texto-invitacion">
+                    Tenemos el honor de invitaros a celebrar el inicio de nuestra eternidad.
+                </p>
+                
+                <div class="info-boda">
+                    <div class="bloque">
+                        <h3>Ceremonia</h3>
+                        <p>Catedral de la Oscuridad</p>
+                        <p>18 de Diciembre, 2026</p>
+                        <p>20:00 Horas</p>
+                    </div>
+                    <div class="bloque">
+                        <h3>Recepción</h3>
+                        <p>Castillo de los Susurros</p>
+                        <p>A partir de las 22:30 Horas</p>
+                    </div>
+                </div>
+
+                <div class="cuenta-regresiva">
+                    <h3>Tiempo para el encuentro</h3>
+                    <div class="contador" id="contador">
+                        <div class="box"> <span id="dias">00</span> <p>Días</p> </div>
+                        <div class="box"> <span id="horas">00</span> <p>Hrs</p> </div>
+                        <div class="box"> <span id="minutos">00</span> <p>Min</p> </div>
+                        <div class="box"> <span id="segundos">00</span> <p>Seg</p> </div>
+                    </div>
+                </div>
+
+                <div class="rsvp">
+                    <button class="btn-goth">Confirmar Asistencia</button>
+                </div>
+            </section>
+
+            <footer class="final">
+                <div class="adorno volteado"></div>
+                <p>Vestimenta: Gala Negra / Formal</p>
+            </footer>
         </div>
     </div>
 
