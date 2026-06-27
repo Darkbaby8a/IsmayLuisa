@@ -2,22 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const botonAbrir = document.getElementById("botonAbrir");
     const contenedorSobre = document.getElementById("contenedorSobre");
 
-    // Evento de apertura
+    // Lógica de apertura del sobre
     botonAbrir.addEventListener("click", () => {
-        // Ejecuta la animación de la solapa y desvanece el sobre base
         contenedorSobre.classList.add("animar");
 
-        // Espera a que termine la animación para quitar el contenedor por completo
+        // Esperamos los 6 segundos de la solapa + un pequeño margen
         setTimeout(() => {
             contenedorSobre.classList.add("oculto");
             document.body.classList.add("mostrar-boda");
-        }, 6000); // 800 milisegundos
+            // Scroll al inicio por si acaso
+            window.scrollTo(0, 0);
+        }, 6000); 
     });
 
-    // Contador regresivo dinámico
-    const fechaBoda = new Date("December 18, 2026 18:00:00").getTime();
+    // --- CONTADOR REGRESIVO ---
+    const fechaBoda = new Date("Octuber 10, 2026 16:00:00").getTime();
 
-    const cuentaRegresiva = setInterval(() => {
+    const x = setInterval(function() {
         const ahora = new Date().getTime();
         const distancia = fechaBoda - ahora;
 
@@ -26,14 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
         const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-        document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
-        document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
-        document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
-        document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
+        document.getElementById("dias").innerHTML = dias;
+        document.getElementById("horas").innerHTML = horas;
+        document.getElementById("minutos").innerHTML = minutos;
+        document.getElementById("segundos").innerHTML = segundos;
 
         if (distancia < 0) {
-            clearInterval(cuentaRegresiva);
-            document.querySelector(".contador").innerHTML = "<h3>¡Llegó el gran día!</h3>";
+            clearInterval(x);
+            document.getElementById("contador").innerHTML = "¡NUESTRA ETERNIDAD EMPIEZA HOY!";
         }
     }, 1000);
 });
