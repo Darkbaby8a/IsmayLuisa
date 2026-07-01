@@ -1113,3 +1113,150 @@ body.mostrar-boda .contenido-principal {
         height: 45px;
     }
 }
+/* ==========================================
+   SECCIÓN UBICACIONES (TARJETAS SIMÉTRICAS)
+   ========================================== */
+
+.seccion-ubicaciones {
+    width: 100%;
+    padding: 80px 0;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.contenedor-ubicaciones {
+    display: flex;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 40px;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Tarjeta Base */
+.tarjeta-evento {
+    flex: 1;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.03); /* Fondo sutil translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 40px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenedor e Iconos SVG */
+.icono-ubicacion {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-ubicacion svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Tipografía Interna */
+.titulo-evento {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    font-weight: 400;
+}
+
+.hora-evento {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 15px 0;
+}
+
+.lugar-evento {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    color: #ffffff; /* Puedes usar tu color de acento aquí */
+    margin: 0 0 8px 0;
+}
+
+.direccion-evento {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 30px 0;
+}
+
+/* Fila de Botones */
+.bloque-mapas {
+    margin-top: auto; /* Empuja los botones al fondo de la tarjeta */
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.btn-mapa {
+    flex: 1;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 0;
+    border-radius: 2px;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-mapa:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #141414;
+}
+
+/* ==========================================
+   ANIMACIÓN AL ABRIR EL SOBRE
+   ========================================== */
+.ubicacion-animada {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.mostrar-boda .ubicacion-animada {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   DISEÑO RESPONSIVO (MÓVILES)
+   ========================================== */
+@media (max-width: 768px) {
+    .contenedor-ubicaciones {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .tarjeta-evento {
+        width: 100%;
+        max-width: 360px;
+        padding: 35px 20px;
+    }
+
+    .titulo-evento { font-size: 1.4rem; }
+    .lugar-evento { font-size: 1.15rem; }
+}
