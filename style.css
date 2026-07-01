@@ -660,3 +660,91 @@ body.mostrar-boda .contenido-principal {
     .fecha-boda { font-size: 0.9rem; }
     .sello-boda { width: 70px; }
 }
+
+/* ==========================================
+   SECCIÓN DE FRASE DE BIENVENIDA
+   ========================================== */
+
+.seccion-frase {
+    width: 100%;
+    max-width: 800px; /* Centrado y acotado para lectura elegante */
+    margin: 60px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.contenedor-frase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Manejo de los separadores/imágenes */
+.divisor-boda {
+    display: block;
+    width: 100%;
+    max-width: 450px; /* Tamaño máximo controlado para que no se deforme */
+    height: auto;
+    margin: 15px auto;
+}
+
+/* Simula el efecto rotado de Elementor para el separador inferior */
+.divisor-invertido {
+    transform: rotate(180deg);
+}
+
+/* Tipografía de la frase */
+.frase-contenido {
+    font-family: 'Cinzel', serif; /* Usando tus fuentes cargadas */
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #ffffff; /* Ajusta según tu paleta oscura o clara */
+    margin: 20px 0;
+    padding: 0;
+    font-weight: 400;
+    font-style: normal;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================
+   ANIMACIONES (Estilo fadeInRight de Elementor)
+   ========================================== */
+
+.frase-animada {
+    opacity: 0;
+    transform: translate3d(40px, 0, 0); /* Inicia un poco a la derecha */
+}
+
+/* Esta clase se activa de forma global en el body tras abrir el sobre */
+.mostrar-boda .frase-animada {
+    animation: fadeInRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Tiempos de retraso para aparición escalonada */
+.mostrar-boda .retraso-1 {
+    animation-delay: 0.2s;
+}
+
+.mostrar-boda .retraso-2 {
+    animation-delay: 0.5s; /* El texto aparece ligeramente después */
+}
+
+@keyframes fadeInRight {
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0); /* Regresa a su posición original */
+    }
+}
+
+/* Ajustes para Pantallas Móviles */
+@media (max-width: 768px) {
+    .frase-contenido {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    .divisor-boda {
+        max-width: 280px;
+    }
+}
