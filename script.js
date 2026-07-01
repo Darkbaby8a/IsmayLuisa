@@ -114,3 +114,67 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 1000);
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const itemsGaleria = Array.from(document.querySelectorAll(".item-galeria"));
+    const modal = document.getElementById("lightboxModal");
+    const imgLightbox = document.getElementById("imagenLightbox");
+    const btnCerrar = document.getElementById("btnCerrar");
+    const btnPrev = document.getElementById("btnPrev");
+    const btnNext = document.getElementById("btnNext");
+    
+    let indiceActual = 0;
+
+    // Abrir Lightbox
+    itemsGaleria.forEach((item, index) => {
+        item.addEventListener("click", () => {
+            indiceActual = index;
+            actualizarImagen();
+            modal.classList.add("activo");
+            document.body.style.overflow = "hidden"; // Deshabilita scroll de fondo
+        });
+    });
+
+    // Cambiar Imagen
+    const actualizarImagen = () => {
+        const rutaImagen = itemsGaleria[indiceActual].getAttribute("data-src");
+        imgLightbox.setAttribute("src", rutaImagen);
+    };
+
+    const siguienteImagen = () => {
+        indiceActual = (indiceActual + 1) % itemsGaleria.length;
+        actualizarImagen();
+    };
+
+    const anteriorImagen = () => {
+        indiceActual = (indiceActual - 1 + itemsGaleria.length) % itemsGaleria.length;
+        actualizarImagen();
+    };
+
+    // Cerrar Lightbox
+    const cerrarLightbox = () => {
+        modal.classList.remove("activo");
+        document.body.style.overflow = ""; // Reactiva el scroll
+        setTimeout(() => { imgLightbox.setAttribute("src", ""); }, 400); // Limpia src al cerrar
+    };
+
+    // Event Listeners de Controles
+    btnNext.addEventListener("click", (e) => { e.stopPropagation(); siguienteImagen(); });
+    btnPrev.addEventListener("click", (e) => { e.stopPropagation(); anteriorImagen(); });
+    btnCerrar.addEventListener("click", cerrarLightbox);
+    
+    // Cerrar al clickear fuera de la imagen (en el fondo oscuro)
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target.classList.contains('contenedor-img-lightbox')) {
+            cerrarLightbox();
+        }
+    });
+
+    // Navegación por teclado (Flechas y Escape)
+    document.addEventListener("keydown", (e) => {
+        if (!modal.classList.contains("activo")) return;
+        
+        if (e.key === "Escape") cerrarLightbox();
+        if (e.key === "ArrowRight") siguienteImagen();
+        if (e.key === "ArrowLeft") anteriorImagen();
+    });
+});
