@@ -547,3 +547,63 @@ body.mostrar-boda .contenido-principal {
     .galeria { grid-template-columns: 1fr; }
     .wedding-section, .maps-section, .dress-code, .section-floral, .attendance { padding: 40px 20px; }
 }
+
+
+/* ==========================================
+   ESTILOS PARA LA INVITACIÓN Y EL CARRUSEL
+   ========================================== */
+
+/* Contenedor que envuelve la invitación (oculto por defecto) */
+.seccion-invitacion {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.2s ease-in-out;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Clase que activa JavaScript al abrir el sobre */
+.invitacion-activa {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estructura del bloque del carrusel */
+.mi-seccion-carrusel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.swiper {
+    width: 100%;
+    height: auto;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide figure {
+    margin: 0;
+    width: 100%;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Transición lineal obligatoria para lograr el efecto continuo sin pausas (Estilo Elementor) */
+.swiper-wrapper {
+    transition-timing-function: linear !important;
+}
