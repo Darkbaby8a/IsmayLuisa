@@ -188,3 +188,28 @@ if (tarjetaRegalo) {
         tarjetaRegalo.classList.toggle("girada");
     });
 }
+
+
+// Lógica para el modal directo de asistencia
+const btnAbrirConfirmacion = document.getElementById('btnAbrirConfirmacion');
+const modalSeguridad = document.getElementById('modalSeguridad');
+const btnCancelarModal = document.getElementById('btnCancelarModal');
+const btnConfirmarModal = document.getElementById('btnConfirmarModal');
+
+// Abrir el modal directamente al presionar el botón
+btnAbrirConfirmacion.addEventListener('click', () => {
+    modalSeguridad.classList.add('activo');
+});
+
+// Cerrar el modal al cancelar
+btnCancelarModal.addEventListener('click', () => {
+    modalSeguridad.classList.remove('activo');
+});
+
+// Acción al confirmar la asistencia
+btnConfirmarModal.addEventListener('click', () => {
+    modalSeguridad.classList.remove('activo');
+    
+    // Aquí puedes meter la redirección a una API, WhatsApp o el flujo que uses.
+    // Ejemplo: alert('¡Asistencia confirmada!');
+});
