@@ -1260,3 +1260,138 @@ body.mostrar-boda .contenido-principal {
     .titulo-evento { font-size: 1.4rem; }
     .lugar-evento { font-size: 1.15rem; }
 }
+
+
+/* ==========================================
+   SECCIÓN GALERÍA (CSS GRID PREMIUM)
+   ========================================== */
+
+.seccion-galeria {
+    width: 100%;
+    padding: 80px 0;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.contenedor-galeria {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.titulo-galeria {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* Grid Autoadaptable */
+.grid-galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px; /* Espaciado premium limpio */
+}
+
+/* Items de la Galería (Proporción 1:1) */
+.item-galeria {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Truco CSS para mantener aspecto cuadrado perfecto */
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper-imagen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Efecto Overlay Elegant */
+.overlay-galeria {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 20, 20, 0.4); /* Capa oscura sutil */
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.4s ease;
+}
+
+.icono-zoom {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    transform: rotate(45deg); /* Transforma el carácter '✕' en un "+" minimalista */
+    transition: transform 0.4s ease;
+}
+
+/* Estados Hover */
+.item-galeria:hover .wrapper-imagen {
+    transform: scale(1.06);
+}
+
+.item-galeria:hover .overlay-galeria {
+    opacity: 1;
+}
+
+.item-galeria:hover .icono-zoom {
+    transform: rotate(135deg);
+}
+
+/* ==========================================
+   ANIMACIÓN DE ENTRADA (FADE IN)
+   ========================================== */
+.galeria-animada {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.mostrar-boda .galeria-animada {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================== */
+@media (max-width: 992px) {
+    .grid-galeria {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .titulo-galeria {
+        font-size: 1.7rem;
+        margin-bottom: 35px;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid-galeria {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+    }
+    .seccion-galeria {
+        padding: 50px 0;
+    }
+}
