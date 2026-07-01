@@ -1263,13 +1263,12 @@ body.mostrar-boda .contenido-principal {
 
 
 /* ==========================================
-   SECCIÓN GALERÍA (CSS GRID PREMIUM)
+   SECCIÓN GALERÍA (CSS GRID + LIGHTBOX)
    ========================================== */
 
 .seccion-galeria {
     width: 100%;
     padding: 80px 0;
-    background: transparent;
     box-sizing: border-box;
 }
 
@@ -1277,7 +1276,6 @@ body.mostrar-boda .contenido-principal {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
-    box-sizing: border-box;
 }
 
 .titulo-galeria {
@@ -1291,21 +1289,18 @@ body.mostrar-boda .contenido-principal {
     text-transform: uppercase;
 }
 
-/* Grid Autoadaptable */
 .grid-galeria {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px; /* Espaciado premium limpio */
+    gap: 12px;
 }
 
-/* Items de la Galería (Proporción 1:1) */
 .item-galeria {
     position: relative;
     width: 100%;
-    padding-top: 100%; /* Truco CSS para mantener aspecto cuadrado perfecto */
+    padding-top: 100%; /* Cuadrado perfecto 1:1 */
     border-radius: 4px;
     overflow: hidden;
-    display: block;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -1321,14 +1316,13 @@ body.mostrar-boda .contenido-principal {
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Efecto Overlay Elegant */
 .overlay-galeria {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(20, 20, 20, 0.4); /* Capa oscura sutil */
+    background: rgba(20, 20, 20, 0.5);
     opacity: 0;
     display: flex;
     justify-content: center;
@@ -1341,57 +1335,102 @@ body.mostrar-boda .contenido-principal {
     font-size: 1.5rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
-    transform: rotate(45deg); /* Transforma el carácter '✕' en un "+" minimalista */
+    transform: rotate(45deg);
     transition: transform 0.4s ease;
 }
 
-/* Estados Hover */
-.item-galeria:hover .wrapper-imagen {
-    transform: scale(1.06);
-}
-
-.item-galeria:hover .overlay-galeria {
-    opacity: 1;
-}
-
-.item-galeria:hover .icono-zoom {
-    transform: rotate(135deg);
-}
+/* Hover Items */
+.item-galeria:hover .wrapper-imagen { transform: scale(1.06); }
+.item-galeria:hover .overlay-galeria { opacity: 1; }
+.item-galeria:hover .icono-zoom { transform: rotate(135deg); }
 
 /* ==========================================
-   ANIMACIÓN DE ENTRADA (FADE IN)
+   ESTILOS DE LA INTERFAZ DEL LIGHTBOX
    ========================================== */
-.galeria-animada {
+.lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.95); /* Fondo oscuro elegante */
+    z-index: 99999; /* Asegura estar sobre todo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
 }
 
-.mostrar-boda .galeria-animada {
+/* Clase activa por JS */
+.lightbox-modal.activo {
     opacity: 1;
-    transform: translateY(0);
+    pointer-events: auto;
 }
 
-/* ==========================================
-   RESPONSIVE DESIGN (MEDIA QUERIES)
-   ========================================== */
+.contenedor-img-lightbox {
+    max-width: 85%;
+    max-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-img-lightbox img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lightbox-modal.activo .contenedor-img-lightbox img {
+    transform: scale(1);
+}
+
+/* Botones del Lightbox */
+.btn-lightbox {
+    position: absolute;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 15px;
+    transition: color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+    z-index: 100000;
+}
+
+.btn-lightbox:hover {
+    color: #ffffff;
+}
+
+.btn-lightbox:active { transform: scale(0.95); }
+
+.btn-cerrar {
+    top: 20px;
+    right: 25px;
+    font-size: 3.5rem;
+    font-weight: 200;
+}
+
+.btn-prev { left: 20px; }
+.btn-next { right: 20px; }
+
+/* Responsive Grid */
 @media (max-width: 992px) {
-    .grid-galeria {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    .titulo-galeria {
-        font-size: 1.7rem;
-        margin-bottom: 35px;
-    }
+    .grid-galeria { grid-template-columns: repeat(2, 1fr); }
+    .btn-lightbox { font-size: 2rem; }
+    .btn-cerrar { font-size: 3rem; top: 10px; right: 15px; }
 }
 
 @media (max-width: 576px) {
-    .grid-galeria {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 15px;
-    }
-    .seccion-galeria {
-        padding: 50px 0;
-    }
+    .grid-galeria { grid-template-columns: repeat(1, 1fr); }
+    .btn-prev { left: 5px; }
+    .btn-next { right: 5px; }
+    .contenedor-img-lightbox { max-width: 90%; }
 }
