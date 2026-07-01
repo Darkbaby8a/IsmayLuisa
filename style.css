@@ -10,7 +10,9 @@
     --color-gris-oscuro: #1e1e1e;
     --color-overlay: rgba(99, 13, 22, 0.65);
 }
-
+.swiper-slide figure img {
+  height: 100vh;
+}
 * {
     margin: 0;
     padding: 0;
