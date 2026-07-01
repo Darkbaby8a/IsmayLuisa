@@ -13,6 +13,9 @@
 .swiper-slide figure img {
   height: 100vh;
 }
+.tarjeta-giratoria.girada .cara-tarjeta.cara-frontal {
+  z-index: 0;
+}
 * {
     margin: 0;
     padding: 0;
