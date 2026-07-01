@@ -607,3 +607,56 @@ body.mostrar-boda .contenido-principal {
 .swiper-wrapper {
     transition-timing-function: linear !important;
 }
+/* Capa superpuesta sobre el carrusel */
+.capa-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Fondo oscuro/opaco que hace resaltar el texto (puedes cambiarlo por tu guinda/negro con opacidad) */
+    background: rgba(20, 20, 20, 0.65); 
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff; /* O color dorado/formal si manejas variables */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    pointer-events: none; /* Permite que el usuario pueda arrastrar el carrusel por debajo si quiere */
+}
+
+/* Imagen del Sello */
+.sello-boda {
+    width: 90px; /* Ajusta el tamaño según tu diseño */
+    height: auto;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+/* Tipografías */
+.nombres-boda {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.5rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.fecha-boda {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Ajustes responsivos rápidos */
+@media (max-width: 768px) {
+    .nombres-boda { font-size: 1.8rem; }
+    .fecha-boda { font-size: 0.9rem; }
+    .sello-boda { width: 70px; }
+}
