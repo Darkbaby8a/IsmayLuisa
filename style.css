@@ -748,3 +748,205 @@ body.mostrar-boda .contenido-principal {
         max-width: 280px;
     }
 }
+/* ==========================================
+   SECCIÓN SAVE THE DATE Y CUENTA REGRESIVA
+   ========================================== */
+
+.seccion-savethedate {
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    margin: 80px auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Transición suave de escala simulando el efecto Elementor de fondo */
+    transform: scale(0.98);
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Efecto de expansión sutil al estar activa la invitación */
+.mostrar-boda .seccion-savethedate {
+    transform: scale(1);
+}
+
+/* Contenedor centralizado */
+.contenedor-contador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 5;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Imágenes Decorativas Laterales (Posicionamiento absoluto) */
+.decoracion-lateral {
+    position: absolute;
+    width: 180px;
+    height: auto;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.decoracion-lateral.izq {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.decoracion-lateral.der {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(190deg); /* Réplica del ángulo original */
+}
+
+/* Tipografías y Textos */
+.titulo-contador {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: #ffffff;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.fecha-texto {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.8rem;
+    color: #ffffff; /* Puedes usar tu dorado o guinda aquí */
+    letter-spacing: 2px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+/* Estructura del Reloj Regresivo */
+.reloj-regresivo {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiempo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+}
+
+.digitos {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.etiqueta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 8px;
+}
+
+/* Botón Save The Date y Animación Grow */
+.contenedor-boton {
+    margin-top: 10px;
+}
+
+.btn-savethedate {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #ffffff;
+    padding: 12px 35px;
+    background: transparent;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Efecto de agrandamiento suave al pasar el mouse (elementor-animation-grow) */
+.btn-savethedate:hover {
+    transform: scale(1.08);
+    background: #ffffff;
+    color: #141414; /* Invierte colores de forma formal */
+}
+
+/* ==========================================
+   ANIMACIONES DE ENTRADA AL ABRIR EL SOBRE
+   ========================================== */
+.animacion-subir, .animacion-bajar, .animacion-fade {
+    opacity: 0;
+}
+
+.mostrar-boda .animacion-subir {
+    animation: fadeInUp 1s ease forwards 0.4s;
+}
+
+.mostrar-boda .animacion-bajar {
+    animation: fadeInDown 1s ease forwards 0.6s;
+}
+
+.mostrar-boda .animacion-fade {
+    animation: fadeIn 1.2s ease forwards 0.8s;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* RESPONSIVO EXACTO (Cambios de rotación de Elementor en Móvil) */
+@media (max-width: 768px) {
+    .seccion-savethedate {
+        margin: 40px auto;
+        padding: 30px 10px;
+    }
+    .decoracion-lateral {
+        width: 110px;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        margin: 10px auto;
+    }
+    /* Estilo flex vertical para las flores en pantallas chicas */
+    .seccion-savethedate {
+        flex-direction: column;
+    }
+    .decoracion-lateral.izq {
+        transform: rotate(90deg); /* _transform_rotateZ_effect_mobile: 90 */
+        order: 1;
+    }
+    .contenedor-contador {
+        order: 2;
+        margin: 20px 0;
+    }
+    .decoracion-lateral.der {
+        transform: rotate(280deg); /* _transform_rotateZ_effect_mobile: 280 */
+        order: 3;
+    }
+    .digitos { font-size: 2rem; }
+    .tiempo-item { min-width: 50px; }
+    .fecha-texto { font-size: 1.4rem; }
+}
