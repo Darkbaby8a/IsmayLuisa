@@ -178,3 +178,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "ArrowLeft") anteriorImagen();
     });
 });
+
+
+// Manejo del giro de la tarjeta de regalos
+const tarjetaRegalo = document.getElementById("tarjetaRegalo");
+
+if (tarjetaRegalo) {
+    tarjetaRegalo.addEventListener("click", () => {
+        tarjetaRegalo.classList.toggle("girada");
+    });
+}
