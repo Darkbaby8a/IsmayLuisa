@@ -76,3 +76,33 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+// Esperamos a que el usuario haga clic en el sobre para abrirlo
+document.getElementById('botonAbrir').addEventListener('click', function() {
+    
+    // 1. Ocultamos el contenedor del sobre (puedes cambiarlo por una animación si prefieres)
+    document.getElementById('contenedorSobre').style.display = 'none';
+    
+    // 2. Hacemos visible el cuerpo de la invitación
+    const contenidoInvitacion = document.getElementById('contenidoInvitacion');
+    contenidoInvitacion.classList.add('invitacion-activa');
+
+    // 3. Inicializamos Swiper con movimiento continuo (efecto "maratón")
+    const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,         // 1 imagen en pantallas móviles
+        spaceBetween: 0,          // Sin separación entre imágenes
+        loop: true,               // Bucle infinito
+        speed: 20000,             // Velocidad ultra lenta (20 segundos por transición)
+        autoplay: {
+            delay: 0,             // Delay en 0 para que nunca se detenga
+            disableOnInteraction: false, // Sigue moviéndose aunque el usuario lo toque
+        },
+        breakpoints: {
+            // Cuando la pantalla sea de 768px o más (Tablets y PCs)
+            768: {
+                slidesPerView: 2, // Muestra 2 imágenes al mismo tiempo
+            }
+        }
+    });
+});
