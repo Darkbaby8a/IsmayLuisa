@@ -1434,3 +1434,171 @@ body.mostrar-boda .contenido-principal {
     .btn-next { right: 5px; }
     .contenedor-img-lightbox { max-width: 90%; }
 }
+
+/* ==========================================
+   SECCIÓN REGALOS (FLIP BOX 3D PREMIUM)
+   ========================================== */
+
+.seccion-regalos {
+    width: 100%;
+    padding: 80px 0;
+    box-sizing: border-box;
+}
+
+.contenedor-regalos {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-regalos {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* Contenedor con Perspectiva 3D */
+.tarjeta-giratoria-wrapper {
+    width: 100%;
+    max-width: 350px;
+    height: 350px;
+    perspective: 1000px; /* Crea el espacio 3D para el efecto */
+}
+
+.tarjeta-giratoria {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+/* Rotación por clase de JS activa */
+.tarjeta-giratoria.girada {
+    transform: rotateY(180deg);
+}
+
+/* Estilo Base de ambas Caras */
+.cara-tarjeta {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    backface-visibility: hidden; /* Oculta la cara contraria al girar */
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Cara Frontal */
+.cara-frontal {
+    background: rgba(255, 255, 255, 0.03);
+    z-index: 2;
+}
+
+.icono-regalo {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 25px;
+}
+
+.icono-regalo svg {
+    width: 100%;
+    height: 100%;
+}
+
+.texto-frontal-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 10px 0;
+}
+
+.texto-frontal-accion {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+/* Cara Posterior (Reverso) */
+.cara-posterior {
+    background: rgba(255, 255, 255, 0.05);
+    transform: rotateY(180deg); /* Pre-rotada en el plano 3D */
+}
+
+.texto-regalo-principal {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.concepto-regalo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    margin: 0;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Pequeño indicador/ícono de giro en las esquinas */
+.hint-giro {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+.volver-hint {
+    transform: scaleX(-1); /* Voltea la flecha en el reverso */
+}
+
+/* ==========================================
+   ANIMACIÓN DE ENTRADA
+   ========================================== */
+.regalos-animados {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.mostrar-boda .regalos-animados {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .tarjeta-giratoria-wrapper {
+        max-width: 310px;
+        height: 310px;
+    }
+    .titulo-regalos { font-size: 1.7rem; }
+    .concepto-regalo { font-size: 1.3rem; }
+}
