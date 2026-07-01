@@ -189,7 +189,7 @@ body.mostrar-boda .contenido-principal {
 }
 
 .sello-boda{
-    width:90px;
+    width:24rem;
     height:auto;
     margin-bottom:10px;
     opacity:.9;
@@ -1082,7 +1082,7 @@ body.mostrar-boda .contenido-principal {
     .gift-card, .columna-carrusel { width: 100%; max-width: 100%; }
     .hero-content h1, .nombres-boda { font-size: 1.8rem; }
     .fecha-boda { font-size: 0.9rem; }
-    .sello-boda { width: 70px; }
+    .sello-boda { width: 24rem; }
     .frase-contenido { font-size: 1.1rem; line-height: 1.6; }
     .divisor-boda { max-width: 280px; }
     .subtitulo-historia { font-size: 1.8rem; }
@@ -1646,7 +1646,7 @@ section,
     }
 
     .sello-boda{
-        width:65px;
+        width:24rem;
         margin-bottom:5px;
     }
 
