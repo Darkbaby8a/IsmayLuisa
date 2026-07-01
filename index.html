@@ -211,63 +211,73 @@
     </div>
 </section>
 <!-- SECCIÓN GALERÍA DE FOTOS -->
+<!-- SECCIÓN GALERÍA DE FOTOS -->
 <section class="seccion-galeria" id="galeria">
     <div class="contenedor-galeria">
         
-        <h2 class="titulo-galeria galeria-animada">Nuestra galería de fotos</h2>
+        <h2 class="titulo-galeria">Nuestra galería de fotos</h2>
         
         <div class="grid-galeria">
             <!-- Foto 1 -->
-            <a class="item-galeria" href="Imagenes/novios.png" data-lightbox="boda-gallery">
+            <div class="item-galeria" data-src="Imagenes/novios.png">
                 <div class="wrapper-imagen" style="background-image: url('Imagenes/novios.png');"></div>
                 <div class="overlay-galeria">
                     <span class="icono-zoom">✕</span>
                 </div>
-            </a>
+            </div>
             
             <!-- Foto 2 -->
-            <a class="item-galeria" href="Imagenes/novios.png" data-lightbox="boda-gallery">
+            <div class="item-galeria" data-src="Imagenes/novios.png">
                 <div class="wrapper-imagen" style="background-image: url('Imagenes/novios.png');"></div>
                 <div class="overlay-galeria">
                     <span class="icono-zoom">✕</span>
                 </div>
-            </a>
+            </div>
             
             <!-- Foto 3 -->
-            <a class="item-galeria" href="Imagenes/novios.png" data-lightbox="boda-gallery">
+            <div class="item-galeria" data-src="Imagenes/novios.png">
                 <div class="wrapper-imagen" style="background-image: url('Imagenes/novios.png');"></div>
                 <div class="overlay-galeria">
                     <span class="icono-zoom">✕</span>
                 </div>
-            </a>
+            </div>
             
             <!-- Foto 4 -->
-            <a class="item-galeria" href="Imagenes/novios.png" data-lightbox="boda-gallery">
+            <div class="item-galeria" data-src="Imagenes/novios.png">
                 <div class="wrapper-imagen" style="background-image: url('Imagenes/novios.png');"></div>
                 <div class="overlay-galeria">
                     <span class="icono-zoom">✕</span>
                 </div>
-            </a>
+            </div>
             
             <!-- Foto 5 -->
-            <a class="item-galeria" href="Imagenes/novios.png" data-lightbox="boda-gallery">
+            <div class="item-galeria" data-src="Imagenes/novios.png">
                 <div class="wrapper-imagen" style="background-image: url('Imagenes/novios.png');"></div>
                 <div class="overlay-galeria">
                     <span class="icono-zoom">✕</span>
                 </div>
-            </a>
+            </div>
             
             <!-- Foto 6 -->
-            <a class="item-galeria" href="Imagenes/novios.png" data-lightbox="boda-gallery">
+            <div class="item-galeria" data-src="Imagenes/novios.png">
                 <div class="wrapper-imagen" style="background-image: url('Imagenes/novios.png');"></div>
                 <div class="overlay-galeria">
                     <span class="icono-zoom">✕</span>
                 </div>
-            </a>
+            </div>
         </div>
-
     </div>
 </section>
+
+<!-- VENTANA MODAL (LIGHTBOX NATIVO) -->
+<div class="lightbox-modal" id="lightboxModal">
+    <button class="btn-lightbox btn-cerrar" id="btnCerrar" aria-label="Cerrar">&times;</button>
+    <button class="btn-lightbox btn-prev" id="btnPrev" aria-label="Anterior">&#10094;</button>
+    <div class="contenedor-img-lightbox">
+        <img src="" alt="Visualización de galería" id="imagenLightbox">
+    </div>
+    <button class="btn-lightbox btn-next" id="btnNext" aria-label="Siguiente">&#10095;</button>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <script src="script.js"></script>
