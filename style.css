@@ -1660,3 +1660,97 @@ body.mostrar-boda .contenido-principal {
         margin-bottom: 20px;
     }
 }
+
+
+/* ==========================================================================
+   13. SECCIÓN NO NIÑOS / AGRADECIMIENTO (MINIMALISTA)
+   ========================================================================== */
+.seccion-no-ninos {
+    width: 100%;
+    padding: 100px 0;
+    box-sizing: border-box;
+    background-color: var(--blanco);
+    text-align: center;
+}
+
+.contenedor-no-ninos {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Divisores o Follajes gráficos de la sección */
+.divisor-no-ninos {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/* El primer elemento gráfico rotado 180 grados para enmarcar el título */
+.divisor-no-ninos.superior {
+    transform: rotate(180deg);
+    margin-bottom: 30px;
+}
+
+.divisor-no-ninos.inferior {
+    margin-top: 30px;
+}
+
+/* Contenido del Texto */
+.bloque-texto-no-ninos {
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+.titulo-no-ninos {
+    font-family: var(--fuente-titulos);
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    color: var(--vino);
+    font-weight: 400;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+}
+
+.parrafo-no-ninos {
+    font-family: var(--fuente-base);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-oscuro);
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Media Queries para pantallas móviles */
+@media (max-width: 768px) {
+    .seccion-no-ninos {
+        padding: 70px 0;
+    }
+    
+    .titulo-no-ninos {
+        font-size: 1.9rem;
+        margin-bottom: 12px;
+    }
+    
+    .parrafo-no-ninos {
+        font-size: 0.95rem;
+    }
+    
+    .divisor-no-ninos {
+        max-width: 220px;
+    }
+    
+    .divisor-no-ninos.superior {
+        margin-bottom: 20px;
+    }
+    
+    .divisor-no-ninos.inferior {
+        margin-top: 20px;
+    }
+}
