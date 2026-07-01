@@ -1,12 +1,14 @@
-/* PALETA GÓTICA ELEGANTE: 
+/* ==========================================================================
+   PALETA GÓTICA ELEGANTE
    Negro Profundo: #0c0c0c | Guinda Imperial: #630d16 | Crema Vintage: #fdfbf7 
-*/
+   ========================================================================== */
 
 :root {
     --color-negro: #0c0c0c;
     --color-guinda: #630d16;
     --color-crema: #fdfbf7;
     --color-gris-oscuro: #1e1e1e;
+    --color-overlay: rgba(20, 20, 20, 0.65);
 }
 
 * {
@@ -23,7 +25,9 @@ body {
     overflow-x: hidden;
 }
 
-/* ================= EFECTO SOBRE 6 SEGUNDOS ================= */
+/* ==========================================================================
+   EFECTO SOBRE AUTÉNTICO (6 SEGUNDOS)
+   ========================================================================== */
 .contenedor-sobre {
     position: fixed;
     top: 0;
@@ -67,7 +71,6 @@ body {
     z-index: 3;
     opacity: 0;
     transform-origin: top center;
-    /* ROTO ÚNICAMENTE EN 6 SEGUNDOS */
     transition: transform 6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
@@ -124,7 +127,9 @@ body {
     visibility: hidden;
 }
 
-/* ================= CONTENIDO DE INVITACIÓN ================= */
+/* ==========================================================================
+   CONTENIDO DE INVITACIÓN GENERAL
+   ========================================================================== */
 .contenido-principal {
     opacity: 0;
     width: 100%;
@@ -140,7 +145,7 @@ body.mostrar-boda .contenido-principal {
     transition: opacity 1.5s ease;
 }
 
-/* --- HERO COVER --- */
+/* --- HERO COVER & OVERLAY --- */
 .hero {
     position: relative;
     height: 100vh;
@@ -149,6 +154,48 @@ body.mostrar-boda .contenido-principal {
     align-items: center;
     text-align: center;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('FotoPrincipal.jpg') center/cover no-repeat;
+}
+
+.capa-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-overlay); 
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    pointer-events: none;
+}
+
+.sello-boda {
+    width: 90px;
+    height: auto;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.nombres-boda {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.5rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.fecha-boda {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .hero-content h2 {
@@ -173,32 +220,174 @@ body.mostrar-boda .contenido-principal {
     margin-bottom: 30px;
 }
 
-/* --- COUNTDOWN --- */
-.countdown {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+/* ==========================================================================
+   SECCIÓN FRASE DE BIENVENIDA
+   ========================================================================== */
+.seccion-frase {
+    width: 100%;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
 }
 
-.countdown-item {
+.contenedor-frase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.divisor-boda {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin: 15px auto;
+}
+
+.divisor-invertido {
+    transform: rotate(180deg);
+}
+
+.frase-contenido {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #ffffff;
+    margin: 20px 0;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   SAVE THE DATE Y RELOJ REGRESIVO
+   ========================================================================== */
+.seccion-savethedate {
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    margin: 80px auto;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(0.98);
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.mostrar-boda .seccion-savethedate {
+    transform: scale(1);
+}
+
+.contenedor-contador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 5;
+    max-width: 600px;
+    width: 100%;
+}
+
+.decoracion-lateral {
+    position: absolute;
+    width: 180px;
+    height: auto;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.decoracion-lateral.izq {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.decoracion-lateral.der {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(190deg);
+}
+
+.titulo-contador {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: #ffffff;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.fecha-texto {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.8rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.reloj-regresivo, .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.tiempo-item, .countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 75px;
     background: rgba(15, 15, 15, 0.85);
     border: 1px solid var(--color-guinda);
     padding: 15px;
-    min-width: 75px;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: #888;
 }
 
-.countdown-item span {
+.digitos, .countdown-item span {
     font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    display: block;
-    color: var(--color-crema);
+    font-size: 2.8rem;
     font-weight: bold;
+    color: var(--color-crema);
+    line-height: 1;
 }
 
-/* --- SECCIÓN PRINCIPAL (CREMA/PERGAMINO) --- */
+.etiqueta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 8px;
+}
+
+.contenedor-boton { margin-top: 10px; }
+
+.btn-savethedate {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #ffffff;
+    padding: 12px 35px;
+    background: transparent;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-savethedate:hover {
+    transform: scale(1.08);
+    background: #ffffff;
+    color: #141414;
+}
+
+/* ==========================================================================
+   SECCIÓN PERGAMINO CREMA (PADRES Y VERSO)
+   ========================================================================== */
 .wedding-section, .maps-section, .dress-code, .section-floral, .attendance {
     background-color: var(--color-crema);
     color: #1a1a1a;
@@ -227,7 +416,6 @@ body.mostrar-boda .contenido-principal {
     font-size: 1.2rem;
 }
 
-/* --- PADRES --- */
 .parents-container {
     display: flex;
     justify-content: space-around;
@@ -259,7 +447,6 @@ body.mostrar-boda .contenido-principal {
     background-color: rgba(99, 13, 22, 0.2);
 }
 
-/* --- VERSO --- */
 .verse {
     margin-top: 30px;
     padding: 0 20px;
@@ -288,7 +475,6 @@ body.mostrar-boda .contenido-principal {
     color: var(--color-guinda);
 }
 
-/* --- SEPARADORES --- */
 .separador-goth {
     width: 60px;
     border: 0;
@@ -296,65 +482,200 @@ body.mostrar-boda .contenido-principal {
     margin: 0 auto;
 }
 
-/* --- ITINERARIO (TARJETAS GÓTICAS) --- */
-.schedule-section {
-    background-color: var(--color-negro);
-    padding: 60px 20px;
+/* ==========================================================================
+   SECCIÓN NUESTRA HISTORIA
+   ========================================================================== */
+.seccion-historia {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    padding: 80px 0 140px 0;
+    overflow: hidden;
+}
+
+.contenedor-historia {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 50px;
+    align-items: center;
+}
+
+.columna-texto {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    text-align: left;
 }
 
-.event-card {
-    background: var(--color-gris-oscuro);
-    border-left: 4px solid var(--color-guinda);
-    display: flex;
+.columna-carrusel {
+    flex: 1;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.event-image {
-    width: 40%;
-    background-size: cover;
-    background-position: center;
+.subtitulo-historia {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 25px;
 }
 
-.event-info {
-    width: 60%;
-    padding: 30px;
-    color: var(--color-crema);
+.parrafos-historia p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 18px;
 }
 
-.time-tag {
+.firma-historia {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin: 15px 0;
+}
+
+.icono-corazon svg {
+    width: 25px;
+    height: 25px;
+    fill: #ffffff;
+    margin-top: 5px;
+}
+
+.columna-carrusel .swiper { width: 100%; height: auto; }
+.columna-carrusel .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 5;
+}
+
+.columna-carrusel .swiper-button-next,
+.columna-carrusel .swiper-button-prev {
+    color: #ffffff;
+    transform: scale(0.7);
+}
+
+.columna-carrusel .swiper-pagination-bullet-active { background: #ffffff; }
+
+.divisor-inclinado {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #141414;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   ITINERARIO / UBICACIONES SIMÉTRICAS
+   ========================================================================== */
+.schedule-section, .seccion-ubicaciones {
+    background-color: var(--color-negro);
+    padding: 60px 20px;
+}
+
+.contenedor-ubicaciones {
+    display: flex;
+    max-width: 950px;
+    margin: 0 auto;
+    gap: 40px;
+    justify-content: center;
+}
+
+.tarjeta-evento, .event-card {
+    flex: 1;
+    max-width: 420px;
+    background: var(--color-gris-oscuro);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid var(--color-guinda);
+    border-radius: 4px;
+    padding: 40px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.icono-ubicacion {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-ubicacion svg { width: 100%; height: 100%; }
+
+.titulo-evento, .event-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.hora-evento, .time-tag {
     font-family: 'Cinzel', serif;
     color: var(--color-guinda);
     font-weight: bold;
     font-size: 1.2rem;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.event-info h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
     margin-bottom: 15px;
+}
+
+.lugar-evento {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.direccion-evento, .event-address {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.6) !important;
+    margin-bottom: 30px;
+}
+
+.bloque-mapas {
+    margin-top: auto;
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.btn-mapa {
+    flex: 1;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
     letter-spacing: 1px;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 0;
+    border-radius: 2px;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-.event-info p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #ccc;
-    margin-bottom: 10px;
+.btn-mapa:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #141414;
 }
 
-.event-address {
-    font-size: 0.8rem !important;
-    color: #888 !important;
-    font-style: italic;
-}
-
-/* --- MAPAS --- */
 .map-container {
     margin-top: 25px;
     border: 2px solid var(--color-guinda);
@@ -363,7 +684,9 @@ body.mostrar-boda .contenido-principal {
     border-radius: 14px;
 }
 
-/* --- CÓDIGO DE VESTIMENTA --- */
+/* ==========================================================================
+   CÓDIGO DE VESTIMENTA
+   ========================================================================== */
 .dress-type {
     font-family: 'Cinzel', serif;
     font-size: 1.4rem;
@@ -413,30 +736,152 @@ body.mostrar-boda .contenido-principal {
     font-style: italic;
 }
 
-/* --- GALERÍA RECUERDOS --- */
-.galeria {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 30px;
+/* ==========================================================================
+   GALERÍA FOTOGRÁFICA PREMIUM & LIGHTBOX
+   ========================================================================== */
+.seccion-galeria {
+    width: 100%;
+    padding: 80px 0;
 }
 
-.marco-foto {
+.contenedor-galeria {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.titulo-galeria {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.grid-galeria, .galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.item-galeria, .marco-foto {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; 
     border: 2px solid var(--color-guinda);
     background: #000;
-    padding: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.galeria img {
+.wrapper-imagen, .galeria img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 250px;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
     object-fit: cover;
-    display: block;
-    filter: grayscale(0.2) sepia(0.1);
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* --- MESA DE REGALOS (OSCURO / PARALLAX) --- */
-.gifts-section {
+.overlay-galeria {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 20, 20, 0.5);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.4s ease;
+}
+
+.icono-zoom {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    transform: rotate(45deg);
+    transition: transform 0.4s ease;
+}
+
+.item-galeria:hover .wrapper-imagen { transform: scale(1.06); }
+.item-galeria:hover .overlay-galeria { opacity: 1; }
+.item-galeria:hover .icono-zoom { transform: rotate(135deg); }
+
+/* --- INTERFAZ LIGHTBOX --- */
+.lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.95);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox-modal.activo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.contenedor-img-lightbox {
+    max-width: 85%;
+    max-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-img-lightbox img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lightbox-modal.activo .contenedor-img-lightbox img { transform: scale(1); }
+
+.btn-lightbox {
+    position: absolute;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 15px;
+    transition: color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+    z-index: 100000;
+}
+
+.btn-lightbox:hover { color: #ffffff; }
+.btn-lightbox:active { transform: scale(0.95); }
+.btn-cerrar { top: 20px; right: 25px; font-size: 3.5rem; font-weight: 200; }
+.btn-prev { left: 20px; }
+.btn-next { right: 20px; }
+
+/* ==========================================================================
+   MESA DE REGALOS (ESTILO PARALLAX OSCURO)
+   ========================================================================== */
+.seccion-regalos, .gifts-section {
     position: relative;
     padding: 80px 20px;
     background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), url('https://www.transparenttextures.com/patterns/black-linen.png');
@@ -445,13 +890,31 @@ body.mostrar-boda .contenido-principal {
     border-bottom: 1px solid var(--color-guinda);
 }
 
-.gifts-content { position: relative; z-index: 2; max-width: 600px; margin: 0 auto;}
-.gifts-content h2 { font-family: 'Cinzel', serif; font-size: 2rem;}
-.intro-text { color: #aaa; margin-bottom: 35px; font-size: 0.95rem;}
+.contenedor-regalos, .gifts-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-regalos, .gifts-content h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.intro-text { color: #aaa; margin-bottom: 35px; font-size: 0.95rem; }
 
 .cards-container {
     display: flex;
     gap: 20px;
+    width: 100%;
 }
 
 .gift-card {
@@ -469,11 +932,13 @@ body.mostrar-boda .contenido-principal {
     margin-bottom: 15px;
 }
 
-.gift-card h3 { font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 10px;}
+.gift-card h3 { font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 10px; color: #fff;}
 .gift-card p { font-size: 0.85rem; color: #bbb; line-height: 1.5; }
 .footer-note { margin-top: 30px; font-family: 'Cinzel', serif; color: var(--color-guinda); }
 
-/* --- ASISTENCIA / PASES --- */
+/* ==========================================================================
+   CONFIRMACIÓN DE ASISTENCIA & MODAL RSVP
+   ========================================================================== */
 .passes-box {
     border: 2px dashed var(--color-guinda);
     padding: 25px;
@@ -501,7 +966,6 @@ body.mostrar-boda .contenido-principal {
 
 .btn-rsvp:hover { background: var(--color-negro); letter-spacing: 3px; }
 
-/* --- MODAL RSVP --- */
 .rsvp-modal {
     position: fixed;
     top:0; left:0; width:100%; height:100%;
@@ -527,893 +991,107 @@ body.mostrar-boda .contenido-principal {
 .modal-subtitle { font-family: 'Cinzel', serif; color: var(--color-guinda); display: block; margin-bottom: 10px; }
 .rsvp-modal-content h2 { font-family: 'Cinzel', serif; margin-bottom: 15px; }
 .modal-text { font-size: 0.95rem; margin-bottom: 25px; color: #444; }
-
 .modal-buttons { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; }
 .btn-modal.no { background: #444; border-color: #333; }
 .btn-modal:hover { opacity: 0.9; }
 .modal-close { background: none; border: none; font-size: 0.85rem; text-decoration: underline; cursor: pointer; color: #666; }
 
-@keyframes pulsarTexto {
-    0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; }
-}
-
-/* RESPONSIVO */
-@media (max-width: 700px) {
-    .parents-container, .cards-container, .event-card { flex-direction: column; }
-    .divider-vertical { width: 80px; height: 1px; margin: 20px auto; }
-    .event-image, .event-info, .gift-card { width: 100%; }
-    .event-image { height: 200px; }
-    .hero-content h1 { font-size: 2.3rem; }
-    .galeria { grid-template-columns: 1fr; }
-    .wedding-section, .maps-section, .dress-code, .section-floral, .attendance { padding: 40px 20px; }
-}
-
-/* Capa superpuesta sobre el carrusel */
-.capa-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Fondo oscuro/opaco que hace resaltar el texto (puedes cambiarlo por tu guinda/negro con opacidad) */
-    background: rgba(20, 20, 20, 0.65); 
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff; /* O color dorado/formal si manejas variables */
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    pointer-events: none; /* Permite que el usuario pueda arrastrar el carrusel por debajo si quiere */
-}
-
-/* Imagen del Sello */
-.sello-boda {
-    width: 90px; /* Ajusta el tamaño según tu diseño */
-    height: auto;
-    margin-bottom: 15px;
-    opacity: 0.9;
-}
-
-/* Tipografías */
-.nombres-boda {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 2.5rem;
-    margin: 0 0 10px 0;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.fecha-boda {
-    font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-/* Ajustes responsivos rápidos */
-@media (max-width: 768px) {
-    .nombres-boda { font-size: 1.8rem; }
-    .fecha-boda { font-size: 0.9rem; }
-    .sello-boda { width: 70px; }
-}
-
-/* ==========================================
-   SECCIÓN DE FRASE DE BIENVENIDA
-   ========================================== */
-
-.seccion-frase {
-    width: 100%;
-    max-width: 800px; /* Centrado y acotado para lectura elegante */
-    margin: 60px auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-
-.contenedor-frase {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Manejo de los separadores/imágenes */
-.divisor-boda {
-    display: block;
-    width: 100%;
-    max-width: 450px; /* Tamaño máximo controlado para que no se deforme */
-    height: auto;
-    margin: 15px auto;
-}
-
-/* Simula el efecto rotado de Elementor para el separador inferior */
-.divisor-invertido {
-    transform: rotate(180deg);
-}
-
-/* Tipografía de la frase */
-.frase-contenido {
-    font-family: 'Cinzel', serif; /* Usando tus fuentes cargadas */
-    font-size: 1.4rem;
-    line-height: 1.8;
-    color: #ffffff; /* Ajusta según tu paleta oscura o clara */
-    margin: 20px 0;
-    padding: 0;
-    font-weight: 400;
-    font-style: normal;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* ==========================================
-   ANIMACIONES (Estilo fadeInRight de Elementor)
-   ========================================== */
-
+/* ==========================================================================
+   ANIMACIONES GLOBALES (ENTRADA TRAS EL SOBRE)
+   ========================================================================== */
 .frase-animada {
     opacity: 0;
-    transform: translate3d(40px, 0, 0); /* Inicia un poco a la derecha */
+    transform: translate3d(40px, 0, 0);
 }
 
-/* Esta clase se activa de forma global en el body tras abrir el sobre */
-.mostrar-boda .frase-animada {
-    animation: fadeInRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* Tiempos de retraso para aparición escalonada */
-.mostrar-boda .retraso-1 {
-    animation-delay: 0.2s;
-}
-
-.mostrar-boda .retraso-2 {
-    animation-delay: 0.5s; /* El texto aparece ligeramente después */
-}
-
-@keyframes fadeInRight {
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0); /* Regresa a su posición original */
-    }
-}
-
-/* Ajustes para Pantallas Móviles */
-@media (max-width: 768px) {
-    .frase-contenido {
-        font-size: 1.1rem;
-        line-height: 1.6;
-    }
-    .divisor-boda {
-        max-width: 280px;
-    }
-}
-
-/* ==========================================
-   SECCIÓN SAVE THE DATE Y CUENTA REGRESIVA
-   ========================================== */
-
-.seccion-savethedate {
-    position: relative;
-    width: 100%;
-    min-height: 450px;
-    margin: 80px auto;
-    padding: 40px 20px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    /* Transición suave de escala simulando el efecto Elementor de fondo */
-    transform: scale(0.98);
-    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* Efecto de expansión sutil al estar activa la invitación */
-.mostrar-boda .seccion-savethedate {
-    transform: scale(1);
-}
-
-/* Contenedor centralizado */
-.contenedor-contador {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    z-index: 5;
-    max-width: 600px;
-    width: 100%;
-}
-
-/* Imágenes Decorativas Laterales (Posicionamiento absoluto) */
-.decoracion-lateral {
-    position: absolute;
-    width: 180px;
-    height: auto;
-    opacity: 0.8;
-    pointer-events: none;
-}
-
-.decoracion-lateral.izq {
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg);
-}
-
-.decoracion-lateral.der {
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%) rotate(190deg); /* Réplica del ángulo original */
-}
-
-/* Tipografías y Textos */
-.titulo-contador {
-    font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    color: #ffffff;
-    letter-spacing: 3px;
-    margin-bottom: 25px;
-}
-
-.fecha-texto {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 1.8rem;
-    color: #ffffff; /* Puedes usar tu dorado o guinda aquí */
-    letter-spacing: 2px;
-    margin-top: 25px;
-    margin-bottom: 30px;
-}
-
-/* Estructura del Reloj Regresivo */
-.reloj-regresivo {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.tiempo-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 70px;
-}
-
-.digitos {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.8rem;
-    font-weight: 300;
-    color: #ffffff;
-    line-height: 1;
-}
-
-.etiqueta {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 8px;
-}
-
-/* Botón Save The Date y Animación Grow */
-.contenedor-boton {
-    margin-top: 10px;
-}
-
-.btn-savethedate {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    color: #ffffff;
-    text-decoration: none;
-    border: 1px solid #ffffff;
-    padding: 12px 35px;
-    background: transparent;
-    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-    cursor: pointer;
-}
-
-/* Efecto de agrandamiento suave al pasar el mouse (elementor-animation-grow) */
-.btn-savethedate:hover {
-    transform: scale(1.08);
-    background: #ffffff;
-    color: #141414; /* Invierte colores de forma formal */
-}
-
-/* ==========================================
-   ANIMACIONES DE ENTRADA AL ABRIR EL SOBRE
-   ========================================== */
-.animacion-subir, .animacion-bajar, .animacion-fade {
-    opacity: 0;
-}
-
-.mostrar-boda .animacion-subir {
-    animation: fadeInUp 1s ease forwards 0.4s;
-}
-
-.mostrar-boda .animacion-bajar {
-    animation: fadeInDown 1s ease forwards 0.6s;
-}
-
-.mostrar-boda .animacion-fade {
-    animation: fadeIn 1.2s ease forwards 0.8s;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-/* RESPONSIVO EXACTO (Cambios de rotación de Elementor en Móvil) */
-@media (max-width: 768px) {
-    .seccion-savethedate {
-        margin: 40px auto;
-        padding: 30px 10px;
-    }
-    .decoracion-lateral {
-        width: 110px;
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        transform: none;
-        margin: 10px auto;
-    }
-    /* Estilo flex vertical para las flores en pantallas chicas */
-    .seccion-savethedate {
-        flex-direction: column;
-    }
-    .decoracion-lateral.izq {
-        transform: rotate(90deg); /* _transform_rotateZ_effect_mobile: 90 */
-        order: 1;
-    }
-    .contenedor-contador {
-        order: 2;
-        margin: 20px 0;
-    }
-    .decoracion-lateral.der {
-        transform: rotate(280deg); /* _transform_rotateZ_effect_mobile: 280 */
-        order: 3;
-    }
-    .digitos { font-size: 2rem; }
-    .tiempo-item { min-width: 50px; }
-    .fecha-texto { font-size: 1.4rem; }
-}
-
-/* ==========================================
-   SECCIÓN NUESTRA HISTORIA
-   ========================================== */
-
-.seccion-historia {
-    position: relative;
-    width: 100%;
-    background: transparent; /* Hereda tu fondo principal oscuro/claro */
-    padding: 80px 0 140px 0; /* Espacio extra abajo para el divisor inclinado */
-    overflow: hidden;
-}
-
-.contenedor-historia {
-    display: flex;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-    gap: 50px;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-/* Distribución de las Columnas */
-.columna-texto {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.columna-carrusel {
-    flex: 1;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Tipografía y Textos */
-.subtitulo-historia {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 2.2rem;
-    color: #ffffff;
-    margin-bottom: 25px;
-}
-
-.parrafos-historia p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 18px;
-}
-
-.firma-historia {
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
-    color: #ffffff; /* Puedes cambiar por tu color dorado/acento */
-    margin: 15px 0;
-    font-style: normal;
-}
-
-/* Icono Corazón */
-.icono-corazon svg {
-    width: 25px;
-    height: 25px;
-    fill: #ffffff; /* Ajusta según tu paleta */
-    margin-top: 5px;
-}
-
-/* Ajustes de Swiper Imágenes */
-.columna-carrusel .swiper {
-    width: 100%;
-    height: auto;
-}
-
-.columna-carrusel .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    aspect-ratio: 4 / 5; /* Asegura homogeneidad de tamaño */
-}
-
-/* Estilización personalizada de botones de Swiper */
-.columna-carrusel .swiper-button-next,
-.columna-carrusel .swiper-button-prev {
-    color: #ffffff;
-    transform: scale(0.7);
-}
-
-.columna-carrusel .swiper-pagination-bullet-active {
-    background: #ffffff;
-}
-
-/* ==========================================
-   DIVISOR INCLINADO INTERIOR (NATIVO CSS)
-   ========================================== */
-.divisor-inclinado {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background: #141414; /* Sustituir por el color exacto del fondo de la SIGUIENTE sección */
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    pointer-events: none;
-}
-
-/* ==========================================
-   ANIMACIONES CONTROLADAS TRAS ABRIR EL SOBRE
-   ========================================== */
-.historia-animada {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.mostrar-boda .historia-animada {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Transición fluida con retraso escalonado */
-.mostrar-boda .retraso-texto-1 { transition-delay: 0.3s; }
-.mostrar-boda .retraso-texto-2 { transition-delay: 0.5s; }
-.mostrar-boda .retraso-texto-3 { transition-delay: 0.7s; }
-.mostrar-boda .retraso-carrusel { transition-delay: 0.9s; }
-
-/* ==========================================
-   DISEÑO RESPONSIVO (MÓVILES)
-   ========================================== */
-@media (max-width: 768px) {
-    .contenedor-historia {
-        flex-direction: column;
-        gap: 35px;
-        text-align: center;
-    }
-    
-    .columna-texto {
-        text-align: center;
-        align-items: center;
-    }
-    
-    .subtitulo-historia {
-        font-size: 1.8rem;
-    }
-
-    .parrafos-historia p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-    
-    .columna-carrusel {
-        max-width: 100%;
-    }
-    
-    .divisor-inclinado {
-        height: 45px;
-    }
-}
-
-
-/* ==========================================
-   SECCIÓN UBICACIONES (TARJETAS SIMÉTRICAS)
-   ========================================== */
-
-.seccion-ubicaciones {
-    width: 100%;
-    padding: 80px 0;
-    background: transparent;
-    box-sizing: border-box;
-}
-
-.contenedor-ubicaciones {
-    display: flex;
-    max-width: 950px;
-    margin: 0 auto;
-    padding: 0 20px;
-    gap: 40px;
-    justify-content: center;
-    box-sizing: border-box;
-}
-
-/* Tarjeta Base */
-.tarjeta-evento {
-    flex: 1;
-    max-width: 420px;
-    background: rgba(255, 255, 255, 0.03); /* Fondo sutil translúcido */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    padding: 40px 30px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Contenedor e Iconos SVG */
-.icono-ubicacion {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.icono-ubicacion svg {
-    width: 100%;
-    height: 100%;
-}
-
-/* Tipografía Interna */
-.titulo-evento {
-    font-family: 'Cinzel', serif;
-    font-size: 1.6rem;
-    letter-spacing: 3px;
-    color: #ffffff;
-    margin: 0 0 15px 0;
-    font-weight: 400;
-}
-
-.hora-evento {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0 0 15px 0;
-}
-
-.lugar-evento {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 1.3rem;
-    color: #ffffff; /* Puedes usar tu color de acento aquí */
-    margin: 0 0 8px 0;
-}
-
-.direccion-evento {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0 0 30px 0;
-}
-
-/* Fila de Botones */
-.bloque-mapas {
-    margin-top: auto; /* Empuja los botones al fondo de la tarjeta */
-    display: flex;
-    gap: 15px;
-    width: 100%;
-}
-
-.btn-mapa {
-    flex: 1;
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    color: #ffffff;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 10px 0;
-    border-radius: 2px;
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-mapa:hover {
-    background: #ffffff;
-    border-color: #ffffff;
-    color: #141414;
-}
-
-/* ==========================================
-   ANIMACIÓN AL ABRIR EL SOBRE
-   ========================================== */
-.ubicacion-animada {
+.historia-animada, .ubicacion-animada {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.mostrar-boda .ubicacion-animada {
+.animacion-subir, .animacion-bajar, .animacion-fade { opacity: 0; }
+
+/* --- ACTIVACIÓN DE ANIMACIONES --- */
+.mostrar-boda .frase-animada { animation: fadeInRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+.mostrar-boda .retraso-1 { animation-delay: 0.2s; }
+.mostrar-boda .retraso-2 { animation-delay: 0.5s; }
+
+.mostrar-boda .historia-animada, .mostrar-boda .ubicacion-animada {
     opacity: 1;
     transform: translateY(0);
 }
+.mostrar-boda .retraso-texto-1 { transition-delay: 0.3s; }
+.mostrar-boda .retraso-texto-2 { transition-delay: 0.5s; }
+.mostrar-boda .retraso-texto-3 { transition-delay: 0.7s; }
+.mostrar-boda .retraso-carrusel { transition-delay: 0.9s; }
 
-/* ==========================================
-   DISEÑO RESPONSIVO (MÓVILES)
-   ========================================== */
-@media (max-width: 768px) {
-    .contenedor-ubicaciones {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
+.mostrar-boda .animacion-subir { animation: fadeInUp 1s ease forwards 0.4s; }
+.mostrar-boda .animacion-bajar { animation: fadeInDown 1s ease forwards 0.6s; }
+.mostrar-boda .animacion-fade { animation: fadeIn 1.2s ease forwards 0.8s; }
 
-    .tarjeta-evento {
-        width: 100%;
-        max-width: 360px;
-        padding: 35px 20px;
-    }
+@keyframes pulsarTexto { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes fadeInRight { to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { to { opacity: 1; } }
 
-    .titulo-evento { font-size: 1.4rem; }
-    .lugar-evento { font-size: 1.15rem; }
-}
-
-/* ==========================================
-   SECCIÓN GALERÍA (CSS GRID + LIGHTBOX)
-   ========================================== */
-
-.seccion-galeria {
-    width: 100%;
-    padding: 80px 0;
-    box-sizing: border-box;
-}
-
-.contenedor-galeria {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.titulo-galeria {
-    font-family: 'Cinzel', serif;
-    font-size: 2rem;
-    letter-spacing: 4px;
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 50px;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.grid-galeria {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-}
-
-.item-galeria {
-    position: relative;
-    width: 100%;
-    padding-top: 100%; /* Cuadrado perfecto 1:1 */
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.wrapper-imagen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.overlay-galeria {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(20, 20, 20, 0.5);
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.4s ease;
-}
-
-.icono-zoom {
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    transform: rotate(45deg);
-    transition: transform 0.4s ease;
-}
-
-/* Hover Items */
-.item-galeria:hover .wrapper-imagen { transform: scale(1.06); }
-.item-galeria:hover .overlay-galeria { opacity: 1; }
-.item-galeria:hover .icono-zoom { transform: rotate(135deg); }
-
-/* ==========================================
-   ESTILOS DE LA INTERFAZ DEL LIGHTBOX
-   ========================================== */
-.lightbox-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(10, 10, 10, 0.95); /* Fondo oscuro elegante */
-    z-index: 99999; /* Asegura estar sobre todo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-}
-
-/* Clase activa por JS */
-.lightbox-modal.activo {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.contenedor-img-lightbox {
-    max-width: 85%;
-    max-height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contenedor-img-lightbox img {
-    max-width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
-    border-radius: 2px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    transform: scale(0.95);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.lightbox-modal.activo .contenedor-img-lightbox img {
-    transform: scale(1);
-}
-
-/* Botones del Lightbox */
-.btn-lightbox {
-    position: absolute;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 2.5rem;
-    cursor: pointer;
-    padding: 15px;
-    transition: color 0.3s ease, transform 0.2s ease;
-    user-select: none;
-    z-index: 100000;
-}
-
-.btn-lightbox:hover {
-    color: #ffffff;
-}
-
-.btn-lightbox:active { transform: scale(0.95); }
-
-.btn-cerrar {
-    top: 20px;
-    right: 25px;
-    font-size: 3.5rem;
-    font-weight: 200;
-}
-
-.btn-prev { left: 20px; }
-.btn-next { right: 20px; }
-
-/* Responsive Grid */
+/* ==========================================================================
+   DISEÑO EXCLUSIVO RESPONSIVO (MÓVILES)
+   ========================================================================== */
 @media (max-width: 992px) {
-    .grid-galeria { grid-template-columns: repeat(2, 1fr); }
+    .grid-galeria, .galeria { grid-template-columns: repeat(2, 1fr); }
     .btn-lightbox { font-size: 2rem; }
     .btn-cerrar { font-size: 3rem; top: 10px; right: 15px; }
 }
 
+@media (max-width: 768px) {
+    /* Estructuras Flex a Bloque */
+    .parents-container, .cards-container, .contenedor-historia, .contenedor-ubicaciones { 
+        flex-direction: column; 
+    }
+    .divider-vertical { width: 80px; height: 1px; margin: 20px auto; }
+    .gift-card, .columna-carrusel { width: 100%; max-width: 100%; }
+    .hero-content h1, .nombres-boda { font-size: 1.8rem; }
+    .fecha-boda { font-size: 0.9rem; }
+    .sello-boda { width: 70px; }
+    .frase-contenido { font-size: 1.1rem; line-height: 1.6; }
+    .divisor-boda { max-width: 280px; }
+    .subtitulo-historia { font-size: 1.8rem; }
+    .parrafos-historia p { font-size: 0.95rem; line-height: 1.6; }
+    .tarjeta-evento { width: 100%; max-width: 360px; padding: 35px 20px; }
+    .titulo-evento { font-size: 1.4rem; }
+    .lugar-evento { font-size: 1.15rem; }
+    .wedding-section, .maps-section, .dress-code, .section-floral, .attendance { padding: 40px 20px; }
+    
+    /* Manejo Save The Date en Móvil */
+    .seccion-savethedate { margin: 40px auto; padding: 30px 10px; flex-direction: column; }
+    .decoracion-lateral { width: 110px; position: relative; top: auto; left: auto; right: auto; transform: none; margin: 10px auto; }
+    .decoracion-lateral.izq { transform: rotate(90deg); order: 1; }
+    .contenedor-contador { order: 2; margin: 20px 0; }
+    .decoracion-lateral.der { transform: rotate(280deg); order: 3; }
+    .digitos { font-size: 2rem; }
+    .tiempo-item { min-width: 50px; }
+    .fecha-texto { font-size: 1.4rem; }
+    .divisor-inclinado { height: 45px; }
+}
+
 @media (max-width: 576px) {
-    .grid-galeria { grid-template-columns: repeat(1, 1fr); }
+    .grid-galeria, .galeria { grid-template-columns: repeat(1, 1fr); }
     .btn-prev { left: 5px; }
     .btn-next { right: 5px; }
     .contenedor-img-lightbox { max-width: 90%; }
 }
 
-/* ==========================================
-   SECCIÓN REGALOS (FLIP BOX 3D PREMIUM)
-   ========================================== */
-
-.seccion-regalos {
-    width: 100%;
-    padding: 80px 0;
-    box-sizing: border-box;
-}
-
-.contenedor-regalos {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.titulo-regalos {
-    font-family: 'Cinzel', serif;
-    font-size: 2rem;
-    letter-spacing: 4px;
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 40px;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-/* Contenedor con Perspectiva 3D */
+/* ==========================================================================
+   MESA DE REGALOS (CONTENEDOR CON PERSPECTIVA 3D)
+   ========================================================================== */
 .tarjeta-giratoria-wrapper {
     width: 100%;
     max-width: 350px;
     height: 350px;
     perspective: 1000px; /* Crea el espacio 3D para el efecto */
+    margin: 0 auto;
 }
 
 .tarjeta-giratoria {
@@ -1447,12 +1125,13 @@ body.mostrar-boda .contenido-principal {
     padding: 35px;
     box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Cara Frontal */
+/* Cara Frontal (Estilo Oscuro) */
 .cara-frontal {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(30, 30, 30, 0.65);
+    border: 1px solid rgba(99, 13, 22, 0.3);
     z-index: 2;
 }
 
@@ -1465,13 +1144,14 @@ body.mostrar-boda .contenido-principal {
 .icono-regalo svg {
     width: 100%;
     height: 100%;
+    fill: var(--color-guinda);
 }
 
 .texto-frontal-sub {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-crema);
     margin: 0 0 10px 0;
 }
 
@@ -1479,13 +1159,14 @@ body.mostrar-boda .contenido-principal {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.85rem;
     letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(253, 251, 247, 0.5);
     margin: 0;
 }
 
 /* Cara Posterior (Reverso) */
 .cara-posterior {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--color-gris-oscuro);
+    border: 1px solid var(--color-guinda);
     transform: rotateY(180deg); /* Pre-rotada en el plano 3D */
 }
 
@@ -1493,7 +1174,7 @@ body.mostrar-boda .contenido-principal {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.95rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(253, 251, 247, 0.75);
     text-align: center;
     margin: 0 0 20px 0;
 }
@@ -1513,7 +1194,7 @@ body.mostrar-boda .contenido-principal {
     position: absolute;
     bottom: 15px;
     right: 20px;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(253, 251, 247, 0.3);
     font-size: 1.2rem;
     pointer-events: none;
 }
@@ -1522,13 +1203,11 @@ body.mostrar-boda .contenido-principal {
     transform: scaleX(-1); /* Voltea la flecha en el reverso */
 }
 
-/* ==========================================
-   ANIMACIÓN DE ENTRADA
-   ========================================== */
+/* Animación de entrada para tarjetas */
 .regalos-animados {
     opacity: 0;
     transform: translateY(25px);
-    transition: opacity 1s ease, transform 1s ease;
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .mostrar-boda .regalos-animados {
@@ -1536,25 +1215,15 @@ body.mostrar-boda .contenido-principal {
     transform: translateY(0);
 }
 
-/* Responsive */
-@media (max-width: 576px) {
-    .tarjeta-giratoria-wrapper {
-        max-width: 310px;
-        height: 310px;
-    }
-    .titulo-regalos { font-size: 1.7rem; }
-    .concepto-regalo { font-size: 1.3rem; }
-}
-
-/* ==========================================
-   SECCIÓN DRESS CODE (MINIMALISTA)
-   ========================================== */
-
+/* ==========================================================================
+   SECCIÓN DRESS CODE (MINIMALISTA OSCURO)
+   ========================================================================== */
 .seccion-dresscode {
     width: 100%;
     padding: 80px 0;
     box-sizing: border-box;
     text-align: center;
+    background-color: var(--color-negro);
 }
 
 .contenedor-dresscode {
@@ -1567,7 +1236,6 @@ body.mostrar-boda .contenido-principal {
     justify-content: center;
 }
 
-/* Manejo del ícono superior o ilustración */
 .wrapper-icono-dresscode {
     margin: 0 0 30px 0;
     width: 120px;
@@ -1580,10 +1248,9 @@ body.mostrar-boda .contenido-principal {
     width: 100%;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
 }
 
-/* Cabeceras de texto */
 .header-dresscode {
     margin-bottom: 20px;
 }
@@ -1602,13 +1269,12 @@ body.mostrar-boda .contenido-principal {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.4rem;
     letter-spacing: 3px;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(253, 251, 247, 0.85);
     text-transform: uppercase;
     font-weight: 300;
     margin: 0;
 }
 
-/* Nota aclaratoria sobre colores restringidos */
 .detalles-dresscode {
     max-width: 400px;
     margin-top: 15px;
@@ -1618,14 +1284,12 @@ body.mostrar-boda .contenido-principal {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(253, 251, 247, 0.5);
     font-weight: 300;
     margin: 0;
 }
 
-/* ==========================================
-   ANIMACIÓN DE ENTRADA SUAVE (FADE IN UP)
-   ========================================== */
+/* Animación de Entrada Escalada */
 .dresscode-animado {
     opacity: 0;
     transform: translateY(20px);
@@ -1637,40 +1301,21 @@ body.mostrar-boda .contenido-principal {
     transform: translateY(0);
 }
 
-/* Delays para efectos escalonados */
 .contenedor-dresscode .dresscode-animado:nth-child(1) { transition-delay: 100ms; }
 .contenedor-dresscode .dresscode-animado:nth-child(2) { transition-delay: 300ms; }
 .contenedor-dresscode .dresscode-animado:nth-child(3) { transition-delay: 500ms; }
 
-/* ==========================================
-   RESPONSIVE DESIGN (MEDIA QUERIES)
-   ========================================== */
-@media (max-width: 768px) {
-    .seccion-dresscode {
-        padding: 60px 0;
-    }
-    .titulo-dresscode {
-        font-size: 1.8rem;
-    }
-    .subtitulo-dresscode {
-        font-size: 1.2rem;
-    }
-    .wrapper-icono-dresscode {
-        width: 100px;
-        margin-bottom: 20px;
-    }
-}
-
-
 /* ==========================================================================
-   13. SECCIÓN NO NIÑOS / AGRADECIMIENTO (MINIMALISTA)
+   SECCIÓN NO NIÑOS / ADULTOS (ESTILO PERGAMINO CREMA)
    ========================================================================== */
 .seccion-no-ninos {
     width: 100%;
     padding: 100px 0;
     box-sizing: border-box;
-    background-color: var(--blanco);
+    background-color: var(--color-crema); /* Cambiado a crema para match de bloques */
     text-align: center;
+    border-top: 2px solid var(--color-guinda);
+    border-bottom: 2px solid var(--color-guinda);
 }
 
 .contenedor-no-ninos {
@@ -1683,7 +1328,6 @@ body.mostrar-boda .contenido-principal {
     justify-content: center;
 }
 
-/* Divisores o Follajes gráficos de la sección */
 .divisor-no-ninos {
     width: 100%;
     max-width: 280px;
@@ -1692,7 +1336,6 @@ body.mostrar-boda .contenido-principal {
     display: block;
 }
 
-/* El primer elemento gráfico rotado 180 grados para enmarcar el título */
 .divisor-no-ninos.superior {
     transform: rotate(180deg);
     margin-bottom: 30px;
@@ -1702,74 +1345,46 @@ body.mostrar-boda .contenido-principal {
     margin-top: 30px;
 }
 
-/* Contenido del Texto */
 .bloque-texto-no-ninos {
     max-width: 460px;
     margin: 0 auto;
 }
 
 .titulo-no-ninos {
-    font-family: var(--fuente-titulos);
+    font-family: 'Cinzel', serif;
     font-size: 2.4rem;
     letter-spacing: 2px;
-    color: var(--vino);
+    color: var(--color-guinda);
     font-weight: 400;
     margin: 0 0 15px 0;
     text-transform: uppercase;
 }
 
 .parrafo-no-ninos {
-    font-family: var(--fuente-base);
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     line-height: 1.7;
-    color: var(--text-oscuro);
-    font-weight: 300;
+    color: #1a1a1a;
+    font-weight: 400;
     margin: 0;
 }
 
-/* Media Queries para pantallas móviles */
-@media (max-width: 768px) {
-    .seccion-no-ninos {
-        padding: 70px 0;
-    }
-    
-    .titulo-no-ninos {
-        font-size: 1.9rem;
-        margin-bottom: 12px;
-    }
-    
-    .parrafo-no-ninos {
-        font-size: 0.95rem;
-    }
-    
-    .divisor-no-ninos {
-        max-width: 220px;
-    }
-    
-    .divisor-no-ninos.superior {
-        margin-bottom: 20px;
-    }
-    
-    .divisor-no-ninos.inferior {
-        margin-top: 20px;
-    }
-}
 /* ==========================================================================
-   14. SECCIÓN CONFIRMACIÓN Y MODAL DE SEGURIDAD
+   SECCIÓN CONFIRMACIÓN & MODAL DE ASISTENCIA
    ========================================================================== */
 .seccion-confirmar {
     padding: 100px 20px;
-    background-color: var(--gris-claro);
+    background-color: var(--color-negro);
     text-align: center;
 }
 
 .contenedor-confirmar {
     max-width: 550px;
     margin: 0 auto;
-    background-color: var(--blanco);
+    background-color: var(--color-gris-oscuro);
     padding: 50px 30px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(99, 13, 22, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 .imagen-decorativa-confirmar {
@@ -1779,17 +1394,17 @@ body.mostrar-boda .contenido-principal {
 }
 
 .titulo-confirmar {
-    font-family: var(--fuente-base);
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
-    color: var(--text-oscuro);
+    color: rgba(253, 251, 247, 0.6);
     font-weight: 300;
     margin-bottom: 10px;
 }
 
 .nombres-confirmar {
-    font-family: var(--fuente-titulos);
+    font-family: 'Cinzel Decorative', serif;
     font-size: 2.2rem;
-    color: var(--vino);
+    color: var(--color-crema);
     margin-bottom: 35px;
     letter-spacing: 1px;
 }
@@ -1798,31 +1413,32 @@ body.mostrar-boda .contenido-principal {
     width: 100%;
     max-width: 320px;
     padding: 15px;
-    background-color: var(--vino);
-    color: var(--blanco);
-    border: none;
-    font-family: var(--fuente-titulos);
+    background-color: var(--color-guinda);
+    color: var(--color-crema);
+    border: 1px solid #4a0404;
+    font-family: 'Cinzel', serif;
     font-size: 0.9rem;
     letter-spacing: 2px;
     cursor: pointer;
-    transition: var(--transicion-suave);
-    border-radius: 4px;
+    transition: background 0.3s ease, letter-spacing 0.3s ease;
+    border-radius: 2px;
 }
 
 .btn-enviar-boda:hover {
-    background-color: var(--azul-oscuro);
+    background-color: #000000;
+    letter-spacing: 3px;
 }
 
-/* ESTRUCTURA DEL MODAL */
+/* INTERFAZ DEL MODAL */
 .modal-seguridad-boda {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 30, 54, 0.8);
-    backdrop-filter: blur(4px);
-    z-index: 4000;
+    background-color: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(6px);
+    z-index: 99999;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1837,15 +1453,15 @@ body.mostrar-boda .contenido-principal {
 }
 
 .contenido-modal-seguridad {
-    background-color: var(--blanco);
+    background-color: var(--color-crema);
     padding: 40px 30px;
     max-width: 400px;
     width: 90%;
-    border-radius: 8px;
+    border: 2px solid var(--color-guinda);
     text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
     transform: translateY(-20px);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .modal-seguridad-boda.activo .contenido-modal-seguridad {
@@ -1853,17 +1469,17 @@ body.mostrar-boda .contenido-principal {
 }
 
 .titulo-modal-seguridad {
-    font-family: var(--fuente-titulos);
+    font-family: 'Cinzel', serif;
     font-size: 1.4rem;
-    color: var(--vino);
+    color: var(--color-guinda);
     margin-bottom: 15px;
 }
 
 .texto-modal-seguridad {
-    font-family: var(--fuente-base);
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
     line-height: 1.5;
-    color: #555;
+    color: #222;
     margin-bottom: 30px;
 }
 
@@ -1876,29 +1492,52 @@ body.mostrar-boda .contenido-principal {
 .btn-modal-secundario {
     flex: 1;
     padding: 12px;
-    font-family: var(--fuente-titulos);
+    font-family: 'Cinzel', serif;
     font-size: 0.8rem;
     letter-spacing: 1px;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
-    transition: var(--transicion-suave);
+    border-radius: 2px;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .btn-modal-principal {
-    background-color: var(--vino);
-    color: var(--blanco);
+    background-color: var(--color-guinda);
+    color: var(--color-crema);
 }
 
 .btn-modal-principal:hover {
-    background-color: var(--oro-oscuro);
+    background-color: var(--color-negro);
 }
 
 .btn-modal-secundario {
-    background-color: #EEE;
-    color: #444;
+    background-color: #e5dec9;
+    color: #222;
 }
 
 .btn-modal-secundario:hover {
-    background-color: #DDD;
+    background-color: #d1c9b0;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES COMPLEMENTARIAS
+   ========================================================================== */
+@media (max-width: 768px) {
+    .seccion-dresscode { padding: 60px 0; }
+    .titulo-dresscode { font-size: 1.8rem; }
+    .subtitulo-dresscode { font-size: 1.2rem; }
+    .wrapper-icono-dresscode { width: 100px; margin-bottom: 20px; }
+    
+    .seccion-no-ninos { padding: 70px 0; }
+    .titulo-no-ninos { font-size: 1.9rem; margin-bottom: 12px; }
+    .parrafo-no-ninos { font-size: 0.95rem; }
+    .divisor-no-ninos { max-width: 220px; }
+    .divisor-no-ninos.superior { margin-bottom: 20px; }
+    .divisor-no-ninos.inferior { margin-top: 20px; }
+}
+
+@media (max-width: 576px) {
+    .tarjeta-giratoria-wrapper { max-width: 310px; height: 310px; }
+    .titulo-regalos { font-size: 1.7rem; }
+    .concepto-regalo { font-size: 1.3rem; }
 }
