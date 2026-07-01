@@ -1,94 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // ==========================================================================
+    // 1. MANEJO INTERACTIVO DEL SOBRE & INICIALIZACIÓN DE SWIPER
+    // ==========================================================================
     const botonAbrir = document.getElementById("botonAbrir");
     const contenedorSobre = document.getElementById("contenedorSobre");
+    const contenidoInvitacion = document.getElementById('contenidoInvitacion');
 
-    // 1. MANEJO INTERACTIVO DEL SOBRE (Apertura de 6 Segundos) + INICIALIZACIÓN CARRUSEL
-    botonAbrir.addEventListener("click", () => {
-        contenedorSobre.classList.add("animar");
+    if (botonAbrir && contenedorSobre) {
+        botonAbrir.addEventListener("click", () => {
+            contenedorSobre.classList.add("animar");
 
-        // Al finalizar los 6 segundos exactos de la solapa se limpia el viewport
-        setTimeout(() => {
-            contenedorSobre.classList.add("oculto");
-            document.body.classList.add("mostrar-boda");
-            
-            // Hacemos visible el cuerpo de la invitación
-            const contenidoInvitacion = document.getElementById('contenidoInvitacion');
-            if (contenidoInvitacion) {
-                contenidoInvitacion.classList.add('invitacion-activa');
-            }
+            // Al finalizar los 6 segundos de la solapa se limpia el viewport
+            setTimeout(() => {
+                contenedorSobre.classList.add("oculto");
+                document.body.classList.add("mostrar-boda");
+                
+                if (contenidoInvitacion) {
+                    contenidoInvitacion.classList.add('invitacion-activa');
+                }
 
-            window.scrollTo({ top: 0, behavior: 'instant' });
+                window.scrollTo({ top: 0, behavior: 'instant' });
 
-            // Inicializamos Swiper aquí para que tome las dimensiones correctas al mostrarse
-            if (document.querySelector(".mySwiper")) {
-                const swiper = new Swiper(".mySwiper", {
-                    slidesPerView: 1,         // 1 imagen en pantallas móviles
-                    spaceBetween: 0,          // Sin separación entre imágenes
-                    loop: true,               // Bucle infinito
-                    speed: 20000,             // Velocidad ultra lenta continuo (Estilo Elementor)
-                    autoplay: {
-                        delay: 0,             // Movimiento constante sin detenciones
-                        disableOnInteraction: false,
-                    },
-                    breakpoints: {
-                        // A partir de pantallas de 768px (Tablets / PC)
-                        768: {
-                            slidesPerView: 2, // Muestra 2 imágenes en pantalla
+                // Inicialización segura de Swiper con las dimensiones del contenedor activo
+                if (document.querySelector(".mySwiper") && typeof Swiper !== 'undefined') {
+                    new Swiper(".mySwiper", {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                        loop: true,
+                        speed: 20000, // Movimiento ultra lento continuo lineal
+                        autoplay: {
+                            delay: 0,
+                            disableOnInteraction: false,
+                        },
+                        breakpoints: {
+                            768: { slidesPerView: 2 }
                         }
-                    }
-                });
-            }
-        }, 6000); 
-    });
-});
+                    });
+                }
+            }, 6000); 
+        });
+    }
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    const botonAbrir = document.getElementById("botonAbrir");
-    const contenedorSobre = document.getElementById("contenedorSobre");
-
-    // 1. MANEJO INTERACTIVO DEL SOBRE (Apertura de 6 Segundos) + INICIALIZACIÓN CARRUSEL
-    botonAbrir.addEventListener("click", () => {
-        contenedorSobre.classList.add("animar");
-
-        // Al finalizar los 6 segundos exactos de la solapa se limpia el viewport
-        setTimeout(() => {
-            contenedorSobre.classList.add("oculto");
-            document.body.classList.add("mostrar-boda");
-            
-            // Hacemos visible el cuerpo de la invitación
-            const contenidoInvitacion = document.getElementById('contenidoInvitacion');
-            if (contenidoInvitacion) {
-                contenidoInvitacion.classList.add('invitacion-activa');
-            }
-
-            window.scrollTo({ top: 0, behavior: 'instant' });
-
-            // Inicializamos Swiper con las dimensiones correctas al mostrarse
-            if (document.querySelector(".mySwiper")) {
-                const swiper = new Swiper(".mySwiper", {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                    loop: true,
-                    speed: 20000,
-                    autoplay: {
-                        delay: 0,
-                        disableOnInteraction: false,
-                    },
-                    breakpoints: {
-                        768: { slidesPerView: 2 }
-                    }
-                });
-            }
-        }, 6000); 
-    });
-
-    // 2. CUENTA REGRESIVA CONFIGURADA (11 de Octubre de 2026 a las 15:00)
+    // ==========================================================================
+    // 2. CUENTA REGRESIVA (11 de Octubre de 2026 a las 15:00)
+    // ==========================================================================
     const fechaBoda = new Date("October 11, 2026 15:00:00").getTime();
+    const elDias = document.getElementById("dias");
+    const elHoras = document.getElementById("horas");
+    const elMinutos = document.getElementById("minutos");
+    const elSegundos = document.getElementById("segundos");
+    const timerElement = document.getElementById("timer");
 
-    const x = setInterval(() => {
+    const cuentaRegresiva = setInterval(() => {
         const ahora = new Date().getTime();
         const distancia = fechaBoda - ahora;
+
+        // Si la cuenta regresiva llega a cero
+        if (distancia < 0) {
+            clearInterval(cuentaRegresiva);
+            if (timerElement) {
+                timerElement.innerHTML = "<h3 style='color:#ffffff; font-family:Cinzel; letter-spacing:2px;'>¡Llegó el gran día!</h3>";
+            }
+            return;
+        }
 
         // Cálculos matemáticos de tiempo
         const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
@@ -96,27 +70,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
         const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-        // Volcar datos verificando existencia en el DOM
-        if (document.getElementById("dias")) {
-            document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
-            document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
-            document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
-            document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
-        }
-
-        // Si la cuenta regresiva llega a cero
-        if (distancia < 0) {
-            clearInterval(x);
-            const timerElement = document.getElementById("timer");
-            if (timerElement) {
-                timerElement.innerHTML = "<h3 style='color:#ffffff; font-family:Cinzel; letter-spacing:2px;'>¡Llegó el gran día!</h3>";
-            }
+        // Renderizado formateado con ceros a la izquierda
+        if (elDias) {
+            elDias.innerText = dias < 10 ? "0" + dias : dias;
+            elHoras.innerText = horas < 10 ? "0" + horas : horas;
+            elMinutos.innerText = minutos < 10 ? "0" + minutos : minutos;
+            elSegundos.innerText = segundos < 10 ? "0" + segundos : segundos;
         }
     }, 1000);
-});
-document.addEventListener("DOMContentLoaded", () => {
+
+    // ==========================================================================
+    // 3. GALERÍA DE IMÁGENES (LIGHTBOX INTERACTIVO)
+    // ==========================================================================
     const itemsGaleria = Array.from(document.querySelectorAll(".item-galeria"));
-    const modal = document.getElementById("lightboxModal");
+    const modalLightbox = document.getElementById("lightboxModal");
     const imgLightbox = document.getElementById("imagenLightbox");
     const btnCerrar = document.getElementById("btnCerrar");
     const btnPrev = document.getElementById("btnPrev");
@@ -124,92 +91,93 @@ document.addEventListener("DOMContentLoaded", () => {
     
     let indiceActual = 0;
 
-    // Abrir Lightbox
-    itemsGaleria.forEach((item, index) => {
-        item.addEventListener("click", () => {
-            indiceActual = index;
+    if (modalLightbox && imgLightbox && itemsGaleria.length > 0) {
+        const actualizarImagen = () => {
+            const rutaImagen = itemsGaleria[indiceActual].getAttribute("data-src");
+            if (rutaImagen) imgLightbox.setAttribute("src", rutaImagen);
+        };
+
+        const siguienteImagen = () => {
+            indiceActual = (indiceActual + 1) % itemsGaleria.length;
             actualizarImagen();
-            modal.classList.add("activo");
-            document.body.style.overflow = "hidden"; // Deshabilita scroll de fondo
+        };
+
+        const anteriorImagen = () => {
+            indiceActual = (indiceActual - 1 + itemsGaleria.length) % itemsGaleria.length;
+            actualizarImagen();
+        };
+
+        const cerrarLightbox = () => {
+            modalLightbox.classList.remove("activo");
+            document.body.style.overflow = ""; // Reactiva scroll general
+            setTimeout(() => { imgLightbox.setAttribute("src", ""); }, 400); 
+        };
+
+        // Asignación de triggers de apertura
+        itemsGaleria.forEach((item, index) => {
+            item.addEventListener("click", () => {
+                indiceActual = index;
+                actualizarImagen();
+                modalLightbox.classList.add("activo");
+                document.body.style.overflow = "hidden"; // Bloquea scroll de fondo
+            });
         });
-    });
 
-    // Cambiar Imagen
-    const actualizarImagen = () => {
-        const rutaImagen = itemsGaleria[indiceActual].getAttribute("data-src");
-        imgLightbox.setAttribute("src", rutaImagen);
-    };
-
-    const siguienteImagen = () => {
-        indiceActual = (indiceActual + 1) % itemsGaleria.length;
-        actualizarImagen();
-    };
-
-    const anteriorImagen = () => {
-        indiceActual = (indiceActual - 1 + itemsGaleria.length) % itemsGaleria.length;
-        actualizarImagen();
-    };
-
-    // Cerrar Lightbox
-    const cerrarLightbox = () => {
-        modal.classList.remove("activo");
-        document.body.style.overflow = ""; // Reactiva el scroll
-        setTimeout(() => { imgLightbox.setAttribute("src", ""); }, 400); // Limpia src al cerrar
-    };
-
-    // Event Listeners de Controles
-    btnNext.addEventListener("click", (e) => { e.stopPropagation(); siguienteImagen(); });
-    btnPrev.addEventListener("click", (e) => { e.stopPropagation(); anteriorImagen(); });
-    btnCerrar.addEventListener("click", cerrarLightbox);
-    
-    // Cerrar al clickear fuera de la imagen (en el fondo oscuro)
-    modal.addEventListener("click", (e) => {
-        if (e.target === modal || e.target.classList.contains('contenedor-img-lightbox')) {
-            cerrarLightbox();
-        }
-    });
-
-    // Navegación por teclado (Flechas y Escape)
-    document.addEventListener("keydown", (e) => {
-        if (!modal.classList.contains("activo")) return;
+        // Controles de navegación y cierre
+        if (btnNext) btnNext.addEventListener("click", (e) => { e.stopPropagation(); siguienteImagen(); });
+        if (btnPrev) btnPrev.addEventListener("click", (e) => { e.stopPropagation(); anteriorImagen(); });
+        if (btnCerrar) btnCerrar.addEventListener("click", cerrarLightbox);
         
-        if (e.key === "Escape") cerrarLightbox();
-        if (e.key === "ArrowRight") siguienteImagen();
-        if (e.key === "ArrowLeft") anteriorImagen();
-    });
-});
+        modalLightbox.addEventListener("click", (e) => {
+            if (e.target === modalLightbox || e.target.classList.contains('contenedor-img-lightbox')) {
+                cerrarLightbox();
+            }
+        });
 
+        // Eventos de teclado físicos
+        document.addEventListener("keydown", (e) => {
+            if (!modalLightbox.classList.contains("activo")) return;
+            if (e.key === "Escape") cerrarLightbox();
+            if (e.key === "ArrowRight") siguienteImagen();
+            if (e.key === "ArrowLeft") anteriorImagen();
+        });
+    }
 
-// Manejo del giro de la tarjeta de regalos
-const tarjetaRegalo = document.getElementById("tarjetaRegalo");
+    // ==========================================================================
+    // 4. MESA DE REGALOS (GIRO 3D DE TARJETA)
+    // ==========================================================================
+    const tarjetaRegalo = document.getElementById("tarjetaRegalo");
 
-if (tarjetaRegalo) {
-    tarjetaRegalo.addEventListener("click", () => {
-        tarjetaRegalo.classList.toggle("girada");
-    });
-}
+    if (tarjetaRegalo) {
+        tarjetaRegalo.addEventListener("click", () => {
+            tarjetaRegalo.classList.toggle("girada");
+        });
+    }
 
+    // ==========================================================================
+    // 5. MODAL CONTROL DE ASISTENCIA Y SEGURIDAD
+    // ==========================================================================
+    const btnAbrirConfirmacion = document.getElementById('btnAbrirConfirmacion');
+    const modalSeguridad = document.getElementById('modalSeguridad');
+    const btnCancelarModal = document.getElementById('btnCancelarModal');
+    const btnConfirmarModal = document.getElementById('btnConfirmarModal');
 
-// Lógica para el modal directo de asistencia
-const btnAbrirConfirmacion = document.getElementById('btnAbrirConfirmacion');
-const modalSeguridad = document.getElementById('modalSeguridad');
-const btnCancelarModal = document.getElementById('btnCancelarModal');
-const btnConfirmarModal = document.getElementById('btnConfirmarModal');
+    if (btnAbrirConfirmacion && modalSeguridad) {
+        btnAbrirConfirmacion.addEventListener('click', () => {
+            modalSeguridad.classList.add('activo');
+        });
 
-// Abrir el modal directamente al presionar el botón
-btnAbrirConfirmacion.addEventListener('click', () => {
-    modalSeguridad.classList.add('activo');
-});
+        if (btnCancelarModal) {
+            btnCancelarModal.addEventListener('click', () => {
+                modalSeguridad.classList.remove('activo');
+            });
+        }
 
-// Cerrar el modal al cancelar
-btnCancelarModal.addEventListener('click', () => {
-    modalSeguridad.classList.remove('activo');
-});
-
-// Acción al confirmar la asistencia
-btnConfirmarModal.addEventListener('click', () => {
-    modalSeguridad.classList.remove('activo');
-    
-    // Aquí puedes meter la redirección a una API, WhatsApp o el flujo que uses.
-    // Ejemplo: alert('¡Asistencia confirmada!');
+        if (btnConfirmarModal) {
+            btnConfirmarModal.addEventListener('click', () => {
+                modalSeguridad.classList.remove('activo');
+                // Desarrollar aquí el flujo de redirección (WhatsApp API, Endpoint, etc.)
+            });
+        }
+    }
 });
