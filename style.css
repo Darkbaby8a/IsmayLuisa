@@ -615,7 +615,7 @@ body.mostrar-boda .contenido-principal {
     width: 100%;
     height: 100%;
     /* Fondo oscuro/opaco que hace resaltar el texto (puedes cambiarlo por tu guinda/negro con opacidad) */
-    background: rgba(20, 20, 20, 0.65); 
+    background: rgba(99, 13, 22, 0.65); 
     z-index: 10;
     display: flex;
     flex-direction: column;
