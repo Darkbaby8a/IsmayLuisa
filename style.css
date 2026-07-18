@@ -735,107 +735,213 @@ body.mostrar-boda .contenido-principal {
 /* ==========================================================================
    SECCIÓN NUESTRA HISTORIA
    ========================================================================== */
-.seccion-historia {
-    position: relative;
-    width: 100%;
-    background: transparent;
-    padding: 80px 0 140px 0;
-    overflow: hidden;
+.seccion-historia{
+    position:relative;
+    padding:120px 0 150px;
+    overflow:hidden;
 }
 
-.contenedor-historia {
-    display: flex;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-    gap: 50px;
-    align-items: center;
+.contenedor-historia{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:70px;
+    padding:0 25px;
 }
 
-.columna-texto {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+/*======================
+TEXTO
+=======================*/
+
+.columna-texto{
+    flex:1;
+    padding:45px;
+    background:rgba(255,255,255,.04);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
+
+.subtitulo-historia{
+    position:relative;
+    display:inline-block;
+    font-family:'Cinzel Decorative',serif;
+    font-size:2.7rem;
+    color:#fff;
+    margin-bottom:40px;
+    letter-spacing:2px;
+}
+
+.subtitulo-historia::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-15px;
+    width:90px;
+    height:2px;
+    background:linear-gradient(to right,#d7b97f,#fff,#d7b97f);
+}
+
+.parrafos-historia p{
+    font-family:'Montserrat',sans-serif;
+    font-size:1.06rem;
+    line-height:2;
+    color:rgba(255,255,255,.86);
+    margin-bottom:22px;
+}
+
+.firma-historia{
+    margin-top:30px;
+    font-size:1.4rem;
+    color:#f3e8d0;
+    font-family:'Cinzel',serif;
+}
+
+.icono-corazon{
+    margin-top:18px;
+}
+
+.icono-corazon svg{
+    width:32px;
+    fill:#d7b97f;
+    animation:latido 2.2s infinite;
+}
+
+@keyframes latido{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+
+}
+
+/*======================
+CARRUSEL
+=======================*/
 
 .columna-carrusel{
-    flex:1 1 500px;
-    width:100%;
-    max-width:550px;
-
-    border-radius:8px;
+    flex:1;
+    max-width:560px;
+    border-radius:22px;
     overflow:hidden;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    position:relative;
+    background:#000;
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45),
+        0 0 0 1px rgba(255,255,255,.08);
 }
 
-.subtitulo-historia {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 2.2rem;
-    color: #ffffff;
-    margin-bottom: 25px;
-}
-
-.parrafos-historia p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 18px;
-}
-
-.firma-historia {
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
-    color: #ffffff;
-    margin: 15px 0;
-}
-
-.icono-corazon svg {
-    width: 25px;
-    height: 25px;
-    fill: #ffffff;
-    margin-top: 5px;
+.columna-carrusel::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border:2px solid rgba(215,185,127,.45);
+    border-radius:22px;
+    pointer-events:none;
+    z-index:5;
 }
 
 .columna-carrusel .swiper{
     width:100%;
-    height:100%;
-}
-.columna-carrusel .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    aspect-ratio: 4 / 5;
 }
 
+.columna-carrusel .swiper-slide img{
+    width:100%;
+    display:block;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    transition:.7s;
+}
+
+.columna-carrusel:hover img{
+    transform:scale(1.05);
+}
 
 .columna-carrusel .swiper-button-next,
 .columna-carrusel .swiper-button-prev{
-    color:#ffffff;
-    transform:scale(.8);
+
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(8px);
+    color:#fff;
 }
-.columna-carrusel .swiper-wrapper{
-    align-items:center;
+
+.columna-carrusel .swiper-button-next::after,
+.columna-carrusel .swiper-button-prev::after{
+    font-size:16px;
 }
-.columna-carrusel .swiper-pagination-bullet-active { background: #ffffff; }
-.columna-carrusel .swiper-slide{
+
+.columna-carrusel .swiper-pagination-bullet{
+    background:#ffffff88;
+}
+
+.columna-carrusel .swiper-pagination-bullet-active{
+    background:#d7b97f;
+}
+
+/*======================
+DIVISOR
+=======================*/
+
+.divisor-inclinado{
+    position:absolute;
+    left:0;
+    bottom:0;
     width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    height:90px;
+    background:#141414;
+    clip-path:polygon(0 100%,100% 0,100% 100%);
 }
-.divisor-inclinado {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background: #141414;
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    pointer-events: none;
+.detalle-superior{
+    color:#d7b97f;
+    letter-spacing:10px;
+    font-size:.9rem;
+    margin-bottom:12px;
+    display:block;
+}
+
+/*======================
+RESPONSIVE
+=======================*/
+
+@media(max-width:900px){
+
+    .contenedor-historia{
+        flex-direction:column-reverse;
+        gap:45px;
+    }
+
+    .columna-texto{
+        padding:35px;
+    }
+
+    .subtitulo-historia{
+        text-align:center;
+        display:block;
+    }
+
+    .subtitulo-historia::after{
+        left:50%;
+        transform:translateX(-50%);
+    }
+
+    .firma-historia,
+    .parrafos-historia{
+        text-align:center;
+    }
+
+    .icono-corazon{
+        text-align:center;
+    }
+
 }
 
 /* ==========================================================================
