@@ -1248,6 +1248,61 @@ RESPONSIVE
     border-radius: 14px;
 }
 
+.btn-info-zoom{
+
+    cursor:default;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:6px;
+
+    min-height:60px;
+
+    background:#7A1632;
+
+    color:#fff;
+
+    border:2px solid #7A1632;
+
+    border-radius:40px;
+
+}
+
+.btn-info-zoom span{
+
+    font-size:.7rem;
+
+    letter-spacing:2px;
+
+    opacity:.85;
+
+}
+
+.btn-info-zoom strong{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+.btn-info-zoom:hover{
+
+    transform:none;
+
+    background:#7A1632;
+
+    color:#fff;
+
+}
 /* ==========================================================================
    CÓDIGO DE VESTIMENTA
    ========================================================================== */
