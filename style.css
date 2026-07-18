@@ -275,137 +275,353 @@ body.mostrar-boda .contenido-principal {
     font-family: 'Cinzel', serif;
     font-size: 1.4rem;
     line-height: 1.8;
-    color: #ffffff;
+    color: #000;
     margin: 20px 0;
     font-weight: 400;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(99, 13, 22, 0.65);
 }
 
 /* ==========================================================================
    SAVE THE DATE Y RELOJ REGRESIVO
    ========================================================================== */
+/* ==========================================
+   SECCIÓN SAVE THE DATE
+   ========================================== */
+
 .seccion-savethedate {
     position: relative;
     width: 100%;
-    min-height: 450px;
-    margin: 80px auto;
-    padding: 40px 20px;
+    min-height: 100vh;
+    padding: 80px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transform: scale(0.98);
-    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    background: #ffffff;
 }
 
 .mostrar-boda .seccion-savethedate {
-    transform: scale(1);
+    animation: aparecerSeccion 1.2s ease;
 }
 
+@keyframes aparecerSeccion {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ==========================================
+   FLORES DECORATIVAS
+   ========================================== */
+
+.marco-floral {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.flor {
+    position: absolute;
+    width: 340px;
+    opacity: 0.12;
+    filter: grayscale(100%);
+    transition: transform 0.4s ease;
+}
+
+.flor-superior-izquierda {
+    top: -120px;
+    left: -120px;
+    transform: rotate(0deg);
+}
+
+.flor-superior-derecha {
+    top: -120px;
+    right: -120px;
+    transform: rotate(90deg);
+}
+
+.flor-inferior-izquierda {
+    bottom: -120px;
+    left: -120px;
+    transform: rotate(-90deg);
+}
+
+.flor-inferior-derecha {
+    bottom: -120px;
+    right: -120px;
+    transform: rotate(180deg);
+}
+
+/* ==========================================
+   CONTENEDOR
+   ========================================== */
+
 .contenedor-contador {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    max-width: 850px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    z-index: 5;
-    max-width: 600px;
-    width: 100%;
 }
 
-.decoracion-lateral {
-    position: absolute;
-    width: 180px;
-    height: auto;
-    opacity: 0.8;
-    pointer-events: none;
-}
-
-.decoracion-lateral.izq {
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg);
-}
-
-.decoracion-lateral.der {
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%) rotate(190deg);
-}
+/* ==========================================
+   TÍTULOS
+   ========================================== */
 
 .titulo-contador {
     font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    color: #ffffff;
-    letter-spacing: 3px;
-    margin-bottom: 25px;
+    font-size: 2rem;
+    letter-spacing: 6px;
+    color: #000;
+    margin-bottom: 40px;
+    text-transform: uppercase;
 }
 
 .fecha-texto {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.8rem;
-    color: #ffffff;
-    letter-spacing: 2px;
-    margin-top: 25px;
-    margin-bottom: 30px;
+    font-size: 2.3rem;
+    color: #000;
+    margin-top: 40px;
+    margin-bottom: 35px;
 }
 
-.reloj-regresivo, .countdown {
+/* ==========================================
+   RELOJ
+   ========================================== */
+
+.reloj-regresivo {
     display: flex;
     justify-content: center;
-    gap: 20px;
     align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
 }
 
-.tiempo-item, .countdown-item {
+.tiempo-item {
+    width: 120px;
+    min-height: 120px;
+
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    min-width: 75px;
-    background: rgba(15, 15, 15, 0.85);
-    border: 1px solid var(--color-guinda);
-    padding: 15px;
+
+    background: #ffffff;
+
+    border: 2px solid #000;
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition: transform .3s ease;
 }
 
-.digitos, .countdown-item span {
+.tiempo-item:hover {
+    transform: translateY(-8px);
+}
+
+.digitos {
     font-family: 'Cinzel', serif;
-    font-size: 2.8rem;
+    font-size: 3rem;
     font-weight: bold;
-    color: var(--color-crema);
+    color: #000;
     line-height: 1;
 }
 
 .etiqueta {
+    margin-top: 12px;
+
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;
+    font-size: .85rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 8px;
+
+    color: #555;
 }
 
-.contenedor-boton { margin-top: 10px; }
+/* ==========================================
+   BOTÓN
+   ========================================== */
+
+.contenedor-boton {
+    margin-top: 10px;
+}
 
 .btn-savethedate {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px 42px;
+
+    border: 2px solid #000;
+    border-radius: 999px;
+
+    background: #fff;
+
+    color: #000;
+
     font-family: 'Montserrat', sans-serif;
+    font-size: .95rem;
     font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    color: #ffffff;
+    letter-spacing: 3px;
+
     text-decoration: none;
-    border: 1px solid #ffffff;
-    padding: 12px 35px;
-    background: transparent;
-    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-    cursor: pointer;
+
+    transition: all .3s ease;
 }
 
 .btn-savethedate:hover {
-    transform: scale(1.08);
-    background: #ffffff;
-    color: #141414;
+    background: #000;
+    color: #fff;
+    transform: scale(1.05);
 }
 
+/* ==========================================
+   TABLET
+   ========================================== */
+
+@media (max-width: 992px) {
+
+    .flor {
+        width: 260px;
+        opacity: 0.10;
+    }
+
+    .titulo-contador {
+        font-size: 1.8rem;
+    }
+
+    .fecha-texto {
+        font-size: 2rem;
+    }
+
+    .tiempo-item {
+        width: 100px;
+        min-height: 100px;
+    }
+
+    .digitos {
+        font-size: 2.5rem;
+    }
+}
+
+/* ==========================================
+   CELULAR
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    .seccion-savethedate {
+        min-height: auto;
+        padding: 70px 15px;
+    }
+
+    .flor {
+        width: 180px;
+        opacity: 0.08;
+    }
+
+    .flor-superior-izquierda {
+        top: -60px;
+        left: -60px;
+    }
+
+    .flor-superior-derecha {
+        top: -60px;
+        right: -60px;
+    }
+
+    .flor-inferior-izquierda {
+        bottom: -60px;
+        left: -60px;
+    }
+
+    .flor-inferior-derecha {
+        bottom: -60px;
+        right: -60px;
+    }
+
+    .titulo-contador {
+        font-size: 1.3rem;
+        letter-spacing: 3px;
+        margin-bottom: 30px;
+    }
+
+    .fecha-texto {
+        font-size: 1.5rem;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .reloj-regresivo {
+        gap: 12px;
+    }
+
+    .tiempo-item {
+        width: 75px;
+        min-height: 75px;
+        border-radius: 12px;
+    }
+
+    .digitos {
+        font-size: 1.8rem;
+    }
+
+    .etiqueta {
+        font-size: .7rem;
+        margin-top: 6px;
+    }
+
+    .btn-savethedate {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 20px;
+        font-size: .8rem;
+        letter-spacing: 2px;
+    }
+}
+
+/* ==========================================
+   CELULAR PEQUEÑO
+   ========================================== */
+
+@media (max-width: 480px) {
+
+    .reloj-regresivo {
+        gap: 8px;
+    }
+
+    .tiempo-item {
+        width: 68px;
+        min-height: 68px;
+    }
+
+    .digitos {
+        font-size: 1.6rem;
+    }
+
+    .etiqueta {
+        font-size: .65rem;
+    }
+
+    .flor {
+        width: 140px;
+    }
+}
 /* ==========================================================================
    SECCIÓN PERGAMINO CREMA (PADRES Y VERSO)
    ========================================================================== */
