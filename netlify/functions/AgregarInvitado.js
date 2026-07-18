@@ -45,7 +45,7 @@ export const handler = async (event, context) => {
     // 2. Verificar si ya existen registros que empiecen con ese identificador
     const checkQuery = `
       SELECT COUNT(*) as total 
-      FROM IsmaLuisa 
+      FROM "IsmaLuisa" 
       WHERE "familiaNombre" = $1 OR "familiaNombre" LIKE $2;
     `;
     const checkValues = [identificadorBase, `${identificadorBase}-%`];
@@ -59,7 +59,7 @@ export const handler = async (event, context) => {
 
     // 4. Insertar en la base de datos incluyendo el nuevo campo 'familiaNombre'
     const insertQuery = `
-      INSERT INTO IsmaLuisa ("familiaNombre", "FamiliaDesc", "Mesa", "Pases")
+      INSERT INTO "IsmaLuisa" ("familiaNombre", "FamiliaDesc", "Mesa", "Pases")
       VALUES ($1, $2, $3, $4)
       RETURNING id, "familiaNombre";
     `;
