@@ -1742,8 +1742,8 @@ RESPONSIVE
 
 .seccion-confirmar{
 
-    background:#ffffff;
-    padding:110px 25px;
+    background:#faf9f8;
+    padding:120px 25px;
 
 }
 
@@ -1751,24 +1751,27 @@ RESPONSIVE
 
     max-width:760px;
     margin:auto;
+
     text-align:center;
 
     background:#ffffff;
 
-    padding:60px 50px;
+    padding:65px 55px;
 
-    border-radius:24px;
+    border-radius:28px;
 
-    border:1px solid #ece8e6;
+    border:1px solid #ece7e5;
 
     position:relative;
 
     overflow:hidden;
 
     box-shadow:
-        0 20px 45px rgba(0,0,0,.08);
+        0 18px 45px rgba(0,0,0,.06);
 
 }
+
+/* detalle superior */
 
 .contenedor-confirmar::before{
 
@@ -1780,7 +1783,7 @@ RESPONSIVE
     left:0;
 
     width:100%;
-    height:6px;
+    height:5px;
 
     background:#7A1632;
 
@@ -1788,10 +1791,9 @@ RESPONSIVE
 
 .imagen-decorativa-confirmar{
 
-    width:120px;
-    height:auto;
+    width:115px;
 
-    margin-bottom:25px;
+    margin-bottom:28px;
 
 }
 
@@ -1801,7 +1803,9 @@ RESPONSIVE
 
     font-size:2.5rem;
 
-    color:#222;
+    font-weight:700;
+
+    color:#111;
 
     margin-bottom:12px;
 
@@ -1813,24 +1817,29 @@ RESPONSIVE
 
     display:block;
 
-    width:80px;
-    height:3px;
+    width:70px;
 
-    background:#7A1632;
+    height:2px;
 
     margin:18px auto 0;
+
+    background:#7A1632;
 
 }
 
 .nombres-confirmar{
 
-    font-family:'Allura', cursive;
+    font-family:'Cinzel', serif;
 
-    font-size:3.2rem;
+    font-size:2.2rem;
+
+    font-weight:600;
 
     color:#7A1632;
 
-    margin:30px 0 20px;
+    margin:28px 0 20px;
+
+    letter-spacing:2px;
 
 }
 
@@ -1838,13 +1847,23 @@ RESPONSIVE
 
     max-width:560px;
 
-    margin:0 auto;
+    margin:auto;
 
-    color:#666;
+    font-family:'Montserrat', sans-serif;
+
+    font-size:1rem;
+
+    color:#333;
 
     line-height:1.9;
 
-    font-size:1rem;
+}
+
+.texto-confirmar strong{
+
+    color:#7A1632;
+
+    font-weight:600;
 
 }
 
@@ -1853,23 +1872,18 @@ RESPONSIVE
     margin-top:45px;
 
 }
-
-/*====================================================
-=            BOTÓN
-====================================================*/
-
 .btn-confirmar,
 .btn-enviar-boda{
 
-    background:#7A1632;
+    background:#ffffff;
 
-    color:#fff;
+    color:#111;
 
     border:2px solid #7A1632;
 
-    border-radius:40px;
+    border-radius:50px;
 
-    padding:16px 42px;
+    padding:16px 44px;
 
     font-family:'Montserrat', sans-serif;
 
@@ -1881,27 +1895,22 @@ RESPONSIVE
 
     cursor:pointer;
 
-    transition:.35s;
+    transition:.35s ease;
 
 }
 
 .btn-confirmar:hover,
 .btn-enviar-boda:hover{
 
-    background:#ffffff;
+    background:#7A1632;
 
-    color:#7A1632;
+    color:#ffffff;
 
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 
-    box-shadow:0 10px 25px rgba(122,22,50,.18);
+    box-shadow:0 12px 28px rgba(122,22,50,.18);
 
 }
-
-/*====================================================
-=            MODAL
-====================================================*/
-
 .modal-seguridad-boda{
 
     position:fixed;
@@ -1914,11 +1923,11 @@ RESPONSIVE
 
     align-items:center;
 
-    padding:20px;
-
-    background:rgba(0,0,0,.55);
+    background:rgba(0,0,0,.45);
 
     backdrop-filter:blur(6px);
+
+    padding:20px;
 
     z-index:9999;
 
@@ -1926,22 +1935,24 @@ RESPONSIVE
 
 .contenido-modal-seguridad{
 
+    width:100%;
+
+    max-width:520px;
+
     background:#ffffff;
 
-    width:100%;
-    max-width:500px;
+    border-radius:24px;
 
-    padding:45px;
-
-    border-radius:22px;
-
-    text-align:center;
+    padding:48px;
 
     position:relative;
 
-    box-shadow:
+    text-align:center;
 
-        0 25px 60px rgba(0,0,0,.18);
+    border:1px solid #ece7e5;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.12);
 
 }
 
@@ -1955,11 +1966,9 @@ RESPONSIVE
     left:0;
 
     width:100%;
-    height:6px;
+    height:5px;
 
     background:#7A1632;
-
-    border-radius:22px 22px 0 0;
 
 }
 
@@ -1967,28 +1976,23 @@ RESPONSIVE
 
     font-family:'Cinzel Decorative', serif;
 
-    font-size:1.8rem;
+    font-size:1.9rem;
 
-    color:#222;
+    color:#111;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
 }
 
 .texto-modal-seguridad{
 
-    color:#666;
+    color:#444;
 
-    line-height:1.8;
+    line-height:1.9;
 
-    margin-bottom:35px;
+    margin-bottom:38px;
 
 }
-
-/*====================================================
-=            BOTONES MODAL
-====================================================*/
-
 .botones-modal-seguridad{
 
     display:flex;
@@ -2001,15 +2005,15 @@ RESPONSIVE
 
     flex:1;
 
-    padding:14px;
-
-    border:none;
-
-    border-radius:35px;
-
     background:#7A1632;
 
-    color:#fff;
+    color:#ffffff;
+
+    border:2px solid #7A1632;
+
+    border-radius:40px;
+
+    padding:15px;
 
     font-family:'Montserrat', sans-serif;
 
@@ -2023,9 +2027,11 @@ RESPONSIVE
 
 .btn-modal-principal:hover{
 
-    background:#5e1128;
+    background:#5b1025;
 
-    transform:translateY(-2px);
+    border-color:#5b1025;
+
+    transform:translateY(-3px);
 
 }
 
@@ -2033,15 +2039,15 @@ RESPONSIVE
 
     flex:1;
 
-    padding:14px;
+    background:#ffffff;
 
-    border-radius:35px;
+    color:#111;
 
     border:2px solid #7A1632;
 
-    background:#fff;
+    border-radius:40px;
 
-    color:#7A1632;
+    padding:15px;
 
     font-family:'Montserrat', sans-serif;
 
@@ -2057,14 +2063,9 @@ RESPONSIVE
 
     background:#7A1632;
 
-    color:#fff;
+    color:#ffffff;
 
 }
-
-/*====================================================
-=            RESPONSIVE
-====================================================*/
-
 @media(max-width:768px){
 
     .contenedor-confirmar{
@@ -2081,7 +2082,7 @@ RESPONSIVE
 
     .nombres-confirmar{
 
-        font-size:2.6rem;
+        font-size:1.8rem;
 
     }
 
