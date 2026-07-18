@@ -968,13 +968,55 @@ DIVISOR
 =======================*/
 
 .divisor-inclinado{
+
     position:absolute;
-    left:0;
+
     bottom:0;
+
     width:100%;
-    height:90px;
-    background:#141414;
-    clip-path:polygon(0 100%,100% 0,100% 100%);
+
+    height:110px;
+
+    background:#fff;
+
+    clip-path:polygon(0 100%,100% 20%,100% 100%);
+
+}
+
+.divisor-inclinado::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:15px;
+
+    left:5%;
+
+    width:90%;
+
+    height:1px;
+
+    background:#d4b7bf;
+
+}
+
+.divisor-inclinado::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:22px;
+
+    left:15%;
+
+    width:70%;
+
+    height:2px;
+
+    background:#7A1632;
+
 }
 .detalle-superior{
     color:#d7b97f;
@@ -1500,120 +1542,556 @@ RESPONSIVE
 /* ==========================================================================
    MESA DE REGALOS (ESTILO PARALLAX OSCURO)
    ========================================================================== */
-.seccion-regalos, .gifts-section {
-    position: relative;
-    padding: 80px 20px;
-    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), url('https://www.transparenttextures.com/patterns/black-linen.png');
-    text-align: center;
-    border-top: 1px solid var(--color-guinda);
-    border-bottom: 1px solid var(--color-guinda);
+.seccion-regalos{
+
+    padding:100px 25px;
+
+    background:#ffffff;
+
 }
 
-.contenedor-regalos, .gifts-content {
-    position: relative;
-    z-index: 2;
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.contenedor-regalos{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+.titulo-regalos{
+
+    font-family:'Cinzel Decorative',serif;
+
+    font-size:2.7rem;
+
+    color:#222;
+
+    margin-bottom:20px;
+
 }
 
-.titulo-regalos, .gifts-content h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 2rem;
-    letter-spacing: 4px;
-    color: #ffffff;
-    margin-bottom: 40px;
-    text-transform: uppercase;
+.titulo-regalos::after{
+
+    content:"";
+
+    display:block;
+
+    width:80px;
+
+    height:3px;
+
+    background:#7A1632;
+
+    margin:18px auto 0;
+
+}
+.intro-regalos{
+
+    max-width:650px;
+
+    margin:0 auto 55px;
+
+    color:#666;
+
+    line-height:1.9;
+
+}
+.tarjetas-regalos{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+}
+.tarjeta-regalo{
+
+    background:#fff;
+
+    border:1px solid #ece8e6;
+
+    border-radius:20px;
+
+    padding:45px;
+
+    transition:.35s;
+
+    box-shadow:
+
+        0 15px 35px rgba(0,0,0,.08);
+
+    position:relative;
+
 }
 
-.intro-text { color: #aaa; margin-bottom: 35px; font-size: 0.95rem; }
+.tarjeta-regalo::before{
 
-.cards-container {
-    display: flex;
-    gap: 20px;
-    width: 100%;
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:#7A1632;
+
 }
 
-.gift-card {
-    background: var(--color-gris-oscuro);
-    border: 1px solid rgba(99,13,22,0.4);
-    padding: 30px 20px;
-    width: 50%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+.tarjeta-regalo:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+        0 25px 55px rgba(0,0,0,.12);
+
+}
+.icono-regalo{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+    border-radius:50%;
+
+    background:#faf5f6;
+
+    color:#7A1632;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
 }
 
-.icon-box svg {
-    width: 40px;
-    height: 40px;
-    stroke: var(--color-guinda);
-    margin-bottom: 15px;
+.icono-regalo svg{
+
+    width:46px;
+
+    height:46px;
+
+}
+.tarjeta-regalo h3{
+
+    font-family:'Cinzel';
+
+    color:#222;
+
+    margin-bottom:18px;
+
+    letter-spacing:2px;
+
 }
 
-.gift-card h3 { font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 10px; color: #fff;}
-.gift-card p { font-size: 0.85rem; color: #bbb; line-height: 1.5; }
-.footer-note { margin-top: 30px; font-family: 'Cinzel', serif; color: var(--color-guinda); }
+.tarjeta-regalo p{
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+.btn-regalo{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:14px 35px;
+
+    border-radius:40px;
+
+    background:#7A1632;
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    border:2px solid #7A1632;
+
+}
+
+.btn-regalo:hover{
+
+    background:white;
+
+    color:#7A1632;
+
+}
 
 /* ==========================================================================
    CONFIRMACIÓN DE ASISTENCIA & MODAL RSVP
    ========================================================================== */
-.passes-box {
-    border: 2px dashed var(--color-guinda);
-    padding: 25px;
-    max-width: 400px;
-    margin: 30px auto;
-    background: rgba(99, 13, 22, 0.03);
+/*====================================================
+=            SECCIÓN CONFIRMAR ASISTENCIA
+====================================================*/
+
+.seccion-confirmar{
+
+    background:#ffffff;
+    padding:110px 25px;
+
 }
 
-.passes-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #666; }
-.passes-label.sub { font-size: 0.75rem; margin-top: 10px; font-style: italic; }
-.family-name { font-family: 'Cinzel', serif; font-size: 1.4rem; margin: 10px 0; color: #000; }
-.passes-count { font-weight: bold; color: var(--color-guinda); font-size: 1.1rem; }
+.contenedor-confirmar{
 
-.btn-rsvp, .btn-modal {
-    background: var(--color-guinda);
-    color: var(--color-crema);
-    border: 1px solid #4a0404;
-    font-family: 'Cinzel', serif;
-    padding: 15px 35px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: 0.4s;
+    max-width:760px;
+    margin:auto;
+    text-align:center;
+
+    background:#ffffff;
+
+    padding:60px 50px;
+
+    border-radius:24px;
+
+    border:1px solid #ece8e6;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.08);
+
 }
 
-.btn-rsvp:hover { background: var(--color-negro); letter-spacing: 3px; }
+.contenedor-confirmar::before{
 
-.rsvp-modal {
-    position: fixed;
-    top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 200;
-    padding: 20px;
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:6px;
+
+    background:#7A1632;
+
 }
 
-.rsvp-modal-content {
-    background: var(--color-crema);
-    color: #000;
-    padding: 40px;
-    max-width: 500px;
-    width: 100%;
-    text-align: center;
-    border: 2px solid var(--color-guinda);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+.imagen-decorativa-confirmar{
+
+    width:120px;
+    height:auto;
+
+    margin-bottom:25px;
+
 }
 
-.modal-subtitle { font-family: 'Cinzel', serif; color: var(--color-guinda); display: block; margin-bottom: 10px; }
-.rsvp-modal-content h2 { font-family: 'Cinzel', serif; margin-bottom: 15px; }
-.modal-text { font-size: 0.95rem; margin-bottom: 25px; color: #444; }
-.modal-buttons { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; }
-.btn-modal.no { background: #444; border-color: #333; }
-.btn-modal:hover { opacity: 0.9; }
-.modal-close { background: none; border: none; font-size: 0.85rem; text-decoration: underline; cursor: pointer; color: #666; }
+.titulo-confirmar{
+
+    font-family:'Cinzel Decorative', serif;
+
+    font-size:2.5rem;
+
+    color:#222;
+
+    margin-bottom:12px;
+
+}
+
+.titulo-confirmar::after{
+
+    content:"";
+
+    display:block;
+
+    width:80px;
+    height:3px;
+
+    background:#7A1632;
+
+    margin:18px auto 0;
+
+}
+
+.nombres-confirmar{
+
+    font-family:'Allura', cursive;
+
+    font-size:3.2rem;
+
+    color:#7A1632;
+
+    margin:30px 0 20px;
+
+}
+
+.texto-confirmar{
+
+    max-width:560px;
+
+    margin:0 auto;
+
+    color:#666;
+
+    line-height:1.9;
+
+    font-size:1rem;
+
+}
+
+.bloque-boton-confirmar{
+
+    margin-top:45px;
+
+}
+
+/*====================================================
+=            BOTÓN
+====================================================*/
+
+.btn-confirmar,
+.btn-enviar-boda{
+
+    background:#7A1632;
+
+    color:#fff;
+
+    border:2px solid #7A1632;
+
+    border-radius:40px;
+
+    padding:16px 42px;
+
+    font-family:'Montserrat', sans-serif;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.btn-confirmar:hover,
+.btn-enviar-boda:hover{
+
+    background:#ffffff;
+
+    color:#7A1632;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(122,22,50,.18);
+
+}
+
+/*====================================================
+=            MODAL
+====================================================*/
+
+.modal-seguridad-boda{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(6px);
+
+    z-index:9999;
+
+}
+
+.contenido-modal-seguridad{
+
+    background:#ffffff;
+
+    width:100%;
+    max-width:500px;
+
+    padding:45px;
+
+    border-radius:22px;
+
+    text-align:center;
+
+    position:relative;
+
+    box-shadow:
+
+        0 25px 60px rgba(0,0,0,.18);
+
+}
+
+.contenido-modal-seguridad::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:6px;
+
+    background:#7A1632;
+
+    border-radius:22px 22px 0 0;
+
+}
+
+.titulo-modal-seguridad{
+
+    font-family:'Cinzel Decorative', serif;
+
+    font-size:1.8rem;
+
+    color:#222;
+
+    margin-bottom:18px;
+
+}
+
+.texto-modal-seguridad{
+
+    color:#666;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+}
+
+/*====================================================
+=            BOTONES MODAL
+====================================================*/
+
+.botones-modal-seguridad{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.btn-modal-principal{
+
+    flex:1;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:35px;
+
+    background:#7A1632;
+
+    color:#fff;
+
+    font-family:'Montserrat', sans-serif;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-modal-principal:hover{
+
+    background:#5e1128;
+
+    transform:translateY(-2px);
+
+}
+
+.btn-modal-secundario{
+
+    flex:1;
+
+    padding:14px;
+
+    border-radius:35px;
+
+    border:2px solid #7A1632;
+
+    background:#fff;
+
+    color:#7A1632;
+
+    font-family:'Montserrat', sans-serif;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-modal-secundario:hover{
+
+    background:#7A1632;
+
+    color:#fff;
+
+}
+
+/*====================================================
+=            RESPONSIVE
+====================================================*/
+
+@media(max-width:768px){
+
+    .contenedor-confirmar{
+
+        padding:45px 25px;
+
+    }
+
+    .titulo-confirmar{
+
+        font-size:2rem;
+
+    }
+
+    .nombres-confirmar{
+
+        font-size:2.6rem;
+
+    }
+
+    .botones-modal-seguridad{
+
+        flex-direction:column;
+
+    }
+
+}
 
 /* ==========================================================================
    ANIMACIONES GLOBALES (ENTRADA TRAS EL SOBRE)
@@ -1837,92 +2315,163 @@ RESPONSIVE
 /* ==========================================================================
    SECCIÓN DRESS CODE (MINIMALISTA OSCURO)
    ========================================================================== */
-.seccion-dresscode {
-    width: 100%;
-    padding: 80px 0;
-    box-sizing: border-box;
-    text-align: center;
-    background-color: var(--color-negro);
+.seccion-dresscode{
+
+    background:#fff;
+
+    padding:100px 25px;
+
 }
 
-.contenedor-dresscode {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.contenedor-dresscode{
+
+    max-width:800px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+.titulo-dresscode{
+
+    font-family:'Cinzel Decorative',serif;
+
+    font-size:2.6rem;
+
+    color:#222;
+
+    margin-top:20px;
+
 }
 
-.wrapper-icono-dresscode {
-    margin: 0 0 30px 0;
-    width: 120px;
-    height: auto;
-    display: flex;
-    justify-content: center;
-}
+.titulo-dresscode::after{
 
-.wrapper-icono-dresscode img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
-}
+    content:"";
 
-.header-dresscode {
-    margin-bottom: 20px;
-}
+    display:block;
 
-.titulo-dresscode {
-    font-family: 'Cinzel', serif;
-    font-size: 2.2rem;
-    letter-spacing: 4px;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-weight: 400;
-    margin: 0 0 10px 0;
-}
+    width:80px;
 
-.subtitulo-dresscode {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 3px;
-    color: rgba(253, 251, 247, 0.85);
-    text-transform: uppercase;
-    font-weight: 300;
-    margin: 0;
-}
+    height:3px;
 
-.detalles-dresscode {
-    max-width: 400px;
-    margin-top: 15px;
-}
+    background:#7A1632;
 
-.nota-vestimenta {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: rgba(253, 251, 247, 0.5);
-    font-weight: 300;
-    margin: 0;
-}
+    margin:18px auto;
 
-/* Animación de Entrada Escalada */
-.dresscode-animado {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
+.tipo-vestimenta{
 
-.mostrar-boda .dresscode-animado {
-    opacity: 1;
-    transform: translateY(0);
+    font-family:'Cinzel';
+
+    color:#7A1632;
+
+    font-size:1.4rem;
+
+    font-weight:600;
+
+    margin-bottom:25px;
+
 }
+.descripcion-dresscode{
 
-.contenedor-dresscode .dresscode-animado:nth-child(1) { transition-delay: 100ms; }
-.contenedor-dresscode .dresscode-animado:nth-child(2) { transition-delay: 300ms; }
-.contenedor-dresscode .dresscode-animado:nth-child(3) { transition-delay: 500ms; }
+    color:#666;
+
+    line-height:1.9;
+
+    max-width:620px;
+
+    margin:0 auto 40px;
+
+}
+.titulo-colores{
+
+    font-family:'Cinzel';
+
+    color:#222;
+
+    margin-bottom:25px;
+
+    letter-spacing:2px;
+
+}
+.colores-reservados{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:35px;
+
+    margin-bottom:35px;
+
+}
+.color-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-family:'Montserrat';
+
+    color:#555;
+
+    font-size:.95rem;
+
+}
+.color-circle{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    border:2px solid #ddd;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+}
+.color-circle.blanco{
+
+    background:#ffffff;
+
+}
+.color-circle.beige{
+
+    background:#e8d8c3;
+
+}
+.color-circle.marfil{
+
+    background:#fff8e8;
+
+}
+.color-circle.guinda{
+
+    background:#7A1632;
+
+    border-color:#7A1632;
+
+}
+.nota-final{
+
+    max-width:600px;
+
+    margin:auto;
+
+    color:#666;
+
+    line-height:1.8;
+
+    font-style:italic;
+
+}
 
 /* ==========================================================================
    SECCIÓN NO NIÑOS / ADULTOS (ESTILO PERGAMINO CREMA)

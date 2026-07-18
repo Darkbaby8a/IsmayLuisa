@@ -190,7 +190,9 @@
         </div>
 
         <!-- Divisor Inclinado (Shape Divider Opacity Tilt) -->
-        <div class="divisor-inclinado"></div>
+        <div class="divisor-elegante">
+            <span class="adorno">❦</span>
+        </div>
     </section>
     <!-- SECCIÓN UBICACIONES (CEREMONIA Y RECEPCIÓN) -->
     <section class="seccion-ubicaciones" id="ubica">
@@ -201,11 +203,36 @@
                 <div class="icono-ubicacion">
                     <!-- Ilustración Iglesia/Ceremonia SVG -->
                     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M32 2L14 20v42h36V20L32 2zm0 11a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm10 38H22V38h20v13z"
-                            fill="none" stroke="000000" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M32 38v13M28 29h8M32 25v8" stroke="000000" fill="none" stroke-width="2"
-                            stroke-linecap="round" />
+
+                        <!-- Página izquierda -->
+                        <path d="M10 18
+           C18 14 25 14 32 18
+           V50
+           C25 46 18 46 10 50
+           Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+
+                        <!-- Página derecha -->
+                        <path d="M54 18
+           C46 14 39 14 32 18
+           V50
+           C39 46 46 46 54 50
+           Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+
+                        <!-- Centro del libro -->
+                        <line x1="32" y1="18" x2="32" y2="50" stroke="currentColor" stroke-width="2" />
+
+                        <!-- Líneas de texto izquierda -->
+                        <line x1="15" y1="24" x2="27" y2="22" stroke="currentColor" stroke-width="1.5" />
+                        <line x1="15" y1="30" x2="27" y2="28" stroke="currentColor" stroke-width="1.5" />
+                        <line x1="15" y1="36" x2="27" y2="34" stroke="currentColor" stroke-width="1.5" />
+                        <line x1="15" y1="42" x2="27" y2="40" stroke="currentColor" stroke-width="1.5" />
+
+                        <!-- Líneas de texto derecha -->
+                        <line x1="37" y1="22" x2="49" y2="24" stroke="currentColor" stroke-width="1.5" />
+                        <line x1="37" y1="28" x2="49" y2="30" stroke="currentColor" stroke-width="1.5" />
+                        <line x1="37" y1="34" x2="49" y2="36" stroke="currentColor" stroke-width="1.5" />
+                        <line x1="37" y1="40" x2="49" y2="42" stroke="currentColor" stroke-width="1.5" />
+
                     </svg>
                 </div>
 
@@ -227,11 +254,33 @@
                 <div class="icono-ubicacion">
                     <!-- Ilustración Copas/Celebración SVG -->
                     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M42 44c0 7-6 9-6 9v7h12v2H16v-2h12v-7s-6-2-6-9V18h20v26z" fill="none" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M23 11c1-2 3-3 5-3s4 1 5 3M31 4c1-1 2-2 4-2s3 1 4 2" fill="none" stroke-width="2"
+
+                        <!-- Cono -->
+                        <path d="M22 42 L42 22 L50 50 Z" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linejoin="round" />
+
+                        <!-- Franjas -->
+                        <path d="M29 35 L36 28" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" />
-                        <path d="M24 26h16" fill="none" stroke-width="2" stroke-opacity="0.5" />
+
+                        <path d="M35 41 L42 34" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+
+                        <!-- Confeti -->
+                        <circle cx="18" cy="18" r="2" fill="currentColor" />
+                        <circle cx="46" cy="14" r="2" fill="currentColor" />
+                        <circle cx="54" cy="24" r="2" fill="currentColor" />
+
+                        <!-- Serpentinas -->
+                        <path d="M20 26
+           C16 24 16 20 20 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+                        <path d="M34 12
+           C38 10 40 14 38 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+                        <path d="M50 30
+           C56 28 58 34 54 38" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
                     </svg>
                 </div>
 
@@ -357,64 +406,203 @@
             </div>
         </div>
     </section>
-    <section class="seccion-regalos" id="gift">
+    <section class="seccion-regalos">
+
         <div class="contenedor-regalos">
 
-            <h2 class="titulo-regalos regalos-animados">Regalos</h2>
+            <h2 class="titulo-regalos">
+                Regalos
+            </h2>
 
-            <div class="tarjeta-giratoria-wrapper regalos-animados">
-                <div class="tarjeta-giratoria" id="tarjetaRegalo">
+            <p class="intro-regalos">
+                El mejor regalo es compartir este momento con nosotros. Si además deseas tener un detalle, te
+                agradecemos cualquiera de las siguientes opciones.
+            </p>
 
-                    <div class="cara-tarjeta cara-frontal">
-                        <div class="icono-regalo">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 24h44v32H10V24z" fill="none" stroke="#ffffff" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M6 14h52v10H6V14z" fill="none" stroke="#ffffff" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M32 14v42M32 14c0-4.5-3.5-8-8-8s-8 3.5-8 8 7.5 2 16 0z" fill="none"
-                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M32 14c0-4.5 3.5-8 8-8s8 3.5 8 8-7.5 2-16 0z" fill="none" stroke="#ffffff"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <p class="texto-frontal-sub">Sugerencia de Regalo</p>
-                        <p class="texto-frontal-accion">Haz click para descubrir</p>
-                        <div class="hint-giro">&#10227;</div>
+            <div class="tarjetas-regalos">
+
+                <!-- Mesa de regalos -->
+                <div class="tarjeta-regalo">
+
+                    <div class="icono-regalo">
+
+                        <!-- Caja de regalo -->
+                        <svg viewBox="0 0 64 64">
+                            <path d="M10 24h44v30H10z" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M6 14h52v10H6z" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M32 14v40" stroke="currentColor" stroke-width="2" />
+                            <path d="M10 38h44" stroke="currentColor" stroke-width="2" />
+                        </svg>
+
                     </div>
 
-                    <div class="cara-tarjeta cara-posterior">
-                        <p class="texto-regalo-principal">
-                            Tu presencia es nuestro mayor regalo, pero si deseas obsequiarnos algo podría ser una...
-                        </p>
-                        <h3 class="concepto-regalo">"Lluvia de sobres"</h3>
-                        <div class="hint-giro volver-hint">&#10227;</div>
-                    </div>
+                    <h3>Mesa de Regalos</h3>
+
+                    <p>
+                        Si deseas hacernos un obsequio, hemos preparado una mesa de regalos para facilitar tu elección.
+                    </p>
+
+                    <a href="#" class="btn-regalo">
+                        Ver Mesa
+                    </a>
 
                 </div>
+
+                <!-- Lluvia de sobres -->
+                <div class="tarjeta-regalo">
+
+                    <div class="icono-regalo">
+
+                        <!-- Sobre -->
+                        <svg viewBox="0 0 64 64">
+                            <rect x="8" y="16" width="48" height="32" rx="3" fill="none" stroke="currentColor"
+                                stroke-width="2" />
+
+                            <path d="M8 18L32 36L56 18" fill="none" stroke="currentColor" stroke-width="2" />
+
+                            <path d="M8 46L24 30M56 46L40 30" fill="none" stroke="currentColor" stroke-width="2" />
+                        </svg>
+
+                    </div>
+
+                    <h3>Lluvia de Sobres</h3>
+
+                    <p>
+                        Si prefieres, también puedes acompañarnos con una lluvia de sobres. Cualquier detalle será
+                        recibido con mucho cariño.
+                    </p>
+
+                </div>
+
             </div>
 
         </div>
+
     </section>
-    <section class="seccion-dresscode" id="dress-code">
+    <section class="seccion-dresscode">
+
         <div class="contenedor-dresscode">
 
-            <figure class="wrapper-icono-dresscode dresscode-animado">
-                <img src="assets/img/dresscode/icono-vestimenta.webp" alt="Código de Vestimenta Ilustración"
-                    loading="lazy" decoding="async" width="150" height="150">
+            <figure class="wrapper-icono-dresscode">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+
+                    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <!-- Esmoquin -->
+
+                        <path d="
+            M10 20
+            C12 16 16 14 20 14
+            C24 14 28 16 30 20
+            L28 52
+            C26 54 14 54 12 52
+            Z" />
+
+                        <!-- Solapas -->
+                        <path d="
+            M16 16
+            L20 26
+            L24 16" />
+
+                        <!-- Corbata -->
+                        <path d="
+            M20 22
+            L18 29
+            L20 34
+            L22 29
+            Z" />
+
+                        <!-- Vestido -->
+
+                        <path d="
+            M44 18
+            C44 15 46 13 48 13
+            C50 13 52 15 52 18" />
+
+                        <path d="
+            M42 22
+            C44 26 45 31 44 36
+            C43 42 39 48 36 54
+
+            M54 22
+            C52 26 51 31 52 36
+            C53 42 57 48 60 54" />
+
+                        <path d="
+            M42 22
+            C45 20 51 20 54 22" />
+
+                        <path d="
+            M36 54
+            C42 51 54 51 60 54" />
+
+                        <!-- Pliegues -->
+
+                        <path d="
+            M48 22
+            L48 54" />
+
+                        <path d="
+            M44 28
+            C46 34 46 42 44 50" />
+
+                        <path d="
+            M52 28
+            C50 34 50 42 52 50" />
+
+                    </g>
+
+                </svg>
             </figure>
 
-            <header class="header-dresscode dresscode-animado">
-                <h2 class="titulo-dresscode">Dress Code</h2>
-                <p class="subtitulo-dresscode">Formal</p>
-            </header>
+            <h2 class="titulo-dresscode">
+                Dress Code
+            </h2>
 
-            <div class="detalles-dresscode dresscode-animado">
-                <p class="nota-vestimenta">Agradecemos evitar el uso de colores reservados exclusivamente para los
-                    novios (Blanco, Beige y Marfil).</p>
+            <p class="tipo-vestimenta">
+                Formal
+            </p>
+
+            <p class="descripcion-dresscode">
+                Nos encantará celebrar este día contigo. Para mantener la armonía de nuestra celebración, te pedimos
+                amablemente evitar los siguientes colores, ya que estarán reservados para los novios y la decoración.
+            </p>
+
+            <h3 class="titulo-colores">
+                Colores Reservados
+            </h3>
+
+            <div class="colores-reservados">
+
+                <div class="color-item">
+                    <span class="color-circle blanco"></span>
+                    <span>Blanco</span>
+                </div>
+
+                <div class="color-item">
+                    <span class="color-circle beige"></span>
+                    <span>Beige</span>
+                </div>
+
+                <div class="color-item">
+                    <span class="color-circle marfil"></span>
+                    <span>Marfil</span>
+                </div>
+
+                <div class="color-item">
+                    <span class="color-circle guinda"></span>
+                    <span>Guinda</span>
+                </div>
+
             </div>
 
+            <p class="nota-final">
+                Gracias por ayudarnos a conservar la identidad y armonía de este día tan especial.
+            </p>
+
         </div>
+
     </section>
     <section class="seccion-no-ninos">
         <div class="contenedor-no-ninos">
@@ -439,18 +627,38 @@
    12. SECCIÓN CONFIRMACIÓN DE ASISTENCIA
    ========================================== -->
     <section class="seccion-confirmar" id="confirmar">
+
         <div class="contenedor-confirmar">
+
             <img class="imagen-decorativa-confirmar"
                 src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png"
                 alt="Decoración">
 
-            <h2 class="titulo-confirmar">Ya puede confirmar su asistencia a la Boda de</h2>
-            <h3 class="nombres-confirmar">Ismael & Luisa</h3>
+            <h2 class="titulo-confirmar">
+                Confirma tu asistencia
+            </h2>
+
+            <h3 class="nombres-confirmar">
+                Ismael & Luisa
+            </h3>
+
+            <p class="texto-confirmar">
+                Nos haría mucha ilusión contar con tu presencia en este día tan especial.
+                Agradecemos confirmar tu asistencia antes del <strong>15 de octubre de 2026</strong>.
+            </p>
 
             <div class="bloque-boton-confirmar">
-                <button type="button" id="btnAbrirConfirmacion" class="btn-enviar-boda">Confirmar Asistencia</button>
+
+                <button type="button" id="btnAbrirConfirmacion" class="btn-confirmar">
+
+                    Confirmar Asistencia
+
+                </button>
+
             </div>
+
         </div>
+
     </section>
 
     <!-- MODAL DE CONFIRMACIÓN DE SEGURIDAD -->
