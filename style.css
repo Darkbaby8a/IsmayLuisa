@@ -2418,7 +2418,7 @@ RESPONSIVE
 .contenedor-confirmar {
     max-width: 550px;
     margin: 0 auto;
-    background-color: var(--color-gris-oscuro);
+    
     padding: 50px 30px;
     border: 1px solid rgba(99, 13, 22, 0.4);
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
