@@ -4,9 +4,9 @@
    ========================================================================== */
 
 :root {
-    --color-negro: #0c0c0c;
+    --color-negro: #fdfbf7;
     --color-guinda: #630d16;
-    --color-crema: #fdfbf7;
+    --color-crema: #0c0c0c;
     --color-gris-oscuro: #1e1e1e;
     --color-overlay: rgba(99, 13, 22, 0.65);
 }
