@@ -1023,102 +1023,221 @@ RESPONSIVE
 /* ==========================================================================
    ITINERARIO / UBICACIONES SIMÉTRICAS
    ========================================================================== */
-.schedule-section, .seccion-ubicaciones {
-    background-color: var(--color-negro);
-    padding: 60px 20px;
+.schedule-section, .seccion-ubicaciones{
+
+    background:#ffffff;
+
+    padding:100px 25px;
+
 }
 
-.contenedor-ubicaciones {
-    display: flex;
-    max-width: 950px;
-    margin: 0 auto;
-    gap: 40px;
-    justify-content: center;
+.contenedor-ubicaciones{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
 }
 
-.tarjeta-evento, .event-card {
-    flex: 1;
-    max-width: 420px;
-    background: var(--color-gris-oscuro);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 4px solid var(--color-guinda);
-    border-radius: 4px;
-    padding: 40px 30px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+.tarjeta-evento{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:45px 35px;
+
+    text-align:center;
+
+    border:1px solid #ece7e5;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    transition:.35s;
+
+    box-shadow:
+
+        0 12px 35px rgba(0,0,0,.08);
+
+}
+.tarjeta-evento::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:6px;
+
+    background:#7A1632;
+
+}
+.tarjeta-evento:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+        0 25px 55px rgba(0,0,0,.15);
+
 }
 
-.icono-ubicacion {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.icono-ubicacion{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+    border-radius:50%;
+
+    background:#faf5f6;
+
+    color:#7A1632;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:2px solid rgba(122,22,50,.15);
+
+}
+
+.icono-ubicacion svg{
+
+    width:48px;
+
+    height:48px;
+
 }
 
 .icono-ubicacion svg { width: 100%; height: 100%; }
 
-.titulo-evento, .event-info h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.6rem;
-    letter-spacing: 3px;
-    color: #ffffff;
-    margin-bottom: 15px;
+.titulo-evento{
+
+    font-family:'Cinzel';
+
+    font-size:1.6rem;
+
+    color:#222;
+
+    letter-spacing:3px;
+
+    margin-bottom:18px;
+
+}
+.titulo-evento::after{
+
+    content:"";
+
+    display:block;
+
+    width:55px;
+
+    height:2px;
+
+    background:#7A1632;
+
+    margin:15px auto 0;
+
+}
+.hora-evento{
+
+    color:#7A1632;
+
+    font-size:1.25rem;
+
+    font-family:'Cinzel';
+
+    margin-bottom:18px;
+
+    font-weight:bold;
+
+}
+.lugar-evento{
+
+    font-family:'Cinzel Decorative';
+
+    font-size:1.4rem;
+
+    color:#222;
+
+    margin-bottom:10px;
+
 }
 
-.hora-evento, .time-tag {
-    font-family: 'Cinzel', serif;
-    color: var(--color-guinda);
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+.direccion-evento{
+
+    color:#666;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+    flex-grow:1;
+
 }
 
-.lugar-evento {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 1.3rem;
-    color: #ffffff;
-    margin-bottom: 8px;
+.bloque-mapas{
+
+    display:flex;
+
+    gap:12px;
+
 }
 
-.direccion-evento, .event-address {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.6) !important;
-    margin-bottom: 30px;
+.btn-mapa{
+
+    flex:1;
+
+    padding:14px;
+
+    border-radius:40px;
+
+    background:#7A1632;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+
+    border:2px solid #7A1632;
+
 }
 
-.bloque-mapas {
-    margin-top: auto;
-    display: flex;
-    gap: 15px;
-    width: 100%;
-}
+.btn-mapa:hover{
 
-.btn-mapa {
-    flex: 1;
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    color: #ffffff;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 10px 0;
-    border-radius: 2px;
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
+    background:white;
 
-.btn-mapa:hover {
-    background: #ffffff;
-    border-color: #ffffff;
-    color: #141414;
+    color:#7A1632;
+
 }
 
 .map-container {
