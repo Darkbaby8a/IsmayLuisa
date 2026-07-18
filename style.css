@@ -37,7 +37,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: #050505;
     display: flex;
@@ -51,11 +51,14 @@ body {
 .sobre {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 900px;
     cursor: pointer;
     perspective: 1500px;
 }
-
+.sobre img{
+    width: 100%;
+    height: auto;
+}
 .sobre-base, .sobre-solapa {
     width: 100%;
     height: auto;
