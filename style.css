@@ -1739,361 +1739,229 @@ RESPONSIVE
 /*====================================================
 =            SECCIÓN CONFIRMAR ASISTENCIA
 ====================================================*/
-
 .seccion-confirmar{
-
-    background:#faf9f8;
+    /* Fondo completamente blanco para la sección */
+    background:#ffffff;
     padding:120px 25px;
-
 }
 
 .contenedor-confirmar{
-
     max-width:760px;
     margin:auto;
-
     text-align:center;
-
     background:#ffffff;
-
-    padding:65px 55px;
-
-    border-radius:28px;
-
-    border:1px solid #ece7e5;
-
+    padding:75px 55px;
+    border-radius:20px; /* Bordes un poco más sutiles y elegantes */
+    
+    /* Borde guinda muy fino y sombra suave y difuminada */
+    border:1px solid rgba(122, 22, 50, 0.15);
     position:relative;
-
     overflow:hidden;
-
-    box-shadow:
-        0 18px 45px rgba(0,0,0,.06);
-
+    box-shadow: 0 20px 50px rgba(122, 22, 50, 0.04);
 }
 
-/* detalle superior */
-
+/* detalle superior en guinda */
 .contenedor-confirmar::before{
-
     content:"";
-
     position:absolute;
-
     top:0;
     left:0;
-
     width:100%;
-    height:5px;
-
+    height:4px;
     background:#7A1632;
-
 }
 
 .imagen-decorativa-confirmar{
-
-    width:115px;
-
-    margin-bottom:28px;
-
+    width:110px;
+    margin-bottom:32px;
+    filter: grayscale(1) contrast(1.2); /* Sofisticar la imagen si tiene colores raros */
 }
 
 .titulo-confirmar{
-
     font-family:'Cinzel Decorative', serif;
-
-    font-size:2.5rem;
-
+    font-size:2.6rem;
     font-weight:700;
-
-    color:#111;
-
+    color:#000000; /* Letras negras puras */
     margin-bottom:12px;
-
+    letter-spacing: 1px;
 }
 
 .titulo-confirmar::after{
-
     content:"";
-
     display:block;
-
-    width:70px;
-
-    height:2px;
-
-    margin:18px auto 0;
-
-    background:#7A1632;
-
+    width:50px; /* Línea más corta y fina */
+    height:1px;
+    margin:22px auto 0;
+    background:#7A1632; /* Detalle guinda */
 }
 
 .nombres-confirmar{
-
     font-family:'Cinzel', serif;
-
-    font-size:2.2rem;
-
+    font-size:2.3rem;
     font-weight:600;
-
-    color:#7A1632;
-
-    margin:28px 0 20px;
-
-    letter-spacing:2px;
-
+    color:#7A1632; /* Guinda para destacar los nombres */
+    margin:35px 0 25px;
+    letter-spacing:3px;
 }
 
 .texto-confirmar{
-
     max-width:560px;
-
     margin:auto;
-
     font-family:'Montserrat', sans-serif;
-
-    font-size:1rem;
-
-    color:#333;
-
-    line-height:1.9;
-
+    font-size:0.95rem;
+    color:#000000; /* Texto en negro */
+    line-height:2;
+    letter-spacing: 0.5px;
 }
 
 .texto-confirmar strong{
-
-    color:#7A1632;
-
-    font-weight:600;
-
+    color:#7A1632; /* Fecha en guinda para captar atención */
+    font-weight:700;
 }
 
 .bloque-boton-confirmar{
-
-    margin-top:45px;
-
+    margin-top:50px;
 }
+
 .btn-confirmar,
 .btn-enviar-boda{
-
-    background:#ffffff;
-
-    color:#111;
-
-    border:2px solid #7A1632;
-
-    border-radius:50px;
-
-    padding:16px 44px;
-
+    background:#7A1632; /* Fondo Guinda de inicio */
+    color:#ffffff;
+    border:1px solid #7A1632;
+    border-radius:0px; /* Corte recto tipo boutique de lujo (puedes cambiarlo a 50px si prefieres curvas) */
+    padding:18px 50px;
     font-family:'Montserrat', sans-serif;
-
-    font-size:.95rem;
-
+    font-size:.85rem;
     font-weight:600;
-
-    letter-spacing:1px;
-
+    letter-spacing:2px;
+    text-transform: uppercase;
     cursor:pointer;
-
-    transition:.35s ease;
-
+    transition: all .4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .btn-confirmar:hover,
 .btn-enviar-boda:hover{
-
-    background:#7A1632;
-
-    color:#ffffff;
-
-    transform:translateY(-4px);
-
-    box-shadow:0 12px 28px rgba(122,22,50,.18);
-
+    background:#ffffff;
+    color:#7A1632; /* Invierte a blanco con letras guindas */
+    border-color: #7A1632;
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(122,22,50,.1);
 }
+
+/* MODAL */
 .modal-seguridad-boda{
-
     position:fixed;
-
     inset:0;
-
     display:none;
-
     justify-content:center;
-
     align-items:center;
-
-    background:rgba(0,0,0,.45);
-
-    backdrop-filter:blur(6px);
-
+    background:rgba(0,0,0,.6); /* Fondo oscuro un poco más denso */
+    backdrop-filter:blur(8px);
     padding:20px;
-
     z-index:9999;
-
 }
 
 .contenido-modal-seguridad{
-
     width:100%;
-
-    max-width:520px;
-
+    max-width:500px;
     background:#ffffff;
-
-    border-radius:24px;
-
-    padding:48px;
-
+    border-radius:0px; /* Consistencia con diseño elegante y recto */
+    padding:50px;
     position:relative;
-
     text-align:center;
-
-    border:1px solid #ece7e5;
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.12);
-
+    border:1px solid rgba(122, 22, 50, 0.1);
+    box-shadow: 0 30px 70px rgba(0,0,0,.15);
 }
 
 .contenido-modal-seguridad::before{
-
     content:"";
-
     position:absolute;
-
     top:0;
     left:0;
-
     width:100%;
-    height:5px;
-
+    height:4px;
     background:#7A1632;
-
 }
 
 .titulo-modal-seguridad{
-
     font-family:'Cinzel Decorative', serif;
-
-    font-size:1.9rem;
-
-    color:#111;
-
+    font-size:1.8rem;
+    color:#000000; /* Negro */
     margin-bottom:20px;
-
+    letter-spacing: 1px;
 }
 
 .texto-modal-seguridad{
-
-    color:#444;
-
-    line-height:1.9;
-
-    margin-bottom:38px;
-
+    font-family:'Montserrat', sans-serif;
+    color:#000000; /* Negro */
+    font-size: 0.95rem;
+    line-height:1.8;
+    margin-bottom:40px;
 }
+
 .botones-modal-seguridad{
-
     display:flex;
-
-    gap:18px;
-
+    gap:15px;
 }
 
 .btn-modal-principal{
-
     flex:1;
-
-    background:#7A1632;
-
+    background:#7A1632; /* Guinda */
     color:#ffffff;
-
-    border:2px solid #7A1632;
-
-    border-radius:40px;
-
-    padding:15px;
-
+    border:1px solid #7A1632;
+    border-radius:0px;
+    padding:16px;
     font-family:'Montserrat', sans-serif;
-
+    font-size: 0.85rem;
     font-weight:600;
-
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor:pointer;
-
     transition:.3s;
-
 }
 
 .btn-modal-principal:hover{
-
     background:#5b1025;
-
     border-color:#5b1025;
-
-    transform:translateY(-3px);
-
+    transform:translateY(-2px);
 }
 
 .btn-modal-secundario{
-
     flex:1;
-
     background:#ffffff;
-
-    color:#111;
-
-    border:2px solid #7A1632;
-
-    border-radius:40px;
-
-    padding:15px;
-
+    color:#000000; /* Negro */
+    border:1px solid #000000;
+    border-radius:0px;
+    padding:16px;
     font-family:'Montserrat', sans-serif;
-
+    font-size: 0.85rem;
     font-weight:600;
-
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor:pointer;
-
     transition:.3s;
-
 }
 
 .btn-modal-secundario:hover{
-
-    background:#7A1632;
-
+    background:#000000;
     color:#ffffff;
-
 }
+
+/* RESPONSIVE */
 @media(max-width:768px){
-
     .contenedor-confirmar{
-
-        padding:45px 25px;
-
+        padding:50px 30px;
     }
-
     .titulo-confirmar{
-
         font-size:2rem;
-
     }
-
     .nombres-confirmar{
-
-        font-size:1.8rem;
-
+        font-size:1.9rem;
     }
-
     .botones-modal-seguridad{
-
-        flex-direction:column;
-
+        flex-direction:column-reverse; /* El botón de cancelar queda abajo en móviles */
     }
-
 }
-
 /* ==========================================================================
    ANIMACIONES GLOBALES (ENTRADA TRAS EL SOBRE)
    ========================================================================== */
