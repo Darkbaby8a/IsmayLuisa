@@ -6,6 +6,9 @@
 :root {
     --color-negro: #fdfbf7;
     --color-guinda: #630d16;
+       --guinda: #630d16;
+    --guinda-claro: #8c1b28;
+    --guinda-transparente: rgba(99, 13, 22, 0.08);
     --color-crema: #0c0c0c;
     --color-gris-oscuro: #1e1e1e;
     --color-overlay: rgba(99, 13, 22, 0.65);
@@ -331,7 +334,10 @@ body.mostrar-boda .contenido-principal {
     position: absolute;
     width: 340px;
     opacity: 0.12;
-    filter: grayscale(100%);
+    filter:
+        sepia(40%)
+        saturate(200%)
+        hue-rotate(320deg);
     transition: transform 0.4s ease;
 }
 
@@ -418,19 +424,26 @@ body.mostrar-boda .contenido-principal {
     justify-content: center;
     align-items: center;
 
-    background: #ffffff;
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #faf7f7 100%
+    );
 
-    border: 2px solid #000;
+    border: 2px solid var(--guinda);
+
     border-radius: 18px;
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.08);
+        0 8px 25px rgba(99, 13, 22, 0.12);
 
-    transition: transform .3s ease;
+    transition: all .3s ease;
 }
 
 .tiempo-item:hover {
     transform: translateY(-8px);
+    box-shadow:
+        0 12px 30px rgba(99, 13, 22, 0.25);
 }
 
 .digitos {
