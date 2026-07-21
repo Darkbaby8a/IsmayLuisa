@@ -627,45 +627,59 @@
    12. SECCIÓN CONFIRMACIÓN DE ASISTENCIA
    ========================================== -->
     <section class="seccion-confirmar">
-        <div class="contenedor-confirmar">
 
-            <img class="imagen-decorativa-confirmar"
-                src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png"
-                alt="Decoración">
-
-            <h2 class="titulo-confirmar">
-                Confirma tu asistencia
-            </h2>
-
-            <h3 class="nombres-confirmar">
-                Ismael & Luisa
-            </h3>
-
-            <p class="texto-confirmar">
-                Nos haría mucha ilusión contar con tu presencia en este día tan especial.
-                Agradecemos confirmar tu asistencia antes del
-                <strong>15 de septiembre de 2026</strong>.
-            </p>
-
-            <div class="bloque-boton-confirmar">
-                <button type="button" id="btnAbrirConfirmacion" class="btn-confirmar">
-                    Confirmar asistencia
-                </button>
-            </div>
+        <div class="contenedor-confirmar" id="contenedorConfirmacion">
 
         </div>
+
     </section>
 
     <!-- MODAL DE CONFIRMACIÓN DE SEGURIDAD -->
     <div class="modal-seguridad-boda" id="modalSeguridad">
         <div class="contenido-modal-seguridad">
-            <h4 class="titulo-modal-seguridad">¿Está seguro de su asistencia?</h4>
-            <p class="texto-modal-seguridad">Al confirmar, registraremos su asistencia para acompañarnos en este día tan
-                especial.</p>
-            <div class="botones-modal-seguridad">
-                <button type="button" id="btnCancelarModal" class="btn-modal-secundario">Cancelar</button>
-                <button type="button" id="btnConfirmarModal" class="btn-modal-principal">Sí, estoy seguro</button>
+
+            <div id="contenidoConfirmacion">
+
+                <h4 class="titulo-modal-seguridad">
+                    ¿Está seguro de su asistencia?
+                </h4>
+
+                <p class="texto-modal-seguridad">
+                    Al confirmar, registraremos su asistencia para acompañarnos en este día tan especial.
+                </p>
+
+                <div class="botones-modal-seguridad">
+
+                    <button type="button" id="btnCancelarModal" class="btn-modal-secundario">
+                        Cancelar
+                    </button>
+
+                    <button type="button" id="btnRechazarModal" class="btn-modal-rechazar">
+                        No podré asistir
+                    </button>
+
+                    <button type="button" id="btnConfirmarModal" class="btn-modal-principal">
+                        Sí, asistiré
+                    </button>
+
+                </div>
+
             </div>
+
+            <!-- MENSAJE FINAL -->
+
+            <div id="mensajeFinal" style="display:none; text-align:center;">
+
+                <h3 id="tituloMensajeFinal"></h3>
+
+                <p id="textoMensajeFinal"></p>
+
+                <button type="button" id="btnCerrarMensaje" class="btn-modal-principal">
+                    Cerrar
+                </button>
+
+            </div>
+
         </div>
     </div>
     <!-- VENTANA MODAL (LIGHTBOX NATIVO) -->

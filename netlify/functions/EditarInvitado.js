@@ -36,12 +36,9 @@ export const handler = async (event, context) => {
     }
 
     // 1. Crear el identificador base usando URL Encode y pasándolo a minúsculas para consistencia
-    const identificadorBase = FamiliaDesc.trim()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "") // Quita acentos
-      .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, "") // Elimina cualquier símbolo
-      .replace(/\s+/g, "_"); // Espacios -> _
+    const identificadorBase = encodeURIComponent(
+      FamiliaDesc.trim().toLowerCase().replace(/\s+/g, "-"), // Reemplaza espacios por guiones para que la URL sea más limpia
+    );
 
     let familiaNombreUnico = identificadorBase;
 

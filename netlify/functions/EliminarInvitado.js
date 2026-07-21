@@ -6,51 +6,52 @@ const pool = new Pool({
 });
 
 export const handler = async (event) => {
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+      },
+      body: "",
+    };
+  }
+
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
       body: JSON.stringify({
-        ok: false,
-        message: "Método no permitido.",
+        error: "Método no permitido.",
       }),
     };
   }
 
   try {
-    const { familiaNombre, asistira } = JSON.parse(event.body);
+    const { id } = JSON.parse(event.body);
 
-    if (!familiaNombre || typeof asistira !== "boolean") {
+    if (!id) {
       return {
         statusCode: 400,
         body: JSON.stringify({
-          ok: false,
-          message: "Datos incompletos.",
+          error: "Debe proporcionar el id.",
         }),
       };
     }
 
-    const acepto = asistira;
-    const rechazo = !asistira;
-
-    const result = await pool.query(
-      `
-            UPDATE "IsmaLuisa"
-            SET
-                acepto = $1,
-                rechazo = $2,
-                fechaaceptado = NOW()
-            WHERE "familiaNombre" = $3
+    const query = `
+            DELETE FROM "IsmaLuisa"
+            WHERE id = $1
             RETURNING id;
-        `,
-      [acepto, rechazo, familiaNombre],
-    );
+        `;
+
+    const result = await pool.query(query, [parseInt(id, 10)]);
 
     if (result.rowCount === 0) {
       return {
         statusCode: 404,
         body: JSON.stringify({
-          ok: false,
-          message: "Invitación no encontrada.",
+          error: "El invitado no existe.",
         }),
       };
     }
@@ -61,9 +62,9 @@ export const handler = async (event) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ok: true,
-        message: asistira ? "Asistencia confirmada." : "Asistencia rechazada.",
-        asistira,
+        success: true,
+        message: "Invitado eliminado correctamente.",
+        id: result.rows[0].id,
       }),
     };
   } catch (error) {
@@ -75,8 +76,8 @@ export const handler = async (event) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ok: false,
-        error: error.message,
+        error: "Error interno del servidor.",
+        details: error.message,
       }),
     };
   }

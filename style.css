@@ -27,44 +27,87 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+.btn-modal-rechazar{
 
-.petal {
+    background:#ffffff;
+    border:1px solid #7A1632;
+    color:#7A1632;
+    padding:14px 18px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.btn-modal-rechazar:hover{
+
+    background:#7A1632;
+    color:#fff;
+
+}
+.petal{
     position: fixed;
-    top: -20px; /* Inician fuera de la pantalla */
-    pointer-events: none; /* No interfieren con los clics en los botones */
-    z-index: 9998; /* Justo debajo del modal de seguridad */
-    opacity: 0.85;
-    
-    /* Esta es la magia: Forma orgánica de pétalo de rosa */
-    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-    box-shadow: inset 2px -2px 6px rgba(0, 0, 0, 0.15);
-    
-    /* Combinación de dos animaciones: Caída + Balanceo/Giro 3D */
-    animation: fall linear forwards, wobble ease-in-out infinite alternate;
+    top: -40px;
+    z-index: 9999;
+    pointer-events: none;
+
+    animation:
+        fall linear forwards,
+        spin var(--spin-speed) ease-in-out infinite;
+
+    clip-path: polygon(
+        50% 0%,
+        85% 20%,
+        100% 55%,
+        70% 100%,
+        50% 85%,
+        30% 100%,
+        0% 55%,
+        15% 20%
+    );
+
+    box-shadow:
+        inset -2px -2px 4px rgba(0,0,0,.18),
+        inset 2px 2px 4px rgba(255,255,255,.15);
 }
 
-/* Animación 1: Caída vertical */
-@keyframes fall {
-    0% {
-        top: -5%;
+@keyframes fall{
+
+    0%{
+        transform: translateY(-60px) translateX(0) rotate(0deg);
     }
-    100% {
-        top: 110%;
+
+    25%{
+        transform: translateY(25vh) translateX(calc(var(--wobble-distance) * .5)) rotate(90deg);
     }
+
+    50%{
+        transform: translateY(50vh) translateX(calc(var(--wobble-distance) * -1)) rotate(180deg);
+    }
+
+    75%{
+        transform: translateY(75vh) translateX(calc(var(--wobble-distance) * .6)) rotate(270deg);
+    }
+
+    100%{
+        transform: translateY(110vh) translateX(0) rotate(360deg);
+    }
+
 }
 
-/* Animación 2: Giro tridimensional y vaivén */
-@keyframes wobble {
-    0% {
-        transform: translateX(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+@keyframes spin{
+
+    0%{
+        filter: brightness(1);
     }
-    50% {
-        /* Usa la variable de JS para saber qué tanto balancearse a los lados */
-        transform: translateX(var(--wobble-distance)) rotateX(180deg) rotateY(90deg) rotateZ(45deg);
+
+    50%{
+        filter: brightness(.8);
     }
-    100% {
-        transform: translateX(calc(var(--wobble-distance) * -1)) rotateX(360deg) rotateY(180deg) rotateZ(90deg);
+
+    100%{
+        filter: brightness(1);
     }
+
 }
 .swiper-slide figure img {
   height: 100vh;

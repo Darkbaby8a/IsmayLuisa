@@ -19,6 +19,34 @@
             box-sizing: border-box;
         }
 
+        .btn-eliminar {
+            background: #b71c1c;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-left: 6px;
+            transition: .3s;
+        }
+
+        .btn-eliminar:hover {
+            background: #8f1515;
+        }
+
+        .btn-editar {
+            background: #7A1632;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: .8rem;
+            transition: .3s;
+        }
+
+        .btn-editar:hover {
+            background: #5d0f26;
+        }
+
         body {
             background: #ffffff;
             font-family: 'Montserrat', sans-serif;
@@ -340,6 +368,7 @@
                                 <th>Mesa</th>
                                 <th>Pases</th>
                                 <th>Identificador URL</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="tablaCuerpo">
@@ -360,82 +389,270 @@
         const tbody = document.getElementById("tablaCuerpo");
         const txtFamilias = document.getElementById("txtTotalFamilias");
         const txtPases = document.getElementById("txtTotalPases");
-        const formBoda = document.getElementById('formConfirmarBoda');
+        const formBoda = document.getElementById("formConfirmarBoda");
+        const btnSubmit = document.getElementById("btnConfirmarModal");
 
-        // Función para cargar y actualizar la tabla desde la BD
+        let datosGlobal = [];
+        let idEditando = null;
+
+        //==============================
+        // CARGAR TABLA
+        //==============================
         function cargarInvitados() {
+
             fetch("/.netlify/functions/ObtenerInvitados")
                 .then(response => {
-                    if (!response.ok) throw new Error("Error al obtener los datos.");
+                    if (!response.ok)
+                        throw new Error("Error al obtener datos");
+
                     return response.json();
                 })
                 .then(res => {
+
+                    datosGlobal = res.data;
+
                     txtFamilias.textContent = res.totalInvitados;
                     txtPases.textContent = res.totalPases;
+
                     tbody.innerHTML = "";
 
-                    if (res.data.length === 0) {
-                        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:30px;">Aún no hay confirmaciones registradas.</td></tr>`;
+                    if (datosGlobal.length == 0) {
+
+                        tbody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align:center;padding:30px;">
+                        No hay invitados registrados.
+                    </td>
+                </tr>
+                `;
+
                         return;
                     }
 
-                    res.data.forEach(invitado => {
+                    datosGlobal.forEach(invitado => {
+
+                        let estado = "Pendiente";
+
+                        if (invitado.acepto == 1)
+                            estado = "Aceptó";
+
+                        if (invitado.rechazo == 1)
+                            estado = "Rechazó";
+
                         const fila = document.createElement("tr");
+
                         fila.innerHTML = `
-                            <td><strong>#${invitado.id}</strong></td>
-                            <td>${invitado.FamiliaDesc}</td>
-                            <td>${invitado.Mesa}</td>
-                            <td><strong>${invitado.Pases}</strong></td>
-                            <td><span class="badge-url">${invitado.familiaNombre}</span></td>
-                        `;
+                    <td><strong>#${invitado.id}</strong></td>
+                    <td>${invitado.FamiliaDesc}</td>
+                    <td>${invitado.Mesa}</td>
+                    <td>${invitado.Pases}</td>
+                    <td>${estado}</td>
+
+                    <td>
+
+                        <button
+                            class="btn-editar"
+                            onclick="editarInvitado(${invitado.id})">
+
+                            ✏️ Editar
+
+                        </button>
+                         <button
+        class="btn-eliminar"
+        onclick="eliminarInvitado(${invitado.id})">
+        🗑️
+    </button>
+
+                    </td>
+                `;
+
                         tbody.appendChild(fila);
+
                     });
+
                 })
                 .catch(err => {
+
                     console.error(err);
-                    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:red; padding:30px;">Error al cargar datos.</td></tr>`;
+
+                    tbody.innerHTML = `
+            <tr>
+                <td colspan="6" style="color:red;text-align:center;padding:30px;">
+                    Error al cargar los datos.
+                </td>
+            </tr>
+            `;
+
                 });
+
         }
 
-        // Evento al enviar el formulario (Envía datos al backend y refresca la tabla)
-        formBoda.addEventListener('submit', (e) => {
+        //==============================
+        // EDITAR
+        //==============================
+        function editarInvitado(id) {
+
+            const invitado = datosGlobal.find(x => x.id == id);
+
+            if (!invitado)
+                return;
+
+            idEditando = id;
+
+            document.getElementById("familiaDesc").value = invitado.FamiliaDesc;
+            document.getElementById("mesa").value = invitado.Mesa;
+            document.getElementById("pases").value = invitado.Pases;
+
+            btnSubmit.textContent = "Guardar Cambios";
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+        //==============================
+        // CANCELAR EDICION
+        //==============================
+        function cancelarEdicion() {
+
+            idEditando = null;
+
+            formBoda.reset();
+
+            btnSubmit.textContent = "Registrar Asistencia";
+
+        }
+
+        //==============================
+        // GUARDAR
+        //==============================
+        formBoda.addEventListener("submit", function (e) {
+
             e.preventDefault();
 
-            const btnSubmit = document.getElementById('btnConfirmarModal');
-            btnSubmit.textContent = "Procesando...";
             btnSubmit.disabled = true;
+            btnSubmit.textContent = "Procesando...";
 
             const datos = {
-                FamiliaDesc: document.getElementById('familiaDesc').value,
-                Mesa: document.getElementById('mesa').value,
-                Pases: parseInt(document.getElementById('pases').value, 10)
+
+                id: idEditando,
+
+                FamiliaDesc: document.getElementById("familiaDesc").value,
+
+                Mesa: document.getElementById("mesa").value,
+
+                Pases: parseInt(document.getElementById("pases").value)
+
             };
 
-            fetch('/.netlify/functions/AgregarInvitado', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+            const url = idEditando
+                ? "/.netlify/functions/EditarInvitado"
+                : "/.netlify/functions/AgregarInvitado";
+
+            fetch(url, {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
                 body: JSON.stringify(datos)
+
             })
+
                 .then(response => {
-                    if (!response.ok) throw new Error('Error en el servidor');
+
+                    if (!response.ok)
+                        throw new Error("Error");
+
                     return response.json();
+
                 })
-                .then(data => {
+
+                .then(res => {
+
                     formBoda.reset();
-                    cargarInvitados(); // Refresca la lista automáticamente sin recargar la página
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('No se pudo registrar al invitado.');
-                })
-                .finally(() => {
+
+                    idEditando = null;
+
                     btnSubmit.textContent = "Registrar Asistencia";
+
+                    cargarInvitados();
+
+                })
+
+                .catch(err => {
+
+                    console.error(err);
+
+                    alert("Ocurrió un error.");
+
+                })
+
+                .finally(() => {
+
                     btnSubmit.disabled = false;
+
+                    if (idEditando)
+                        btnSubmit.textContent = "Guardar Cambios";
+                    else
+                        btnSubmit.textContent = "Registrar Asistencia";
+
                 });
+
         });
 
-        // Cargar la lista al abrir el panel por primera vez
-        document.addEventListener("DOMContentLoaded", cargarInvitados);
+        //==============================
+        // INICIO
+        //==============================
+        document.addEventListener("DOMContentLoaded", function () {
+
+            cargarInvitados();
+
+        });
+        function eliminarInvitado(id) {
+
+            if (!confirm("¿Deseas eliminar este invitado?"))
+                return;
+
+            fetch("/.netlify/functions/EliminarInvitado", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    id: id
+                })
+
+            })
+                .then(res => {
+
+                    if (!res.ok)
+                        throw new Error();
+
+                    return res.json();
+
+                })
+                .then(res => {
+
+                    cargarInvitados();
+
+                })
+                .catch(err => {
+
+                    console.error(err);
+
+                    alert("No fue posible eliminar el invitado.");
+
+                });
+
+        }
     </script>
 </body>
 

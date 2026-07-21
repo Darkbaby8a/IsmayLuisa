@@ -177,10 +177,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================================================
   // 5. MODAL CONTROL DE ASISTENCIA Y SEGURIDAD
   // ==========================================================================
+  function mostrarMensaje(titulo, texto) {
+    document.getElementById("contenidoConfirmacion").style.display = "none";
+
+    document.getElementById("mensajeFinal").style.display = "block";
+
+    document.getElementById("tituloMensajeFinal").textContent = titulo;
+
+    document.getElementById("textoMensajeFinal").textContent = texto;
+  }
   const btnAbrirConfirmacion = document.getElementById("btnAbrirConfirmacion");
   const modalSeguridad = document.getElementById("modalSeguridad");
   const btnCancelarModal = document.getElementById("btnCancelarModal");
   const btnConfirmarModal = document.getElementById("btnConfirmarModal");
+  const btnRechazarModal = document.getElementById("btnRechazarModal");
 
   if (btnAbrirConfirmacion && modalSeguridad) {
     btnAbrirConfirmacion.addEventListener("click", () => {
@@ -194,48 +204,134 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (btnConfirmarModal) {
-      btnConfirmarModal.addEventListener("click", () => {
-        modalSeguridad.classList.remove("activo");
-        // Desarrollar aquí el flujo de redirección (WhatsApp API, Endpoint, etc.)
+      btnConfirmarModal.addEventListener("click", async () => {
+        try {
+          const response = await fetch(
+            "/.netlify/functions/AceptarInvitacion",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                familiaNombre: datos.familiaNombre,
+                asistira: true, // o false si rechaza
+              }),
+            },
+          );
+
+          if (!response.ok) throw new Error();
+
+          await response.json();
+
+          modalSeguridad.classList.remove("activo");
+
+          mostrarMensaje(
+            "¡Muchas gracias!",
+            "Nos llena de alegría saber que compartirás con nosotros este momento tan especial. ¡Te esperamos con mucho cariño!",
+          );
+
+          location.reload();
+        } catch (err) {
+          console.error(err);
+          alert("No fue posible registrar tu respuesta.");
+        }
       });
+      if (btnRechazarModal) {
+        btnRechazarModal.addEventListener("click", async () => {
+          try {
+            const response = await fetch(
+              "/.netlify/functions/AceptarInvitacion",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  familiaNombre: datos.familiaNombre,
+                  asistira: false, // o false si rechaza
+                }),
+              },
+            );
+            if (!response.ok) throw new Error();
+
+            await response.json();
+
+            modalSeguridad.classList.remove("activo");
+
+            mostrarMensaje(
+              "Gracias por avisarnos",
+              "Lamentamos que no puedas acompañarnos en esta ocasión. Agradecemos mucho que nos hayas informado y esperamos verte muy pronto.",
+            );
+
+            location.reload();
+          } catch (err) {
+            console.error(err);
+            alert("No fue posible registrar tu respuesta.");
+          }
+        });
+      }
     }
   }
 });
 let petalInterval = null;
 
 function createPetal() {
-  const petal = document.createElement("div");
-  petal.className = "petal";
+  const leaf = document.createElement("div");
+  leaf.className = "petal";
 
-  // Tamaños un poco más grandes y variados para simular profundidad
-  const width = Math.random() * 12 + 12; // Entre 12px y 24px
-  const height = width * (Math.random() * 0.2 + 1.1); // Un poco más largos que anchos
+  // Tamaños variados
+  const width = Math.random() * 18 + 16;
+  const height = width * (Math.random() * 0.4 + 1.3);
 
-  petal.style.width = width + "px";
-  petal.style.height = height + "px";
-  petal.style.left = Math.random() * 100 + "vw";
+  leaf.style.width = width + "px";
+  leaf.style.height = height + "px";
 
-  // Paleta de colores: Guinda elegante, vino, rosa viejo y rosa suave
-  const colors = ["#7A1632", "#5c0b20", "#a23c52", "#d98895", "#f3c6ce"];
-  petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+  // Posición inicial
+  leaf.style.left = Math.random() * 100 + "vw";
 
-  // Duración de la caída (más lento = más elegante)
-  const duration = Math.random() * 5 + 6; // Entre 6 y 11 segundos
-  petal.style.animationDuration = duration + "s";
+  // Colores otoñales
+  const colors = [
+    "#7B3F00", // café
+    "#A0522D", // siena
+    "#B5651D", // naranja quemado
+    "#C97A2B", // ámbar
+    "#D98C2B", // mostaza
+    "#E0A93B", // amarillo dorado
+    "#8B4513", // café oscuro
+    "#A63D2E", // rojo hoja
+    "#C45A3D", // terracota
+    "#6B4423", // nogal
+  ];
 
-  // Variación del retraso para que no caigan todos al mismo tiempo al iniciar
-  petal.style.animationDelay = Math.random() * 2 + "s";
+  leaf.style.background = colors[Math.floor(Math.random() * colors.length)];
 
-  // Variables personalizadas de CSS para que cada pétalo gire a una velocidad y ángulo diferente
-  petal.style.setProperty("--spin-speed", Math.random() * 3 + 2 + "s");
-  petal.style.setProperty("--wobble-distance", Math.random() * 40 + 20 + "px");
+  // Forma de hoja
+  leaf.style.borderRadius = "0 80% 0 80%";
+  leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
 
-  document.body.appendChild(petal);
+  // Duración
+  const duration = Math.random() * 6 + 8;
 
-  // Se elimina una vez termina la animación
-  setTimeout(() => petal.remove(), (duration + 2) * 1000);
+  leaf.style.animationDuration = duration + "s";
+  leaf.style.animationDelay = Math.random() * 3 + "s";
+
+  // Movimiento lateral
+  leaf.style.setProperty("--spin-speed", Math.random() * 5 + 4 + "s");
+  leaf.style.setProperty("--wobble-distance", Math.random() * 120 + 60 + "px");
+
+  // Opacidad
+  leaf.style.opacity = Math.random() * 0.5 + 0.5;
+
+  document.body.appendChild(leaf);
+
+  setTimeout(
+    () => {
+      leaf.remove();
+    },
+    (duration + 3) * 1000,
+  );
 }
-
 function startPetals() {
   if (petalInterval) return;
 
@@ -243,4 +339,230 @@ function startPetals() {
   const interval = isMobile ? 900 : 500;
 
   petalInterval = setInterval(createPetal, interval);
+}
+///obtener invitado
+const params = new URLSearchParams(window.location.search);
+const familia = params.get("familia");
+
+const contenedor = document.getElementById("contenedorConfirmacion");
+
+let datos = null;
+
+if (!familia) {
+  contenedor.innerHTML = `
+        <h2 class="titulo-confirmar">Invitación no válida</h2>
+        <p class="texto-confirmar">
+            El enlace de invitación es incorrecto.
+        </p>
+    `;
+} else {
+  fetch(
+    `/.netlify/functions/obtener-invitado?familia=${encodeURIComponent(familia)}`,
+  )
+    .then((res) => res.json())
+
+    .then((res) => {
+      if (!res.ok || !res.invitado) {
+        contenedor.innerHTML = `
+                    <h2 class="titulo-confirmar">
+                        Invitación no encontrada
+                    </h2>
+                `;
+
+        return;
+      }
+
+      datos = res.invitado;
+
+      // YA CONFIRMÓ
+      if (datos.acepto == true || datos.Acepto == true || datos.acepto == 1) {
+        mostrarPase();
+
+        return;
+      }
+
+      // RECHAZÓ
+      if (datos.rechazo == true || datos.rechazo == 1) {
+        contenedor.innerHTML = `
+
+                    <img class="imagen-decorativa-confirmar"
+                    src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png">
+
+                    <h2 class="titulo-confirmar">
+                        Gracias por avisarnos
+                    </h2>
+
+                    <h3 class="nombres-confirmar">
+                        ${datos.FamiliaDesc}
+                    </h3>
+
+                    <p class="texto-confirmar">
+
+                        Lamentamos que no puedas acompañarnos.
+
+                        <br><br>
+
+                        Gracias por hacernos saber tu decisión.
+
+                    </p>
+
+                `;
+
+        return;
+      }
+
+      // AÚN NO RESPONDE
+
+      contenedor.innerHTML = `
+
+                <img class="imagen-decorativa-confirmar"
+                src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png">
+
+                <h2 class="titulo-confirmar">
+
+                    Confirma tu asistencia
+
+                </h2>
+
+                <h3 class="nombres-confirmar">
+
+                    ${datos.FamiliaDesc}
+
+                </h3>
+
+                <p class="texto-confirmar">
+
+                    Nos haría mucha ilusión contar con tu presencia.
+
+                    <br><br>
+
+                    Nos gustaría saber si asistirás a nuestro gran día.
+
+                </p>
+
+                <div class="informacion-familia">
+
+                    <div>
+
+                        <span>Familia</span>
+
+                        <strong>${datos.FamiliaDesc}</strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>Pases asignados</span>
+
+                        <strong>${datos.Pases}</strong>
+
+                    </div>
+
+                </div>
+
+                <div class="bloque-boton-confirmar">
+
+                    <button
+                        id="btnAbrirConfirmacion"
+                        class="btn-confirmar">
+
+                        Confirmar asistencia
+
+                    </button>
+
+                </div>
+
+            `;
+
+      document
+        .getElementById("btnAbrirConfirmacion")
+        .addEventListener("click", () => {
+          modalSeguridad.classList.add("activo");
+        });
+    })
+
+    .catch(() => {
+      contenedor.innerHTML = `
+                <h2 class="titulo-confirmar">
+                    Error al cargar la invitación
+                </h2>
+            `;
+    });
+}
+function mostrarPase() {
+  const contenedor = document.getElementById("contenedorConfirmacion");
+
+  contenedor.innerHTML = `
+
+        <img class="imagen-decorativa-confirmar"
+            src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png"
+            alt="Decoración">
+
+        <h2 class="titulo-confirmar">
+            ¡Gracias por confirmar!
+        </h2>
+
+        <h3 class="nombres-confirmar">
+            ${datos.FamiliaDesc}
+        </h3>
+
+        <p class="texto-confirmar">
+
+            Nos llena de alegría saber que nos acompañarás.
+
+            <br><br>
+
+            <strong>Este es tu pase de entrada.</strong>
+
+            <br>
+
+            Favor de mostrar este código QR al ingresar al evento.
+
+        </p>
+
+        <div class="tarjeta-pase">
+
+            <div id="codigoQR"></div>
+
+            <div class="detalle-pase">
+
+                <div class="dato-pase">
+                    <span>Familia</span>
+                    <strong>${datos.FamiliaDesc}</strong>
+                </div>
+
+                <div class="dato-pase">
+                    <span>Mesa</span>
+                    <strong>${datos.Mesa}</strong>
+                </div>
+
+                <div class="dato-pase">
+                    <span>Pases</span>
+                    <strong>${datos.Pases}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+  generarQR(datos);
+}
+function generarQR(datos) {
+  const qrData = JSON.stringify({
+    id: datos.id,
+    familia: datos.FamiliaDesc,
+    mesa: datos.Mesa,
+    pases: datos.Pases,
+    codigo: datos.familiaNombre,
+    evento: "Boda Ismael & Luisa",
+    tipo: "PASE_ENTRADA",
+  });
+
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qrData)}`;
+
+  document.getElementById("codigoQR").innerHTML = `
+        <img src="${qrUrl}" alt="QR Pase de Entrada">
+    `;
 }
