@@ -5,7 +5,7 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 
-export const handler = async (event, context) => {
+export const handler = async (event) => {
   if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
@@ -14,64 +14,53 @@ export const handler = async (event, context) => {
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
       },
-      body: JSON.stringify({ message: "Successful preflight" }),
+      body: "",
     };
   }
 
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      body: JSON.stringify({ error: "Método no permitido." }),
+      body: JSON.stringify({
+        error: "Método no permitido.",
+      }),
     };
   }
 
   try {
-    const { FamiliaDesc, Mesa, Pases } = JSON.parse(event.body);
+    const { id, FamiliaDesc, Mesa, Pases } = JSON.parse(event.body);
 
-    if (!FamiliaDesc || !Mesa || Pases === undefined) {
+    if (!id || !FamiliaDesc || !Mesa || Pases === undefined) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Faltan campos obligatorios." }),
+        body: JSON.stringify({
+          error: "Faltan campos obligatorios.",
+        }),
       };
     }
 
-    // 1. Crear el identificador base usando URL Encode y pasándolo a minúsculas para consistencia
-    const identificadorBase = encodeURIComponent(
-      FamiliaDesc.trim().toLowerCase().replace(/\s+/g, "-"), // Reemplaza espacios por guiones para que la URL sea más limpia
-    );
+    const query = `
+            UPDATE "IsmaLuisa"
+            SET
+                "FamiliaDesc" = $1,
+                "Mesa" = $2,
+                "Pases" = $3
+            WHERE id = $4
+            RETURNING id;
+        `;
 
-    let familiaNombreUnico = identificadorBase;
+    const values = [FamiliaDesc, Mesa, parseInt(Pases, 10), parseInt(id, 10)];
 
-    // 2. Verificar si ya existen registros que empiecen con ese identificador
-    const checkQuery = `
-      SELECT COUNT(*) as total 
-      FROM "IsmaLuisa" 
-      WHERE "familiaNombre" = $1 OR "familiaNombre" LIKE $2;
-    `;
-    const checkValues = [identificadorBase, `${identificadorBase}-%`];
-    const checkResult = await pool.query(checkQuery, checkValues);
-    const coincidencias = parseInt(checkResult.rows[0].total, 10);
+    const result = await pool.query(query, values);
 
-    // 3. Si ya existen registros, le concatenamos el número consecutivo correspondiente
-    if (coincidencias > 0) {
-      familiaNombreUnico = `${identificadorBase}-${coincidencias}`;
+    if (result.rowCount === 0) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({
+          error: "No se encontró el invitado.",
+        }),
+      };
     }
-
-    // 4. Insertar en la base de datos incluyendo el nuevo campo 'familiaNombre'
-    const insertQuery = `
-      INSERT INTO "IsmaLuisa" ("familiaNombre", "FamiliaDesc", "Mesa", "Pases")
-      VALUES ($1, $2, $3, $4)
-      RETURNING id, "familiaNombre";
-    `;
-
-    const insertValues = [
-      familiaNombreUnico,
-      FamiliaDesc,
-      Mesa,
-      parseInt(Pases, 10),
-    ];
-
-    const result = await pool.query(insertQuery, insertValues);
 
     return {
       statusCode: 200,
@@ -80,20 +69,20 @@ export const handler = async (event, context) => {
       },
       body: JSON.stringify({
         success: true,
-        message: "Invitado agregado exitosamente.",
+        message: "Invitado actualizado correctamente.",
         id: result.rows[0].id,
-        familiaNombre: result.rows[0].familiaNombre, // Te lo devuelvo por si lo necesitas en el frontend
       }),
     };
   } catch (error) {
-    console.error("Error al procesar la solicitud:", error);
+    console.error(error);
+
     return {
       statusCode: 500,
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        error: "Error interno en el servidor.",
+        error: "Error interno del servidor.",
         details: error.message,
       }),
     };

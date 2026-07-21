@@ -177,103 +177,86 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================================================
   // 5. MODAL CONTROL DE ASISTENCIA Y SEGURIDAD
   // ==========================================================================
-  function mostrarMensaje(titulo, texto) {
-    document.getElementById("contenidoConfirmacion").style.display = "none";
+function mostrarMensaje(acepto){
+    document.getElementById("contenidoConfirmacion").style.display="none";
+    document.getElementById("mensajeFinal").style.display="block";
 
-    document.getElementById("mensajeFinal").style.display = "block";
+    if(acepto){
+        document.getElementById("iconoMensajeFinal").innerHTML="🤍";
+        document.getElementById("tituloMensajeFinal").textContent="¡Muchas gracias!";
+        document.getElementById("textoMensajeFinal").innerHTML=`
+            Tu asistencia ha sido registrada correctamente.
+            <br><br>
+            A continuación podrás visualizar tu pase digital con el código QR
+            que deberás presentar al ingresar al evento.
+        `;
+    }else{
+        document.getElementById("iconoMensajeFinal").innerHTML="🌿";
+        document.getElementById("tituloMensajeFinal").textContent="Gracias por avisarnos";
+        document.getElementById("textoMensajeFinal").innerHTML=`
+            Lamentamos que no puedas acompañarnos en este día tan especial.
+            <br><br>
+            Agradecemos mucho que nos hayas informado.
+        `;
+    }
+}
 
-    document.getElementById("tituloMensajeFinal").textContent = titulo;
+const btnAbrirConfirmacion=document.getElementById("btnAbrirConfirmacion");
+const modalSeguridad=document.getElementById("modalSeguridad");
+const btnCancelarModal=document.getElementById("btnCancelarModal");
+const btnConfirmarModal=document.getElementById("btnConfirmarModal");
+const btnRechazarModal=document.getElementById("btnRechazarModal");
 
-    document.getElementById("textoMensajeFinal").textContent = texto;
-  }
-  const btnAbrirConfirmacion = document.getElementById("btnAbrirConfirmacion");
-  const modalSeguridad = document.getElementById("modalSeguridad");
-  const btnCancelarModal = document.getElementById("btnCancelarModal");
-  const btnConfirmarModal = document.getElementById("btnConfirmarModal");
-  const btnRechazarModal = document.getElementById("btnRechazarModal");
+if(btnAbrirConfirmacion&&modalSeguridad){
 
-  if (btnAbrirConfirmacion && modalSeguridad) {
-    btnAbrirConfirmacion.addEventListener("click", () => {
-      modalSeguridad.classList.add("activo");
+    btnAbrirConfirmacion.addEventListener("click",()=>{
+        modalSeguridad.classList.add("activo");
     });
 
-    if (btnCancelarModal) {
-      btnCancelarModal.addEventListener("click", () => {
-        modalSeguridad.classList.remove("activo");
-      });
+    if(btnCancelarModal){
+        btnCancelarModal.addEventListener("click",()=>{
+            modalSeguridad.classList.remove("activo");
+        });
     }
 
-    if (btnConfirmarModal) {
-      btnConfirmarModal.addEventListener("click", async () => {
-        try {
-          const response = await fetch(
-            "/.netlify/functions/AceptarInvitacion",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                familiaNombre: datos.familiaNombre,
-                asistira: true, // o false si rechaza
-              }),
-            },
-          );
-
-          if (!response.ok) throw new Error();
-
-          await response.json();
-
-          modalSeguridad.classList.remove("activo");
-
-          mostrarMensaje(
-            "¡Muchas gracias!",
-            "Nos llena de alegría saber que compartirás con nosotros este momento tan especial. ¡Te esperamos con mucho cariño!",
-          );
-
-          location.reload();
-        } catch (err) {
-          console.error(err);
-          alert("No fue posible registrar tu respuesta.");
-        }
-      });
-      if (btnRechazarModal) {
-        btnRechazarModal.addEventListener("click", async () => {
-          try {
-            const response = await fetch(
-              "/.netlify/functions/AceptarInvitacion",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
+    async function enviarRespuesta(asistira){
+        try{
+            const response=await fetch("/.netlify/functions/AceptarInvitacion",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
                 },
-                body: JSON.stringify({
-                  familiaNombre: datos.familiaNombre,
-                  asistira: false, // o false si rechaza
+                body:JSON.stringify({
+                    familiaNombre:datos.familiaNombre,
+                    asistira:asistira
                 }),
-              },
-            );
-            if (!response.ok) throw new Error();
+            });
+
+            if(!response.ok)throw new Error();
 
             await response.json();
 
             modalSeguridad.classList.remove("activo");
+            mostrarMensaje(asistira);
 
-            mostrarMensaje(
-              "Gracias por avisarnos",
-              "Lamentamos que no puedas acompañarnos en esta ocasión. Agradecemos mucho que nos hayas informado y esperamos verte muy pronto.",
-            );
-
-            location.reload();
-          } catch (err) {
+        }catch(err){
             console.error(err);
             alert("No fue posible registrar tu respuesta.");
-          }
-        });
-      }
+        }
     }
-  }
-});
+
+    if(btnConfirmarModal){
+        btnConfirmarModal.addEventListener("click",()=>{
+            enviarRespuesta(true);
+        });
+    }
+
+    if(btnRechazarModal){
+        btnRechazarModal.addEventListener("click",()=>{
+            enviarRespuesta(false);
+        });
+    }
+}
 let petalInterval = null;
 
 function createPetal() {
