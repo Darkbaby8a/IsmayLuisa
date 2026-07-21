@@ -13,6 +13,30 @@
         rel="stylesheet">
 
     <style>
+        .mensaje-copiado {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #7b1e2b;
+            color: #f8ead5;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-family: "Montserrat", sans-serif;
+            opacity: 0;
+            visibility: hidden;
+            transition: .4s ease;
+            z-index: 99999;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        .mensaje-copiado.mostrar {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -367,7 +391,8 @@
                                 <th>Invitado / Familia</th>
                                 <th>Mesa</th>
                                 <th>Pases</th>
-                                <th>Identificador URL</th>
+                                <th>Estatus</th>
+                                <th>URL</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -382,8 +407,11 @@
             </div>
 
         </div>
-    </div>
 
+    </div>
+    <div id="mensajeCopiado" class="mensaje-copiado">
+        Enlace copiado correctamente
+    </div>
     <!-- SCRIPT DE CONTROL INTEGRADO -->
     <script>
         const tbody = document.getElementById("tablaCuerpo");
@@ -447,6 +475,11 @@
                     <td>${invitado.Mesa}</td>
                     <td>${invitado.Pases}</td>
                     <td>${estado}</td>
+                  <td>
+<button class="btn-copiar-link" onclick="copiarLink('https://ismayluisa.netlify.app/?familia=${invitado.familiaNombre}')">
+Copiar enlace
+</button>
+</td>
 
                     <td>
 
@@ -649,6 +682,44 @@
                     console.error(err);
 
                     alert("No fue posible eliminar el invitado.");
+
+                });
+
+        }
+        function copiarLink(texto) {
+
+            navigator.clipboard.writeText(texto)
+                .then(() => {
+
+                    const mensaje = document.getElementById("mensajeCopiado");
+
+                    mensaje.classList.add("mostrar");
+
+
+                    setTimeout(() => {
+
+                        mensaje.classList.remove("mostrar");
+
+                    }, 2500);
+
+
+                })
+                .catch(() => {
+
+                    const mensaje = document.getElementById("mensajeCopiado");
+
+                    mensaje.textContent = "No fue posible copiar";
+
+                    mensaje.classList.add("mostrar");
+
+
+                    setTimeout(() => {
+
+                        mensaje.classList.remove("mostrar");
+
+                        mensaje.textContent = "Enlace copiado correctamente";
+
+                    }, 2500);
 
                 });
 

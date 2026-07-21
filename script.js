@@ -508,24 +508,33 @@ function mostrarPase() {
 
             <div id="codigoQR"></div>
 
-            <div class="detalle-pase">
+<div class="datos-pase">
 
-                <div class="dato-pase">
-                    <span>Familia</span>
-                    <strong>${datos.FamiliaDesc}</strong>
-                </div>
+<div class="dato-pase">
+<div class="dato-icono">👨‍👩‍👧</div>
+<div class="dato-info">
+<span>Familia</span>
+<strong>${datos.FamiliaDesc}</strong>
+</div>
+</div>
 
-                <div class="dato-pase">
-                    <span>Mesa</span>
-                    <strong>${datos.Mesa}</strong>
-                </div>
+<div class="dato-pase">
+<div class="dato-icono">✦</div>
+<div class="dato-info">
+<span>Mesa</span>
+<strong>${datos.Mesa}</strong>
+</div>
+</div>
 
-                <div class="dato-pase">
-                    <span>Pases</span>
-                    <strong>${datos.Pases}</strong>
-                </div>
+<div class="dato-pase">
+<div class="dato-icono">🤍</div>
+<div class="dato-info">
+<span>Pases asignados</span>
+<strong>${datos.Pases}</strong>
+</div>
+</div>
 
-            </div>
+</div>
 
         </div>
 

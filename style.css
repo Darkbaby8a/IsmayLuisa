@@ -1887,9 +1887,9 @@ RESPONSIVE
 }
 
 .imagen-decorativa-confirmar{
-    width:110px;
+    width:180px;
     margin-bottom:32px;
-    filter: grayscale(1) contrast(1.2); /* Sofisticar la imagen si tiene colores raros */
+   
 }
 
 .titulo-confirmar{
@@ -2646,9 +2646,9 @@ RESPONSIVE
 }
 
 .imagen-decorativa-confirmar {
-    max-width: 120px;
+    max-width: 180px;
     height: auto;
-    margin-bottom: 25px;
+    margin: 0 auto  25px auto;
 }
 
 .titulo-confirmar {
@@ -3107,4 +3107,78 @@ line-height:1.6;
 #contenidoRespuesta,
 #mensajeFinal{
 transition:.3s;
+}
+.datos-pase{
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-top:25px;
+}
+
+
+.dato-pase{
+display:flex;
+align-items:center;
+gap:18px;
+padding:16px 20px;
+background:linear-gradient(135deg,#fff,#f5ead9);
+border-radius:18px;
+border:1px solid rgba(123,30,43,.25);
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+position:relative;
+overflow:hidden;
+}
+
+
+.dato-pase::before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+height:100%;
+width:5px;
+background:#7b1e2b;
+}
+
+
+.dato-icono{
+width:48px;
+height:48px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:#7b1e2b;
+color:#f6ead7;
+font-size:22px;
+flex-shrink:0;
+}
+
+
+.dato-info{
+display:flex;
+flex-direction:column;
+gap:5px;
+}
+
+
+.dato-info span{
+font-family:"Montserrat",sans-serif;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:#8a7560;
+}
+
+
+.dato-info strong{
+font-family:"Playfair Display",serif;
+font-size:22px;
+color:#1c1c1c;
+}
+
+
+.datos-pase .dato-pase:last-child .dato-icono{
+background:#d8b98a;
+color:#7b1e2b;
 }
