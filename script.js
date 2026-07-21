@@ -604,7 +604,7 @@ function actualizarPases() {
         contenedor.innerHTML = `
 
                     <img class="imagen-decorativa-confirmar"
-                    src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png">
+                  src="Imagenes/ArregloFlores.png">
 
                     <h2 class="titulo-confirmar">
                         Gracias por avisarnos
@@ -634,7 +634,7 @@ function actualizarPases() {
       contenedor.innerHTML = `
 
                 <img class="imagen-decorativa-confirmar"
-                src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png">
+                src="Imagenes/ArregloFlores.png">
 
                 <h2 class="titulo-confirmar">
 
