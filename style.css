@@ -124,7 +124,7 @@ body {
 body {
     background-color: var(--color-negro);
     color: var(--color-crema);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Cinzel Decorative', serif !important;
     min-height: 100vh;
     overflow-x: hidden;
 }

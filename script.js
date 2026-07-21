@@ -14,7 +14,21 @@ document.addEventListener("DOMContentLoaded", () => {
       // Quitamos solo el frente del sobre
       contenedorSobre.classList.add("quitar-fondo");
     }, 3500);
-
+    if (document.querySelector(".mySwiper") && typeof Swiper !== "undefined") {
+      new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        speed: 20000, // Movimiento ultra lento continuo lineal
+        autoplay: {
+          delay: 0,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          768: { slidesPerView: 2 },
+        },
+      });
+    }
     // Después mostramos la invitación
     setTimeout(() => {
       contenedorSobre.classList.add("oculto");
@@ -26,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       startPetals();
-    }, 5000);
+    }, 4000);
   });
 });
 // ==========================================================================
