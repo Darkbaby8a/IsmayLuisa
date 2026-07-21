@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (contenidoInvitacion) {
         contenidoInvitacion.classList.add("invitacion-activa");
       }
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
 
       startPetals();
     }, 4000);
