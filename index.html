@@ -18,10 +18,20 @@
 <body>
 
     <div class="contenedor-sobre" id="contenedorSobre">
+
         <div class="sobre" id="botonAbrir">
-            <img src="Imagenes/Sobreprincipal.png" alt="Sobre" class="sobre-base">
-            <img src="Imagenes/solpaApertura.png" alt="Solapa" class="sobre-solapa">
+
+            <!-- Fondo del sobre -->
+            <img src="Imagenes/Sobreprincipal.png" class="sobre-base" id="sobreBase">
+
+            <!-- Parte inferior -->
+            <img src="Imagenes/sobreParteAbajo.png" class="sobre-abajo">
+
+            <!-- Solapa superior -->
+            <img src="Imagenes/Sobrepartearriba.png" class="sobre-solapa">
+
         </div>
+
     </div>
 
     <main class="seccion-invitacion" id="contenidoInvitacion">
@@ -635,66 +645,62 @@
     </section>
 
     <!-- MODAL DE CONFIRMACIÓN DE SEGURIDAD -->
-    <div class="contenido-modal-seguridad">
+    <div class="modal-respuesta" id="modalRespuesta">
 
-        <div id="contenidoConfirmacion">
+        <div class="modal-respuesta-contenedor">
 
-            <div class="icono-confirmacion-modal">
-                🤍
-            </div>
+            <div id="contenidoRespuesta">
 
-            <h4 class="titulo-modal-seguridad">
-                ¿Nos acompañarás?
-            </h4>
+                <div class="modal-respuesta-icono">
+                    🤍
+                </div>
 
-            <p class="texto-modal-seguridad">
-                Tu respuesta es muy importante para nosotros.
+                <h4 class="modal-respuesta-titulo">
+                    ¿Nos acompañarás?
+                </h4>
 
-                <br><br>
+                <p class="modal-respuesta-texto">
+                    Tu respuesta es muy importante para nosotros.
+                    <br><br>
+                    Si confirmas tu asistencia, se generará inmediatamente tu
+                    <strong>pase digital de acceso</strong>, el cual deberás mostrar al ingresar al evento.
+                </p>
 
-                Si confirmas tu asistencia, se generará inmediatamente tu
-                <strong>pase digital de acceso</strong>, el cual deberás mostrar al ingresar al evento.
-            </p>
+                <div class="modal-respuesta-botones">
 
-            <div class="botones-modal-seguridad">
+                    <button type="button" id="btnCancelarModal" class="modal-btn-cancelar">
+                        Cancelar
+                    </button>
 
-                <button type="button" id="btnCancelarModal" class="btn-modal-secundario">
+                    <button type="button" id="btnRechazarModal" class="modal-btn-rechazar">
+                        No asistiré
+                    </button>
 
-                    Cancelar
+                    <button type="button" id="btnConfirmarModal" class="modal-btn-confirmar">
+                        Sí, asistiré
+                    </button>
 
-                </button>
-
-                <button type="button" id="btnRechazarModal" class="btn-modal-rechazar">
-
-                    No asistiré
-
-                </button>
-
-                <button type="button" id="btnConfirmarModal" class="btn-modal-principal">
-
-                    Sí, asistiré
-
-                </button>
+                </div>
 
             </div>
 
-        </div>
 
-        <div id="mensajeFinal" class="mensaje-final">
+            <div id="mensajeFinal" class="modal-respuesta-final">
 
-            <div class="icono-final" id="iconoMensajeFinal">
-                ❤
+                <div class="modal-respuesta-icono-final" id="iconoMensajeFinal">
+                    ❤
+                </div>
+
+                <h3 id="tituloMensajeFinal"></h3>
+
+                <p id="textoMensajeFinal"></p>
+
+                <button type="button" id="btnCerrarMensaje" class="modal-btn-confirmar">
+                    Continuar
+                </button>
+
             </div>
 
-            <h3 id="tituloMensajeFinal"></h3>
-
-            <p id="textoMensajeFinal"></p>
-
-            <button type="button" id="btnCerrarMensaje" class="btn-modal-principal">
-
-                Continuar
-
-            </button>
 
         </div>
 

@@ -6,43 +6,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const contenedorSobre = document.getElementById("contenedorSobre");
   const contenidoInvitacion = document.getElementById("contenidoInvitacion");
 
-  if (botonAbrir && contenedorSobre) {
-    botonAbrir.addEventListener("click", () => {
-      contenedorSobre.classList.add("animar");
+  botonAbrir.addEventListener("click", () => {
+    contenedorSobre.classList.add("animar");
 
-      // Al finalizar los 6 segundos de la solapa se limpia el viewport
-      setTimeout(() => {
-        contenedorSobre.classList.add("oculto");
-        document.body.classList.add("mostrar-boda");
+    // Esperamos que la solapa termine de abrir
+    setTimeout(() => {
+      // Quitamos solo el frente del sobre
+      contenedorSobre.classList.add("quitar-fondo");
+    }, 3500);
 
-        if (contenidoInvitacion) {
-          contenidoInvitacion.classList.add("invitacion-activa");
-        }
-        startPetals();
-        window.scrollTo({ top: 0, behavior: "instant" });
+    // Después mostramos la invitación
+    setTimeout(() => {
+      contenedorSobre.classList.add("oculto");
 
-        // Inicialización segura de Swiper con las dimensiones del contenedor activo
-        if (
-          document.querySelector(".mySwiper") &&
-          typeof Swiper !== "undefined"
-        ) {
-          new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            loop: true,
-            speed: 20000, // Movimiento ultra lento continuo lineal
-            autoplay: {
-              delay: 0,
-              disableOnInteraction: false,
-            },
-            breakpoints: {
-              768: { slidesPerView: 2 },
-            },
-          });
-        }
-      }, 3000);
-    });
-  }
+      document.body.classList.add("mostrar-boda");
+
+      if (contenidoInvitacion) {
+        contenidoInvitacion.classList.add("invitacion-activa");
+      }
+
+      startPetals();
+    }, 5000);
+  });
 });
 // ==========================================================================
 // 2. CUENTA REGRESIVA (11 de Octubre de 2026 a las 15:00)
@@ -177,47 +162,52 @@ if (tarjetaRegalo) {
 // ==========================================================================
 // 5. MODAL CONTROL DE ASISTENCIA Y SEGURIDAD
 // ==========================================================================
-function mostrarMensaje(acepto) {
-  document.getElementById("contenidoConfirmacion").style.display = "none";
-  document.getElementById("mensajeFinal").style.display = "block";
+document.addEventListener("DOMContentLoaded", () => {
+  const btnAbrirConfirmacion = document.getElementById("btnAbrirConfirmacion");
+  const modalRespuesta = document.getElementById("modalRespuesta");
+  const btnCancelarModal = document.getElementById("btnCancelarModal");
+  const btnConfirmarModal = document.getElementById("btnConfirmarModal");
+  const btnRechazarModal = document.getElementById("btnRechazarModal");
+  const btnCerrarMensaje = document.getElementById("btnCerrarMensaje");
+  const contenidoRespuesta = document.getElementById("contenidoRespuesta");
+  const mensajeFinal = document.getElementById("mensajeFinal");
 
-  if (acepto) {
-    document.getElementById("iconoMensajeFinal").innerHTML = "🤍";
-    document.getElementById("tituloMensajeFinal").textContent =
-      "¡Muchas gracias!";
-    document.getElementById("textoMensajeFinal").innerHTML = `
-            Tu asistencia ha sido registrada correctamente.
-            <br><br>
-            A continuación podrás visualizar tu pase digital con el código QR
-            que deberás presentar al ingresar al evento.
-        `;
-  } else {
-    document.getElementById("iconoMensajeFinal").innerHTML = "🌿";
-    document.getElementById("tituloMensajeFinal").textContent =
-      "Gracias por avisarnos";
-    document.getElementById("textoMensajeFinal").innerHTML = `
-            Lamentamos que no puedas acompañarnos en este día tan especial.
-            <br><br>
-            Agradecemos mucho que nos hayas informado.
-        `;
+  if (btnAbrirConfirmacion && modalRespuesta) {
+    btnAbrirConfirmacion.addEventListener("click", () => {
+      modalRespuesta.classList.add("activo");
+    });
   }
-}
-
-const btnAbrirConfirmacion = document.getElementById("btnAbrirConfirmacion");
-const modalSeguridad = document.getElementById("modalSeguridad");
-const btnCancelarModal = document.getElementById("btnCancelarModal");
-const btnConfirmarModal = document.getElementById("btnConfirmarModal");
-const btnRechazarModal = document.getElementById("btnRechazarModal");
-
-if (btnAbrirConfirmacion && modalSeguridad) {
-  btnAbrirConfirmacion.addEventListener("click", () => {
-    modalSeguridad.classList.add("activo");
-  });
 
   if (btnCancelarModal) {
     btnCancelarModal.addEventListener("click", () => {
-      modalSeguridad.classList.remove("activo");
+      modalRespuesta.classList.remove("activo");
     });
+  }
+
+  function mostrarMensaje(acepto) {
+    contenidoRespuesta.style.display = "none";
+    mensajeFinal.style.display = "block";
+    actualizarPases();
+    if (acepto) {
+      document.getElementById("iconoMensajeFinal").innerHTML = "🤍";
+      document.getElementById("tituloMensajeFinal").textContent =
+        "¡Muchas gracias!";
+      document.getElementById("textoMensajeFinal").innerHTML = `
+Tu asistencia ha sido registrada correctamente.
+<br><br>
+A continuación podrás visualizar tu pase digital con el código QR
+que deberás presentar al ingresar al evento.
+`;
+    } else {
+      document.getElementById("iconoMensajeFinal").innerHTML = "🌿";
+      document.getElementById("tituloMensajeFinal").textContent =
+        "Gracias por avisarnos";
+      document.getElementById("textoMensajeFinal").innerHTML = `
+Lamentamos que no puedas acompañarnos en este día tan especial.
+<br><br>
+Agradecemos mucho que nos hayas informado.
+`;
+    }
   }
 
   async function enviarRespuesta(asistira) {
@@ -237,10 +227,10 @@ if (btnAbrirConfirmacion && modalSeguridad) {
 
       await response.json();
 
-      modalSeguridad.classList.remove("activo");
+      modalRespuesta.classList.remove("activo");
       mostrarMensaje(asistira);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       alert("No fue posible registrar tu respuesta.");
     }
   }
@@ -256,7 +246,18 @@ if (btnAbrirConfirmacion && modalSeguridad) {
       enviarRespuesta(false);
     });
   }
-}
+
+  if (btnCerrarMensaje) {
+    btnCerrarMensaje.addEventListener("click", () => {
+      modalRespuesta.classList.remove("activo");
+
+      setTimeout(() => {
+        contenidoRespuesta.style.display = "block";
+        mensajeFinal.style.display = "none";
+      }, 500);
+    });
+  }
+});
 let petalInterval = null;
 
 function createPetal() {
@@ -548,4 +549,130 @@ function generarQR(datos) {
   document.getElementById("codigoQR").innerHTML = `
         <img src="${qrUrl}" alt="QR Pase de Entrada">
     `;
+}
+function actualizarPases() {
+  fetch(
+    `/.netlify/functions/obtener-invitado?familia=${encodeURIComponent(familia)}`,
+  )
+    .then((res) => res.json())
+
+    .then((res) => {
+      if (!res.ok || !res.invitado) {
+        contenedor.innerHTML = `
+                    <h2 class="titulo-confirmar">
+                        Invitación no encontrada
+                    </h2>
+                `;
+
+        return;
+      }
+
+      datos = res.invitado;
+
+      // YA CONFIRMÓ
+      if (datos.acepto == true || datos.Acepto == true || datos.acepto == 1) {
+        mostrarPase();
+
+        return;
+      }
+
+      // RECHAZÓ
+      if (datos.rechazo == true || datos.rechazo == 1) {
+        contenedor.innerHTML = `
+
+                    <img class="imagen-decorativa-confirmar"
+                    src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png">
+
+                    <h2 class="titulo-confirmar">
+                        Gracias por avisarnos
+                    </h2>
+
+                    <h3 class="nombres-confirmar">
+                        ${datos.FamiliaDesc}
+                    </h3>
+
+                    <p class="texto-confirmar">
+
+                        Lamentamos que no puedas acompañarnos.
+
+                        <br><br>
+
+                        Gracias por hacernos saber tu decisión.
+
+                    </p>
+
+                `;
+
+        return;
+      }
+
+      // AÚN NO RESPONDE
+
+      contenedor.innerHTML = `
+
+                <img class="imagen-decorativa-confirmar"
+                src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png">
+
+                <h2 class="titulo-confirmar">
+
+                    Confirma tu asistencia
+
+                </h2>
+
+                <h3 class="nombres-confirmar">
+
+                    ${datos.FamiliaDesc}
+
+                </h3>
+
+                <p class="texto-confirmar">
+
+                    Nos haría mucha ilusión contar con tu presencia.
+
+                    <br><br>
+
+                    Nos gustaría saber si asistirás a nuestro gran día.
+
+                </p>
+
+                <div class="informacion-familia">
+
+                    <div>
+
+                        <span>Familia</span>
+
+                        <strong>${datos.FamiliaDesc}</strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>Pases asignados</span>
+
+                        <strong>${datos.Pases}</strong>
+
+                    </div>
+
+                </div>
+
+                <div class="bloque-boton-confirmar">
+
+                    <button
+                        id="btnAbrirConfirmacion"
+                        class="btn-confirmar">
+
+                        Confirmar asistencia
+
+                    </button>
+
+                </div>
+
+            `;
+
+      document
+        .getElementById("btnAbrirConfirmacion")
+        .addEventListener("click", () => {
+          modalSeguridad.classList.add("activo");
+        });
+    });
 }
