@@ -212,7 +212,7 @@ Agradecemos mucho que nos hayas informado.
 
   async function enviarRespuesta(asistira) {
     try {
-      const response = await fetch("/.netlify/functions/AceptarInvitacion", {
+      const response = await fetch("/.netlify/functions/aceptarinvitados", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -479,7 +479,7 @@ function mostrarPase() {
   contenedor.innerHTML = `
 
         <img class="imagen-decorativa-confirmar"
-            src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png"
+            src="Imagenes/ArregloFlores.png"
             alt="Decoración">
 
         <h2 class="titulo-confirmar">
