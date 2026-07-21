@@ -461,7 +461,7 @@ if (!familia) {
       document
         .getElementById("btnAbrirConfirmacion")
         .addEventListener("click", () => {
-          modalSeguridad.classList.add("activo");
+          modalRespuesta.classList.add("activo");
         });
     })
 
@@ -668,11 +668,5 @@ function actualizarPases() {
                 </div>
 
             `;
-
-      document
-        .getElementById("btnAbrirConfirmacion")
-        .addEventListener("click", () => {
-          modalSeguridad.classList.add("activo");
-        });
     });
 }
