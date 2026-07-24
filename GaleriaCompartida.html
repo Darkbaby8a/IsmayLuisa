@@ -409,16 +409,18 @@ SECCION
                 form.append("file", archivo);
 
                 const respuesta = await fetch("/.netlify/functions/subir-foto", {
-
                     method: "POST",
-
                     body: form
-
                 });
 
-                const datos = await respuesta.json();
+                const texto = await respuesta.text();
 
-                console.log(datos);
+                console.log("STATUS:", respuesta.status);
+                console.log(texto);
+
+                if (!respuesta.ok) {
+                    throw new Error(texto);
+                }
 
             }
 
