@@ -12,6 +12,46 @@
     <title>Comparte tus recuerdos - Ismael & Luisa</title>
 
     <style>
+        #galeriaBoda {
+
+            columns: 4 260px;
+
+            column-gap: 20px;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+        }
+
+
+        .item-galeria {
+
+            break-inside: avoid;
+
+            margin-bottom: 20px;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            background: #fff;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, .12);
+
+        }
+
+
+        .item-galeria img,
+        .item-galeria video {
+
+            width: 100%;
+
+            display: block;
+
+        }
+
         :root {
 
             --guinda: #7A1632;
@@ -308,12 +348,280 @@ SECCION
             }
 
         }
+
+        .hero-recuerdos {
+
+            position: relative;
+
+            margin-bottom: 50px;
+
+        }
+
+        .brillo {
+
+            width: 220px;
+            height: 220px;
+
+            background: radial-gradient(circle,
+                    rgba(122, 22, 50, .12),
+                    transparent 70%);
+
+            position: absolute;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            top: -40px;
+
+            filter: blur(10px);
+
+        }
+
+        .sello {
+
+            width: 120px;
+
+            margin: auto;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+        .subtitulo {
+
+            display: block;
+
+            margin-top: 20px;
+
+            letter-spacing: 6px;
+
+            color: #7A1632;
+
+            font-size: .85rem;
+
+            text-transform: uppercase;
+
+        }
+
+        .hero-recuerdos h1 {
+
+            font-family: 'Cinzel Decorative';
+
+            font-size: clamp(2.6rem, 5vw, 4rem);
+
+            margin: 15px 0;
+
+            color: #181818;
+
+        }
+
+        .ornamento {
+
+            max-width: 380px;
+
+            margin: 25px auto;
+
+        }
+
+        .novios {
+
+            font-family: 'Cinzel';
+
+            font-size: 2rem;
+
+            color: #7A1632;
+
+            margin-top: 10px;
+
+            letter-spacing: 2px;
+
+        }
+
+        .fecha {
+
+            margin-top: 10px;
+
+            color: #9c8b82;
+
+            font-family: 'Montserrat';
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            font-size: .9rem;
+
+        }
+
+        .contenedor-recuerdos {
+
+            position: relative;
+
+            max-width: 900px;
+
+            margin: auto;
+
+            background: white;
+
+            border-radius: 28px;
+
+            padding: 70px 60px;
+
+            box-shadow:
+
+                0 20px 60px rgba(0, 0, 0, .08),
+
+                0 0 0 1px rgba(122, 22, 50, .08);
+
+        }
+
+        #btnSubir {
+
+            margin-top: 45px;
+
+            padding: 18px 42px;
+
+            border: none;
+
+            border-radius: 60px;
+
+            background: linear-gradient(135deg, #7A1632, #a82b4d);
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition: .35s;
+
+            box-shadow:
+
+                0 15px 35px rgba(122, 22, 50, .25);
+
+        }
+
+        #btnSubir:hover {
+
+            transform: translateY(-5px) scale(1.03);
+
+            box-shadow:
+
+                0 25px 50px rgba(122, 22, 50, .35);
+
+        }
+
+        body {
+
+            background:
+
+                radial-gradient(circle at top, #faf8f6, #ffffff 55%),
+
+                linear-gradient(#fff, #fcfbfa);
+
+        }
+
+        .flor {
+
+            opacity: .05;
+
+            animation: flotar 10s ease-in-out infinite;
+
+        }
+
+        @keyframes flotar {
+
+            0% {
+
+                transform: translateY(0px) rotate(0deg);
+
+            }
+
+            50% {
+
+                transform: translateY(-8px) rotate(2deg);
+
+            }
+
+            100% {
+
+                transform: translateY(0px) rotate(0deg);
+
+            }
+
+        }
     </style>
 
 </head>
 
 <body>
+    <div class="hero-recuerdos">
 
+        <div class="brillo"></div>
+
+        <div class="sello">
+
+            <svg viewBox="0 0 120 120">
+
+                <circle cx="60" cy="60" r="56" fill="none" stroke="#7A1632" stroke-width="2" />
+
+                <circle cx="60" cy="60" r="45" fill="none" stroke="#C7A17A" stroke-width="1" stroke-dasharray="3 5" />
+
+                <path fill="#7A1632"
+                    d="M82 43h-8l-4-6H50l-4 6h-8c-4 0-7 3-7 7v25c0 4 3 7 7 7h44c4 0 7-3 7-7V50c0-4-3-7-7-7zm-22 31c-8 0-14-6-14-14s6-14 14-14 14 6 14 14-6 14-14 14zm0-23a9 9 0 100 18 9 9 0 000-18z" />
+
+            </svg>
+
+        </div>
+
+        <span class="subtitulo">
+
+            CADA RECUERDO CUENTA
+
+        </span>
+
+        <h1>
+
+            Comparte tus recuerdos
+
+        </h1>
+
+        <div class="ornamento">
+
+            <svg viewBox="0 0 600 60">
+
+                <path d="M0 30h170
+                   c20 0 35-18 55-18
+                   s35 18 55 18
+                   h90
+                   c20 0 35-18 55-18
+                   s35 18 55 18
+                   H600" fill="none" stroke="#b18b67" stroke-width="2" />
+
+            </svg>
+
+        </div>
+
+        <div class="novios">
+
+            Ismael &amp; Luisa
+
+        </div>
+
+        <div class="fecha">
+
+            11 de octubre de 2026
+
+        </div>
+
+    </div>
     <section class="seccion-recuerdos">
 
         <div class="marco-floral">
@@ -383,6 +691,7 @@ SECCION
         </div>
 
     </section>
+    <div id="galeriaBoda"></div>
     <script
         src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
     <script>
@@ -516,7 +825,77 @@ SECCION
             });
 
         }
+        async function cargarFotos() {
 
+
+            const contenedor =
+                document.getElementById("galeriaBoda");
+
+
+            const res =
+                await fetch(
+                    "/.netlify/functions/galeria"
+                );
+
+
+            const fotos =
+                await res.json();
+
+
+
+            fotos.forEach(foto => {
+
+
+                const div =
+                    document.createElement("div");
+
+
+                div.className = "item-galeria";
+
+
+
+                if (foto.tipo === "image") {
+
+
+                    div.innerHTML = `
+
+            <img 
+            src="${foto.url}"
+            loading="lazy">
+
+            `;
+
+
+                } else {
+
+
+                    div.innerHTML = `
+
+            <video
+            controls
+            preload="metadata">
+
+                <source src="${foto.original}">
+
+            </video>
+
+            `;
+
+
+                }
+
+
+
+                contenedor.appendChild(div);
+
+
+            });
+
+
+        }
+
+
+        cargarFotos();
     </script>
 
 </body>
