@@ -390,41 +390,74 @@ SECCION
         const input = document.getElementById("imagenes");
         const estado = document.getElementById("estado");
 
-        btn.onclick = async () => {
+        const input = document.getElementById("imagenes");
+        const estado = document.getElementById("estado");
+
+        document.getElementById("btnSubir").onclick = async () => {
 
             if (input.files.length == 0) {
 
-                alert("Selecciona una fotografía");
+                alert("Selecciona fotografías");
 
                 return;
 
             }
 
-            estado.innerHTML = "Subiendo...";
+            estado.innerHTML = "";
 
             for (const archivo of input.files) {
 
-                const form = new FormData();
+                const base64 = await convertirBase64(archivo);
 
-                form.append("file", archivo);
+                try {
 
-                const respuesta = await fetch("/.netlify/functions/subir-foto", {
-                    method: "POST",
-                    body: form
-                });
+                    const respuesta = await fetch("/.netlify/functions/subir-foto", {
 
-                const texto = await respuesta.text();
+                        method: "POST",
 
-                console.log("STATUS:", respuesta.status);
-                console.log(texto);
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
 
-                if (!respuesta.ok) {
-                    throw new Error(texto);
+                        body: JSON.stringify({
+
+                            file: base64
+
+                        })
+
+                    });
+
+                    const datos = await respuesta.json();
+
+                    console.log(datos);
+
+                    estado.innerHTML += `<p>✅ ${archivo.name}</p>`;
+
+                }
+
+                catch (e) {
+
+                    console.error(e);
+
+                    estado.innerHTML += `<p>❌ ${archivo.name}</p>`;
+
                 }
 
             }
 
-            estado.innerHTML = "❤ Gracias por compartir tus recuerdos.";
+        }
+
+        function convertirBase64(file) {
+
+            return new Promise(resolve => {
+
+                const reader = new FileReader();
+
+                reader.onload = () => resolve(reader.result);
+
+                reader.readAsDataURL(file);
+
+            });
 
         }
 

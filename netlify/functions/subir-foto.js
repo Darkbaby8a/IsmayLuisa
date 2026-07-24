@@ -1,4 +1,3 @@
-import Busboy from "busboy";
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
@@ -15,52 +14,41 @@ export async function handler(event) {
     };
   }
 
-  return new Promise((resolve, reject) => {
-    const busboy = Busboy({
-      headers: event.headers,
-    });
+  try {
+    const body = JSON.parse(event.body);
 
-    const buffers = [];
+    const resultado = await cloudinary.uploader.upload(
+      body.file,
 
-    busboy.on("file", (name, file) => {
-      file.on("data", (data) => {
-        buffers.push(data);
-      });
-    });
+      {
+        folder: "boda",
 
-    busboy.on("finish", async () => {
-      try {
-        const buffer = Buffer.concat(buffers);
+        resource_type: "auto",
+      },
+    );
 
-        const resultado = await new Promise((ok, error) => {
-          cloudinary.uploader
-            .upload_stream(
-              {
-                folder: "boda",
-              },
-              (err, result) => {
-                if (err) return error(err);
+    return {
+      statusCode: 200,
 
-                ok(result);
-              },
-            )
-            .end(buffer);
-        });
+      body: JSON.stringify({
+        ok: true,
 
-        resolve({
-          statusCode: 200,
+        url: resultado.secure_url,
 
-          body: JSON.stringify(resultado),
-        });
-      } catch (e) {
-        resolve({
-          statusCode: 500,
+        public_id: resultado.public_id,
+      }),
+    };
+  } catch (error) {
+    console.error(error);
 
-          body: JSON.stringify(e),
-        });
-      }
-    });
+    return {
+      statusCode: 500,
 
-    busboy.end(Buffer.from(event.body, "base64"));
-  });
+      body: JSON.stringify({
+        ok: false,
+
+        error: error.message,
+      }),
+    };
+  }
 }
