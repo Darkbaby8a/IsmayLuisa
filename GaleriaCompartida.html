@@ -790,113 +790,7 @@ GALERÍA MASONRY ELEGANTE
             boton.style.cursor = "pointer";
         };
 
-        // ==========================================
-        // 2. CARGAR FOTOS EN LA GALERÍA
-        // ==========================================
-        // ==========================================
-        // CARGAR FOTOS CON MARCO ELEGANTE Y LIGHTBOX
-        // ==========================================
-        async function cargarFotos() {
-            const contenedor = document.getElementById("galeriaBoda");
-            if (!contenedor) return;
 
-            try {
-                const res = await fetch("/.netlify/functions/galeria");
-                if (!res.ok) throw new Error("Error al consultar la galería");
-
-                const fotos = await res.json();
-                contenedor.innerHTML = ""; // Limpiar previo
-
-                if (fotos.length === 0) {
-                    contenedor.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #8c7355; font-style: italic;">
-                    ✨ Aún no hay fotos en el álbum. ¡Sé el primero en subir un recuerdo!
-                </div>
-            `;
-                    return;
-                }
-
-                fotos.forEach(foto => {
-                    const card = document.createElement("div");
-                    card.className = "item-galeria";
-
-                    if (foto.tipo === "image") {
-                        card.innerHTML = `
-                    <div class="item-galeria-inner">
-                        <img src="${foto.url}" loading="lazy" alt="Recuerdo Boda">
-                    </div>
-                `;
-                        card.onclick = () => abrirLightbox("image", foto.url);
-                    } else {
-                        card.innerHTML = `
-                    <div class="item-galeria-inner">
-                        <div class="badge-video">
-                            ▶ Video
-                        </div>
-                        <video preload="metadata" muted>
-                            <source src="${foto.original || foto.url}">
-                        </video>
-                    </div>
-                `;
-                        card.onclick = () => abrirLightbox("video", foto.original || foto.url);
-                    }
-
-                    contenedor.appendChild(card);
-                });
-
-            } catch (error) {
-                console.error("Error al cargar la galería:", error);
-            }
-        }
-
-        // ==========================================
-        // SISTEMA LIGHTBOX (AMPLIAR RECUERDO)
-        // ==========================================
-        function inicializarLightbox() {
-            if (document.getElementById("lightboxModal")) return;
-
-            const modal = document.createElement("div");
-            modal.id = "lightboxModal";
-            modal.className = "lightbox-modal";
-            modal.innerHTML = `
-        <button class="lightbox-cerrar" id="btnCerrarLightbox">&times;</button>
-        <div class="lightbox-contenido" id="lightboxTarget"></div>
-    `;
-
-            document.body.appendChild(modal);
-
-            const cerrar = () => modal.classList.remove("activo");
-            document.getElementById("btnCerrarLightbox").onclick = cerrar;
-            modal.onclick = (e) => { if (e.target === modal) cerrar(); };
-
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape") cerrar();
-            });
-        }
-
-        function abrirLightbox(tipo, url) {
-            const modal = document.getElementById("lightboxModal");
-            const target = document.getElementById("lightboxTarget");
-            if (!modal || !target) return;
-
-            if (tipo === "image") {
-                target.innerHTML = `<img src="${url}" alt="Foto ampliada">`;
-            } else {
-                target.innerHTML = `
-            <video controls autoplay style="max-height: 80vh; width: 100%;">
-                <source src="${url}">
-            </video>
-        `;
-            }
-
-            modal.classList.add("activo");
-        }
-
-        // Inicialización automática
-        document.addEventListener("DOMContentLoaded", () => {
-            inicializarLightbox();
-            cargarFotos();
-        });
         // ==========================================
         // 3. FUNCIONES AUXILIARES
         // ==========================================
@@ -943,6 +837,113 @@ GALERÍA MASONRY ELEGANTE
         `;
         }
 
+    });
+    // ==========================================
+    // 2. CARGAR FOTOS EN LA GALERÍA
+    // ==========================================
+    // ==========================================
+    // CARGAR FOTOS CON MARCO ELEGANTE Y LIGHTBOX
+    // ==========================================
+    async function cargarFotos() {
+        const contenedor = document.getElementById("galeriaBoda");
+        if (!contenedor) return;
+
+        try {
+            const res = await fetch("/.netlify/functions/galeria");
+            if (!res.ok) throw new Error("Error al consultar la galería");
+
+            const fotos = await res.json();
+            contenedor.innerHTML = ""; // Limpiar previo
+
+            if (fotos.length === 0) {
+                contenedor.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #8c7355; font-style: italic;">
+                    ✨ Aún no hay fotos en el álbum. ¡Sé el primero en subir un recuerdo!
+                </div>
+            `;
+                return;
+            }
+
+            fotos.forEach(foto => {
+                const card = document.createElement("div");
+                card.className = "item-galeria";
+
+                if (foto.tipo === "image") {
+                    card.innerHTML = `
+                    <div class="item-galeria-inner">
+                        <img src="${foto.url}" loading="lazy" alt="Recuerdo Boda">
+                    </div>
+                `;
+                    card.onclick = () => abrirLightbox("image", foto.url);
+                } else {
+                    card.innerHTML = `
+                    <div class="item-galeria-inner">
+                        <div class="badge-video">
+                            ▶ Video
+                        </div>
+                        <video preload="metadata" muted>
+                            <source src="${foto.original || foto.url}">
+                        </video>
+                    </div>
+                `;
+                    card.onclick = () => abrirLightbox("video", foto.original || foto.url);
+                }
+
+                contenedor.appendChild(card);
+            });
+
+        } catch (error) {
+            console.error("Error al cargar la galería:", error);
+        }
+    }
+
+    // ==========================================
+    // SISTEMA LIGHTBOX (AMPLIAR RECUERDO)
+    // ==========================================
+    function inicializarLightbox() {
+        if (document.getElementById("lightboxModal")) return;
+
+        const modal = document.createElement("div");
+        modal.id = "lightboxModal";
+        modal.className = "lightbox-modal";
+        modal.innerHTML = `
+        <button class="lightbox-cerrar" id="btnCerrarLightbox">&times;</button>
+        <div class="lightbox-contenido" id="lightboxTarget"></div>
+    `;
+
+        document.body.appendChild(modal);
+
+        const cerrar = () => modal.classList.remove("activo");
+        document.getElementById("btnCerrarLightbox").onclick = cerrar;
+        modal.onclick = (e) => { if (e.target === modal) cerrar(); };
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") cerrar();
+        });
+    }
+
+    function abrirLightbox(tipo, url) {
+        const modal = document.getElementById("lightboxModal");
+        const target = document.getElementById("lightboxTarget");
+        if (!modal || !target) return;
+
+        if (tipo === "image") {
+            target.innerHTML = `<img src="${url}" alt="Foto ampliada">`;
+        } else {
+            target.innerHTML = `
+            <video controls autoplay style="max-height: 80vh; width: 100%;">
+                <source src="${url}">
+            </video>
+        `;
+        }
+
+        modal.classList.add("activo");
+    }
+
+    // Inicialización automática
+    document.addEventListener("DOMContentLoaded", () => {
+        inicializarLightbox();
+        cargarFotos();
     });
 </script>
 
