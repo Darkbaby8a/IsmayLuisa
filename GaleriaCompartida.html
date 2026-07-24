@@ -4,66 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparte tus recuerdos - Ismael & Luisa</title>
 
+    <!-- Fuentes Google -->
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
-    <title>Comparte tus recuerdos - Ismael & Luisa</title>
-
     <style>
-        #galeriaBoda {
-
-            columns: 4 260px;
-
-            column-gap: 20px;
-
-            max-width: 1200px;
-
-            margin: auto;
-
-        }
-
-
-        .item-galeria {
-
-            break-inside: avoid;
-
-            margin-bottom: 20px;
-
-            border-radius: 20px;
-
-            overflow: hidden;
-
-            background: #fff;
-
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, .12);
-
-        }
-
-
-        .item-galeria img,
-        .item-galeria video {
-
-            width: 100%;
-
-            display: block;
-
-        }
-
         :root {
-
-            --guinda: #7A1632;
-            --guinda-claro: #a82b4d;
-
-            --texto: #222;
-            --texto-sec: #666;
-
-            --fondo: #ffffff;
-
-            --borde: #ece8e6;
-
+            --guinda: #6b1128;
+            --guinda-profundo: #4a0a1a;
+            --guinda-claro: #8c1d39;
+            --crema-fondo: #fcfaf7;
+            --crema-tarjeta: #ffffff;
+            --crema-suave: #f4efe8;
+            --oro-acento: #c5a059;
+            --texto-principal: #2c2523;
+            --texto-secundario: #665c58;
+            --sombra-elegante: 0 30px 60px rgba(74, 10, 26, 0.08), 0 10px 25px rgba(0, 0, 0, 0.03);
         }
 
         * {
@@ -73,832 +32,654 @@
         }
 
         body {
-
-            background: #fff;
-
+            background-color: var(--crema-fondo);
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(197, 160, 89, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(107, 17, 40, 0.04) 0%, transparent 50%);
+            color: var(--texto-principal);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            padding-bottom: 80px;
         }
 
         /*==================================
-SECCION
-==================================*/
-
-        .seccion-recuerdos {
-
-            position: relative;
-
-            background: #fff;
-
-            padding: 100px 20px;
-
-            overflow: hidden;
-
-        }
-
-        .marco-floral {
-
-            position: absolute;
-            inset: 0;
-
-            pointer-events: none;
-
-        }
-
-        .flor {
-
-            position: absolute;
-
-            width: 250px;
-
-            opacity: .08;
-
-            filter: sepia(40%) saturate(180%) hue-rotate(320deg);
-
-        }
-
-        .flor1 {
-
-            top: -80px;
-            left: -80px;
-
-        }
-
-        .flor2 {
-
-            top: -80px;
-            right: -80px;
-            transform: rotate(90deg);
-
-        }
-
-        .flor3 {
-
-            bottom: -80px;
-            left: -80px;
-            transform: rotate(-90deg);
-
-        }
-
-        .flor4 {
-
-            bottom: -80px;
-            right: -80px;
-            transform: rotate(180deg);
-
-        }
-
-        .contenedor-recuerdos {
-
-            position: relative;
-
-            max-width: 850px;
-
-            margin: auto;
-
-            text-align: center;
-
-            z-index: 10;
-
-        }
-
-        .icono-camara {
-
-            width: 90px;
-
-            margin-bottom: 25px;
-
-        }
-
-        .subtitulo {
-
-            display: block;
-
-            font-family: 'Cinzel', serif;
-
-            letter-spacing: 5px;
-
-            color: var(--guinda);
-
-            text-transform: uppercase;
-
-            font-size: .9rem;
-
-            margin-bottom: 15px;
-
-        }
-
-        .titulo {
-
-            font-family: 'Cinzel Decorative', serif;
-
-            font-size: clamp(2.2rem, 5vw, 3.4rem);
-
-            color: #111;
-
-            margin-bottom: 25px;
-
-        }
-
-        .divisor {
-
-            width: 180px;
-
-            margin: 25px auto;
-
-        }
-
-        .texto {
-
-            font-family: 'Montserrat', sans-serif;
-
-            font-size: 1.08rem;
-
-            color: #555;
-
-            line-height: 2;
-
-            max-width: 720px;
-
-            margin: auto;
-
-        }
-
-        .cita {
-
-            margin-top: 45px;
-
-            font-family: 'Cinzel', serif;
-
-            color: var(--guinda);
-
-            font-size: 1.15rem;
-
-            font-style: italic;
-
-            line-height: 1.8;
-
-        }
-
-        .btn-subir {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 12px;
-
-            margin-top: 45px;
-
-            padding: 18px 38px;
-
-            border: 2px solid var(--guinda);
-
-            border-radius: 50px;
-
-            background: #fff;
-
-            color: var(--guinda);
-
-            text-decoration: none;
-
-            font-family: 'Montserrat', sans-serif;
-
-            font-weight: 600;
-
-            letter-spacing: 2px;
-
-            transition: .35s;
-
-        }
-
-        .btn-subir:hover {
-
-            background: var(--guinda);
-
-            color: #fff;
-
-            transform: translateY(-4px);
-
-            box-shadow: 0 12px 30px rgba(122, 22, 50, .20);
-
-        }
-
-        .btn-subir svg {
-
-            width: 22px;
-            height: 22px;
-
-        }
-
-        .nota {
-
-            margin-top: 30px;
-
-            color: #777;
-
-            font-size: .95rem;
-
-            line-height: 1.8;
-
-            font-family: 'Montserrat', sans-serif;
-
-        }
-
-        @media(max-width:768px) {
-
-            .seccion-recuerdos {
-
-                padding: 70px 20px;
-
-            }
-
-            .icono-camara {
-
-                width: 70px;
-
-            }
-
-            .titulo {
-
-                font-size: 2.1rem;
-
-            }
-
-            .texto {
-
-                font-size: 1rem;
-
-                line-height: 1.9;
-
-            }
-
-            .btn-subir {
-
-                width: 100%;
-
-                padding: 16px;
-
-            }
-
-            .flor {
-
-                width: 160px;
-
-            }
-
-        }
-
+        HERO SECTION
+        ==================================*/
         .hero-recuerdos {
-
             position: relative;
-
-            margin-bottom: 50px;
-
+            padding: 80px 20px 40px;
+            text-align: center;
         }
 
         .brillo {
-
-            width: 220px;
-            height: 220px;
-
-            background: radial-gradient(circle,
-                    rgba(122, 22, 50, .12),
-                    transparent 70%);
-
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
             position: absolute;
-
             left: 50%;
-
+            top: 20px;
             transform: translateX(-50%);
-
-            top: -40px;
-
-            filter: blur(10px);
-
+            filter: blur(20px);
+            pointer-events: none;
         }
 
-        .sello {
-
-            width: 120px;
-
-            margin: auto;
-
+        .sello-svg {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px;
+            display: block;
             position: relative;
-
             z-index: 2;
-
+            filter: drop-shadow(0 4px 10px rgba(107, 17, 40, 0.12));
         }
 
         .subtitulo {
-
             display: block;
-
-            margin-top: 20px;
-
+            font-family: 'Cinzel', serif;
             letter-spacing: 6px;
-
-            color: #7A1632;
-
-            font-size: .85rem;
-
+            color: var(--guinda);
+            font-size: 0.85rem;
+            font-weight: 600;
             text-transform: uppercase;
-
+            margin-bottom: 12px;
         }
 
         .hero-recuerdos h1 {
-
-            font-family: 'Cinzel Decorative';
-
-            font-size: clamp(2.6rem, 5vw, 4rem);
-
-            margin: 15px 0;
-
-            color: #181818;
-
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            color: var(--guinda-profundo);
+            margin-bottom: 15px;
+            line-height: 1.2;
         }
 
-        .ornamento {
-
+        .ornamento-svg {
+            width: 100%;
             max-width: 380px;
-
-            margin: 25px auto;
-
+            height: auto;
+            margin: 15px auto;
+            display: block;
         }
 
         .novios {
-
-            font-family: 'Cinzel';
-
-            font-size: 2rem;
-
-            color: #7A1632;
-
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: var(--guinda);
             margin-top: 10px;
-
-            letter-spacing: 2px;
-
+            letter-spacing: 3px;
         }
 
         .fecha {
-
-            margin-top: 10px;
-
-            color: #9c8b82;
-
-            font-family: 'Montserrat';
-
-            letter-spacing: 3px;
-
+            margin-top: 8px;
+            color: var(--oro-acento);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
 
-            font-size: .9rem;
+        /*==================================
+        SECCIÓN PRINCIPAL DE CONTENIDO
+        ==================================*/
+        .seccion-recuerdos {
+            position: relative;
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
+        /* Flores SVG de esquina */
+        .marco-floral {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .flor-svg {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .flor1 {
+            top: -40px;
+            left: -40px;
+        }
+
+        .flor2 {
+            top: -40px;
+            right: -40px;
+            transform: scaleX(-1);
+        }
+
+        .flor3 {
+            bottom: -40px;
+            left: -40px;
+            transform: scaleY(-1);
+        }
+
+        .flor4 {
+            bottom: -40px;
+            right: -40px;
+            transform: scale(-1);
         }
 
         .contenedor-recuerdos {
-
             position: relative;
-
-            max-width: 900px;
-
+            z-index: 2;
+            max-width: 820px;
             margin: auto;
-
-            background: white;
-
-            border-radius: 28px;
-
-            padding: 70px 60px;
-
-            box-shadow:
-
-                0 20px 60px rgba(0, 0, 0, .08),
-
-                0 0 0 1px rgba(122, 22, 50, .08);
-
+            background: var(--crema-tarjeta);
+            border-radius: 24px;
+            padding: 60px 50px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            box-shadow: var(--sombra-elegante);
+            text-align: center;
         }
 
-        #btnSubir {
+        .icono-camara-svg {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 20px;
+            display: block;
+        }
 
-            margin-top: 45px;
+        .titulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--guinda-profundo);
+            margin-bottom: 20px;
+        }
 
-            padding: 18px 42px;
+        .texto {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            color: var(--texto-secundario);
+            line-height: 1.9;
+            max-width: 680px;
+            margin: 0 auto 30px;
+            font-weight: 400;
+        }
 
-            border: none;
+        .cita-box {
+            background: var(--crema-suave);
+            border-left: 3px solid var(--guinda);
+            border-right: 3px solid var(--guinda);
+            border-radius: 8px;
+            padding: 20px 30px;
+            margin: 35px 0;
+        }
 
-            border-radius: 60px;
+        .cita {
+            font-family: 'Cinzel', serif;
+            color: var(--guinda-profundo);
+            font-size: 1.05rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
 
-            background: linear-gradient(135deg, #7A1632, #a82b4d);
+        /* UPLOAD AREA / DROPZONE */
+        .dropzone-container {
+            margin: 40px 0 25px;
+        }
 
-            color: white;
+        input[type="file"] {
+            display: none;
+        }
 
-            font-size: 15px;
-
-            font-weight: 600;
-
-            letter-spacing: 2px;
-
+        .dropzone-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 35px 20px;
+            border: 2px dashed rgba(197, 160, 89, 0.6);
+            border-radius: 16px;
+            background: var(--crema-suave);
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-            transition: .35s;
+        .dropzone-label:hover {
+            border-color: var(--guinda);
+            background: rgba(107, 17, 40, 0.02);
+            transform: translateY(-2px);
+        }
 
-            box-shadow:
+        .dropzone-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 12px;
+            fill: var(--guinda);
+        }
 
-                0 15px 35px rgba(122, 22, 50, .25);
+        .dropzone-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--guinda);
+        }
 
+        .dropzone-subtext {
+            font-size: 0.8rem;
+            color: var(--texto-secundario);
+            margin-top: 4px;
+        }
+
+        /* BOTÓN PRINCIPAL */
+        #btnSubir {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 360px;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--guinda), var(--guinda-claro));
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            box-shadow: 0 10px 25px rgba(107, 17, 40, 0.3);
         }
 
         #btnSubir:hover {
-
-            transform: translateY(-5px) scale(1.03);
-
-            box-shadow:
-
-                0 25px 50px rgba(122, 22, 50, .35);
-
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(107, 17, 40, 0.4);
+            background: linear-gradient(135deg, var(--guinda-claro), var(--guinda-profundo));
         }
 
-        body {
-
-            background:
-
-                radial-gradient(circle at top, #faf8f6, #ffffff 55%),
-
-                linear-gradient(#fff, #fcfbfa);
-
+        #btnSubir svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
-        .flor {
-
-            opacity: .05;
-
-            animation: flotar 10s ease-in-out infinite;
-
+        .nota {
+            margin-top: 35px;
+            color: var(--texto-secundario);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            font-weight: 400;
         }
 
-        @keyframes flotar {
+        /* GALERÍA MASONRY */
+        #galeriaBoda {
+            columns: 4 250px;
+            column-gap: 20px;
+            max-width: 1100px;
+            margin: 60px auto 0;
+            padding: 0 20px;
+        }
 
-            0% {
+        .item-galeria {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--crema-suave);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
 
-                transform: translateY(0px) rotate(0deg);
+        .item-galeria:hover {
+            transform: translateY(-5px);
+        }
 
+        .item-galeria img,
+        .item-galeria video {
+            width: 100%;
+            display: block;
+        }
+
+        /* MEDIA QUERIES RESPONSIVAS */
+        @media (max-width: 768px) {
+            .seccion-recuerdos {
+                padding: 10px;
             }
 
-            50% {
-
-                transform: translateY(-8px) rotate(2deg);
-
+            .contenedor-recuerdos {
+                padding: 40px 20px;
+                border-radius: 20px;
             }
 
-            100% {
-
-                transform: translateY(0px) rotate(0deg);
-
+            .flor-svg {
+                width: 130px;
+                height: 130px;
             }
 
+            .cita-box {
+                padding: 15px 20px;
+            }
+
+            #btnSubir {
+                max-width: 100%;
+            }
         }
     </style>
-
 </head>
 
 <body>
-    <div class="hero-recuerdos">
 
+    <!-- HERO SECTION -->
+    <header class="hero-recuerdos">
         <div class="brillo"></div>
 
-        <div class="sello">
+        <!-- SVG SELLO CÁMARA -->
+        <svg class="sello-svg" viewBox="0 0 120 120" fill="none">
+            <circle cx="60" cy="60" r="56" stroke="#6b1128" stroke-width="1.5" />
+            <circle cx="60" cy="60" r="48" stroke="#c5a059" stroke-width="1" stroke-dasharray="4 4" />
+            <path fill="#6b1128"
+                d="M82 45h-8l-4-6H50l-4 6h-8c-3.9 0-7 3.1-7 7v24c0 3.9 3.1 7 7 7h44c3.9 0 7-3.1 7-7V52c0-3.9-3.1-7-7-7zm-22 30c-7.2 0-13-5.8-13-13s5.8-13 13-13 13 5.8 13 13-5.8 13-13 13zm0-21c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" />
+        </svg>
 
-            <svg viewBox="0 0 120 120">
+        <span class="subtitulo">Cada recuerdo cuenta</span>
+        <h1>Comparte tus recuerdos</h1>
 
-                <circle cx="60" cy="60" r="56" fill="none" stroke="#7A1632" stroke-width="2" />
+        <!-- DIVISOR SELLO ELEGANTE -->
+        <svg class="ornamento-svg" viewBox="0 0 600 40" fill="none">
+            <path d="M0 20h220c15 0 25-12 40-12s25 12 40 12h220" stroke="#c5a059" stroke-width="1.5"
+                stroke-linecap="round" />
+            <circle cx="300" cy="20" r="4" fill="#6b1128" />
+            <circle cx="280" cy="20" r="2.5" fill="#c5a059" />
+            <circle cx="320" cy="20" r="2.5" fill="#c5a059" />
+        </svg>
 
-                <circle cx="60" cy="60" r="45" fill="none" stroke="#C7A17A" stroke-width="1" stroke-dasharray="3 5" />
+        <div class="novios">Ismael &amp; Luisa</div>
+        <div class="fecha">11 de octubre de 2026</div>
+    </header>
 
-                <path fill="#7A1632"
-                    d="M82 43h-8l-4-6H50l-4 6h-8c-4 0-7 3-7 7v25c0 4 3 7 7 7h44c4 0 7-3 7-7V50c0-4-3-7-7-7zm-22 31c-8 0-14-6-14-14s6-14 14-14 14 6 14 14-6 14-14 14zm0-23a9 9 0 100 18 9 9 0 000-18z" />
-
-            </svg>
-
-        </div>
-
-        <span class="subtitulo">
-
-            CADA RECUERDO CUENTA
-
-        </span>
-
-        <h1>
-
-            Comparte tus recuerdos
-
-        </h1>
-
-        <div class="ornamento">
-
-            <svg viewBox="0 0 600 60">
-
-                <path d="M0 30h170
-                   c20 0 35-18 55-18
-                   s35 18 55 18
-                   h90
-                   c20 0 35-18 55-18
-                   s35 18 55 18
-                   H600" fill="none" stroke="#b18b67" stroke-width="2" />
-
-            </svg>
-
-        </div>
-
-        <div class="novios">
-
-            Ismael &amp; Luisa
-
-        </div>
-
-        <div class="fecha">
-
-            11 de octubre de 2026
-
-        </div>
-
-    </div>
+    <!-- CONTENIDO PRINCIPAL -->
     <section class="seccion-recuerdos">
 
+        <!-- MARCO FLORAL VECTORIAL DE ESQUINAS -->
         <div class="marco-floral">
-
-            <img src="flor.png" class="flor flor1">
-
-            <img src="flor.png" class="flor flor2">
-
-            <img src="flor.png" class="flor flor3">
-
-            <img src="flor.png" class="flor flor4">
-
+            <!-- FLOR 1 (Top-Left) -->
+            <svg class="flor-svg flor1" viewBox="0 0 200 200" fill="none">
+                <path d="M20 20C60 20 100 40 120 80C100 70 60 70 20 20Z" fill="#6b1128" opacity="0.12" />
+                <path d="M20 20C20 60 40 100 80 120C70 100 70 60 20 20Z" fill="#6b1128" opacity="0.12" />
+                <path d="M20 20C80 30 130 80 140 140C100 120 50 70 20 20Z" fill="#c5a059" opacity="0.2" />
+                <circle cx="20" cy="20" r="6" fill="#6b1128" opacity="0.3" />
+            </svg>
+            <!-- FLOR 2 (Top-Right) -->
+            <svg class="flor-svg flor2" viewBox="0 0 200 200" fill="none">
+                <path d="M20 20C60 20 100 40 120 80C100 70 60 70 20 20Z" fill="#6b1128" opacity="0.12" />
+                <path d="M20 20C20 60 40 100 80 120C70 100 70 60 20 20Z" fill="#6b1128" opacity="0.12" />
+                <path d="M20 20C80 30 130 80 140 140C100 120 50 70 20 20Z" fill="#c5a059" opacity="0.2" />
+            </svg>
+            <!-- FLOR 3 (Bottom-Left) -->
+            <svg class="flor-svg flor3" viewBox="0 0 200 200" fill="none">
+                <path d="M20 20C60 20 100 40 120 80C100 70 60 70 20 20Z" fill="#6b1128" opacity="0.12" />
+                <path d="M20 20C20 60 40 100 80 120C70 100 70 60 20 20Z" fill="#6b1128" opacity="0.12" />
+                <path d="M20 20C80 30 130 80 140 140C100 120 50 70 20 20Z" fill="#c5a059" opacity="0.2" />
+            </svg>
+            <!-- FLOR 4 (Bottom-Right) -->
+            <svg class="flor-svg flor4" viewBox="0 0 200 200" fill="none">
+                <path d="M20 20C60 20 100 40 120 80C100 70 60 70 20 20Z" fill="#6b1128" opacity="0.12" />
+                <path d="M20 20C20 60 40 100 80 120C70 100 70 60 20 20Z" fill="#6b1128" opacity="0.12" />
+                <path d="M20 20C80 30 130 80 140 140C100 120 50 70 20 20Z" fill="#c5a059" opacity="0.2" />
+            </svg>
         </div>
 
         <div class="contenedor-recuerdos">
 
-            <img src="camara.png" class="icono-camara">
+            <!-- ICONO CÁMARA VECTORIAL -->
+            <svg class="icono-camara-svg" viewBox="0 0 64 64" fill="none">
+                <rect x="6" y="18" width="52" height="38" rx="8" stroke="#6b1128" stroke-width="2.5" fill="#fcfaf7" />
+                <circle cx="32" cy="37" r="12" stroke="#6b1128" stroke-width="2.5" />
+                <circle cx="32" cy="37" r="6" fill="#c5a059" />
+                <path d="M22 18L25 11H39L42 18H22Z" fill="#6b1128" />
+                <circle cx="48" cy="25" r="2" fill="#6b1128" />
+            </svg>
 
-            <span class="subtitulo">
-                CADA RECUERDO CUENTA
-            </span>
+            <span class="subtitulo">Álbum Digital</span>
+            <h2 class="titulo">Comparte tus momentos</h2>
 
-            <h2 class="titulo">
-                Comparte tus recuerdos
-            </h2>
-
-            <img src="divisor.png" class="divisor">
+            <!-- DIVISOR VECTORIAL -->
+            <svg class="ornamento-svg" viewBox="0 0 300 20" fill="none" style="max-width: 180px;">
+                <path d="M0 10H120M180 10H300" stroke="#c5a059" stroke-width="1" />
+                <circle cx="150" cy="10" r="3" fill="#6b1128" />
+            </svg>
 
             <p class="texto">
-
                 ¿Tomaste fotografías o videos durante nuestra boda?<br><br>
-
-                Nos haría muchísima ilusión conservar esos momentos desde tu
-                perspectiva.
-
-                Cada fotografía captura una emoción diferente y cada video revive
-                un instante irrepetible.
-
-                Ayúdanos a construir un álbum lleno de sonrisas, abrazos y momentos
-                inolvidables para recordar este día por siempre.
-
+                Nos haría muchísima ilusión conservar esos momentos desde tu perspectiva.
+                Cada fotografía captura una emoción diferente y cada video revive un instante irrepetible.<br><br>
+                Ayúdanos a construir un álbum lleno de sonrisas, abrazos y recuerdos inolvidables para conservar este
+                día por siempre.
             </p>
 
-            <p class="cita">
+            <div class="cita-box">
+                <p class="cita">
+                    "Las mejores fotografías no solo capturan un instante... conservan un recuerdo para toda la vida."
+                </p>
+            </div>
 
-                "Las mejores fotografías no solo capturan un instante...
-                conservan un recuerdo para toda la vida."
-
-            </p>
-
-            <input type="file" id="imagenes" multiple accept="image/*,video/*">
+            <!-- CONTENEDOR DE CARGA INTERACTIVO -->
+            <div class="dropzone-container">
+                <input type="file" id="imagenes" multiple accept="image/*,video/*">
+                <label for="imagenes" class="dropzone-label">
+                    <svg class="dropzone-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z" />
+                    </svg>
+                    <span class="dropzone-text">Selecciona o arrastra tus fotos y videos</span>
+                    <span class="dropzone-subtext">Puedes subir varios archivos a la vez</span>
+                </label>
+            </div>
 
             <button id="btnSubir">
-                Compartir fotografías
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
+                </svg>
+                Compartir recuerdos
             </button>
 
-            <div id="estado"></div>
+            <div id="estado" style="margin-top: 15px; font-weight: 500; color: var(--guinda);"></div>
 
             <p class="nota">
-
                 Puedes compartir todas las fotografías y videos que desees.<br>
-
-                Gracias por formar parte de uno de los días más importantes de nuestras vidas. 🤍
-
+                <strong>Gracias por formar parte de uno de los días más importantes de nuestras vidas. 🤍</strong>
             </p>
 
         </div>
-
     </section>
-    <div id="galeriaBoda"></div>
-    <script
-        src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
-    <script>
 
+    <!-- GALERÍA DINÁMICA DE RECUERDOS -->
+    <div id="galeriaBoda"></div>
+
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
         const input = document.getElementById("imagenes");
         const estado = document.getElementById("estado");
         const boton = document.getElementById("btnSubir");
+        const contenedorGaleria = document.getElementById("galeriaBoda");
 
+        // ==========================================
+        // 1. EVENTO DE SUBIDA DE ARCHIVOS
+        // ==========================================
         boton.onclick = async () => {
-
-            if (input.files.length == 0) {
-
-                alert("Selecciona fotografías.");
-
+            // Validar selección de archivos
+            if (!input.files || input.files.length === 0) {
+                mostrarNotificacion("Por favor, selecciona al menos una foto o video.", "warning");
                 return;
-
             }
 
             boton.disabled = true;
-
+            boton.style.opacity = "0.7";
+            boton.style.cursor = "not-allowed";
             estado.innerHTML = "";
 
+            let subidasExitosas = 0;
+
             for (const archivo of input.files) {
+                const fileId = `file-${Math.random().toString(36).substr(2, 9)}`;
 
                 try {
-
                     let archivoFinal = archivo;
 
-                    // SOLO comprimir imágenes
+                    // Compresión solo para imágenes
                     if (archivo.type.startsWith("image/")) {
-
-                        estado.innerHTML += `<p>🖼 Comprimiendo ${archivo.name}...</p>`;
+                        actualizarEstadoItem(fileId, `🖼 Comprimiendo <b>${archivo.name}</b>...`, "info");
 
                         archivoFinal = await imageCompression(archivo, {
-
-                            maxSizeMB: 1,             // Máximo 1 MB
-                            maxWidthOrHeight: 1800,   // Resolución máxima
+                            maxSizeMB: 1,
+                            maxWidthOrHeight: 1800,
                             useWebWorker: true,
                             initialQuality: 0.85
-
                         });
 
-                        console.log("---------------");
-                        console.log("Imagen:", archivo.name);
-                        console.log("Original:", (archivo.size / 1024 / 1024).toFixed(2), "MB");
-                        console.log("Comprimida:", (archivoFinal.size / 1024 / 1024).toFixed(2), "MB");
-
+                        console.log(`[Compresión] ${archivo.name}: ${(archivo.size / 1024 / 1024).toFixed(2)}MB ➔ ${(archivoFinal.size / 1024 / 1024).toFixed(2)}MB`);
+                    } else {
+                        console.log(`[Video] ${archivo.name}`);
                     }
 
-                    else {
-
-                        console.log("Video:", archivo.name);
-
-                    }
-
+                    // Convertir a Base64
+                    actualizarEstadoItem(fileId, `☁ Subiendo <b>${archivo.name}</b>...`, "info");
                     const base64 = await convertirBase64(archivoFinal);
 
-                    estado.innerHTML += `<p>☁ Subiendo ${archivo.name}...</p>`;
-
+                    // Enviar a Netlify Function
                     const respuesta = await fetch("/.netlify/functions/subir-foto", {
-
                         method: "POST",
-
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-
-                        body: JSON.stringify({
-
-                            file: base64
-
-                        })
-
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ file: base64 })
                     });
 
                     const datos = await respuesta.json();
 
                     if (!respuesta.ok || !datos.ok) {
-
-                        throw new Error(datos.error || "Error al subir.");
-
+                        throw new Error(datos.error || "Error al procesar en el servidor.");
                     }
 
-                    estado.innerHTML += `
-                <p style="color:green">
-                    ✅ ${archivo.name}
-                </p>
-            `;
+                    // Éxito por archivo
+                    actualizarEstadoItem(fileId, `✅ <b>${archivo.name}</b> subida con éxito`, "success");
+                    subidasExitosas++;
 
+                } catch (e) {
+                    console.error(`Error con ${archivo.name}:`, e);
+                    actualizarEstadoItem(fileId, `❌ Error al subir <b>${archivo.name}</b>`, "error");
                 }
-
-                catch (e) {
-
-                    console.error(e);
-
-                    estado.innerHTML += `
-                <p style="color:red">
-                    ❌ ${archivo.name}
-                </p>
-            `;
-
-                }
-
             }
 
-            estado.innerHTML += `
-        <br>
-        <h3>🤍 Gracias por compartir tus recuerdos.</h3>
-    `;
+            // Finalización
+            if (subidasExitosas > 0) {
+                estado.innerHTML += `
+                <div style="margin-top: 25px; padding: 15px; background: rgba(107, 17, 40, 0.05); border-radius: 12px; border: 1px solid var(--oro-acento, #c5a059);">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--guinda, #6b1128); margin-bottom: 5px;">🤍 ¡Muchas gracias!</h3>
+                    <p style="font-size: 0.9rem; color: #555;">Tus recuerdos se han compartido correctamente.</p>
+                </div>
+            `;
+
+                // Limpiar input y recargar galería
+                input.value = "";
+                cargarFotos();
+            }
 
             boton.disabled = false;
-
+            boton.style.opacity = "1";
+            boton.style.cursor = "pointer";
         };
 
-        function convertirBase64(file) {
-
-            return new Promise((resolve, reject) => {
-
-                const reader = new FileReader();
-
-                reader.onload = () => {
-
-                    resolve(reader.result);
-
-                };
-
-                reader.onerror = reject;
-
-                reader.readAsDataURL(file);
-
-            });
-
-        }
+        // ==========================================
+        // 2. CARGAR FOTOS EN LA GALERÍA
+        // ==========================================
         async function cargarFotos() {
+            if (!contenedorGaleria) return;
 
+            try {
+                const res = await fetch("/.netlify/functions/galeria");
+                if (!res.ok) throw new Error("No se pudo obtener la galería.");
 
-            const contenedor =
-                document.getElementById("galeriaBoda");
+                const fotos = await res.json();
+                contenedorGaleria.innerHTML = ""; // Limpiar antes de rellenar
 
+                fotos.forEach(foto => {
+                    const div = document.createElement("div");
+                    div.className = "item-galeria";
 
-            const res =
-                await fetch(
-                    "/.netlify/functions/galeria"
-                );
+                    if (foto.tipo === "image") {
+                        div.innerHTML = `<img src="${foto.url}" loading="lazy" alt="Recuerdo de boda">`;
+                    } else {
+                        div.innerHTML = `
+                        <video controls preload="metadata">
+                            <source src="${foto.original || foto.url}">
+                        </video>
+                    `;
+                    }
 
-
-            const fotos =
-                await res.json();
-
-
-
-            fotos.forEach(foto => {
-
-
-                const div =
-                    document.createElement("div");
-
-
-                div.className = "item-galeria";
-
-
-
-                if (foto.tipo === "image") {
-
-
-                    div.innerHTML = `
-
-            <img 
-            src="${foto.url}"
-            loading="lazy">
-
-            `;
-
-
-                } else {
-
-
-                    div.innerHTML = `
-
-            <video
-            controls
-            preload="metadata">
-
-                <source src="${foto.original}">
-
-            </video>
-
-            `;
-
-
-                }
-
-
-
-                contenedor.appendChild(div);
-
-
-            });
-
-
+                    contenedorGaleria.appendChild(div);
+                });
+            } catch (error) {
+                console.error("Error cargando galería:", error);
+            }
         }
 
+        // ==========================================
+        // 3. FUNCIONES AUXILIARES
+        // ==========================================
+        function convertirBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = (err) => reject(err);
+                reader.readAsDataURL(file);
+            });
+        }
 
+        function actualizarEstadoItem(id, mensaje, tipo) {
+            let el = document.getElementById(id);
+            if (!el) {
+                el = document.createElement("div");
+                el.id = id;
+                el.style.cssText = "margin: 8px 0; padding: 10px 14px; border-radius: 8px; font-size: 0.88rem; transition: all 0.3s ease;";
+                estado.appendChild(el);
+            }
+
+            if (tipo === "info") {
+                el.style.background = "#f4efe8";
+                el.style.color = "#6b1128";
+                el.style.borderLeft = "3px solid #c5a059";
+            } else if (tipo === "success") {
+                el.style.background = "#eef7ee";
+                el.style.color = "#1e7e34";
+                el.style.borderLeft = "3px solid #28a745";
+            } else if (tipo === "error") {
+                el.style.background = "#fdf2f2";
+                el.style.color = "#bd2130";
+                el.style.borderLeft = "3px solid #dc3545";
+            }
+
+            el.innerHTML = mensaje;
+        }
+
+        function mostrarNotificacion(mensaje, tipo) {
+            estado.innerHTML = `
+            <div style="padding: 12px; background: #fdf2f2; color: #6b1128; border-radius: 8px; border: 1px solid #c5a059; margin-top: 15px; font-size: 0.9rem;">
+                ⚠️ ${mensaje}
+            </div>
+        `;
+        }
+
+        // Carga inicial de imágenes
         cargarFotos();
-    </script>
+    });
+</script>
 
-</body>
+
 
 </html>
-```
