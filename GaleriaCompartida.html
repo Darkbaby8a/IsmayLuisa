@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <title>Comparte tus recuerdos - Ismael & Luisa</title>
+
+    <style>
+        :root {
+
+            --guinda: #7A1632;
+            --guinda-claro: #a82b4d;
+
+            --texto: #222;
+            --texto-sec: #666;
+
+            --fondo: #ffffff;
+
+            --borde: #ece8e6;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            background: #fff;
+
+        }
+
+        /*==================================
+SECCION
+==================================*/
+
+        .seccion-recuerdos {
+
+            position: relative;
+
+            background: #fff;
+
+            padding: 100px 20px;
+
+            overflow: hidden;
+
+        }
+
+        .marco-floral {
+
+            position: absolute;
+            inset: 0;
+
+            pointer-events: none;
+
+        }
+
+        .flor {
+
+            position: absolute;
+
+            width: 250px;
+
+            opacity: .08;
+
+            filter: sepia(40%) saturate(180%) hue-rotate(320deg);
+
+        }
+
+        .flor1 {
+
+            top: -80px;
+            left: -80px;
+
+        }
+
+        .flor2 {
+
+            top: -80px;
+            right: -80px;
+            transform: rotate(90deg);
+
+        }
+
+        .flor3 {
+
+            bottom: -80px;
+            left: -80px;
+            transform: rotate(-90deg);
+
+        }
+
+        .flor4 {
+
+            bottom: -80px;
+            right: -80px;
+            transform: rotate(180deg);
+
+        }
+
+        .contenedor-recuerdos {
+
+            position: relative;
+
+            max-width: 850px;
+
+            margin: auto;
+
+            text-align: center;
+
+            z-index: 10;
+
+        }
+
+        .icono-camara {
+
+            width: 90px;
+
+            margin-bottom: 25px;
+
+        }
+
+        .subtitulo {
+
+            display: block;
+
+            font-family: 'Cinzel', serif;
+
+            letter-spacing: 5px;
+
+            color: var(--guinda);
+
+            text-transform: uppercase;
+
+            font-size: .9rem;
+
+            margin-bottom: 15px;
+
+        }
+
+        .titulo {
+
+            font-family: 'Cinzel Decorative', serif;
+
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+
+            color: #111;
+
+            margin-bottom: 25px;
+
+        }
+
+        .divisor {
+
+            width: 180px;
+
+            margin: 25px auto;
+
+        }
+
+        .texto {
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 1.08rem;
+
+            color: #555;
+
+            line-height: 2;
+
+            max-width: 720px;
+
+            margin: auto;
+
+        }
+
+        .cita {
+
+            margin-top: 45px;
+
+            font-family: 'Cinzel', serif;
+
+            color: var(--guinda);
+
+            font-size: 1.15rem;
+
+            font-style: italic;
+
+            line-height: 1.8;
+
+        }
+
+        .btn-subir {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 45px;
+
+            padding: 18px 38px;
+
+            border: 2px solid var(--guinda);
+
+            border-radius: 50px;
+
+            background: #fff;
+
+            color: var(--guinda);
+
+            text-decoration: none;
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            transition: .35s;
+
+        }
+
+        .btn-subir:hover {
+
+            background: var(--guinda);
+
+            color: #fff;
+
+            transform: translateY(-4px);
+
+            box-shadow: 0 12px 30px rgba(122, 22, 50, .20);
+
+        }
+
+        .btn-subir svg {
+
+            width: 22px;
+            height: 22px;
+
+        }
+
+        .nota {
+
+            margin-top: 30px;
+
+            color: #777;
+
+            font-size: .95rem;
+
+            line-height: 1.8;
+
+            font-family: 'Montserrat', sans-serif;
+
+        }
+
+        @media(max-width:768px) {
+
+            .seccion-recuerdos {
+
+                padding: 70px 20px;
+
+            }
+
+            .icono-camara {
+
+                width: 70px;
+
+            }
+
+            .titulo {
+
+                font-size: 2.1rem;
+
+            }
+
+            .texto {
+
+                font-size: 1rem;
+
+                line-height: 1.9;
+
+            }
+
+            .btn-subir {
+
+                width: 100%;
+
+                padding: 16px;
+
+            }
+
+            .flor {
+
+                width: 160px;
+
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section class="seccion-recuerdos">
+
+        <div class="marco-floral">
+
+            <img src="flor.png" class="flor flor1">
+
+            <img src="flor.png" class="flor flor2">
+
+            <img src="flor.png" class="flor flor3">
+
+            <img src="flor.png" class="flor flor4">
+
+        </div>
+
+        <div class="contenedor-recuerdos">
+
+            <img src="camara.png" class="icono-camara">
+
+            <span class="subtitulo">
+                CADA RECUERDO CUENTA
+            </span>
+
+            <h2 class="titulo">
+                Comparte tus recuerdos
+            </h2>
+
+            <img src="divisor.png" class="divisor">
+
+            <p class="texto">
+
+                ¿Tomaste fotografías o videos durante nuestra boda?<br><br>
+
+                Nos haría muchísima ilusión conservar esos momentos desde tu
+                perspectiva.
+
+                Cada fotografía captura una emoción diferente y cada video revive
+                un instante irrepetible.
+
+                Ayúdanos a construir un álbum lleno de sonrisas, abrazos y momentos
+                inolvidables para recordar este día por siempre.
+
+            </p>
+
+            <p class="cita">
+
+                "Las mejores fotografías no solo capturan un instante...
+                conservan un recuerdo para toda la vida."
+
+            </p>
+
+            <input type="file" id="imagenes" multiple accept="image/*,video/*">
+
+            <button id="btnSubir">
+                Subir recuerdos
+            </button>
+
+            <div id="estado"></div>
+
+            <p class="nota">
+
+                Puedes compartir todas las fotografías y videos que desees.<br>
+
+                Gracias por formar parte de uno de los días más importantes de nuestras vidas. 🤍
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <script>
+
+        const btn = document.getElementById("btnSubir");
+        const input = document.getElementById("imagenes");
+        const estado = document.getElementById("estado");
+
+        btn.onclick = async () => {
+
+            if (input.files.length == 0) {
+
+                alert("Selecciona una fotografía");
+
+                return;
+
+            }
+
+            estado.innerHTML = "Subiendo...";
+
+            for (const archivo of input.files) {
+
+                const form = new FormData();
+
+                form.append("file", archivo);
+
+                const respuesta = await fetch("/.netlify/functions/subir-foto", {
+
+                    method: "POST",
+
+                    body: form
+
+                });
+
+                const datos = await respuesta.json();
+
+                console.log(datos);
+
+            }
+
+            estado.innerHTML = "❤ Gracias por compartir tus recuerdos.";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```
