@@ -367,7 +367,7 @@ SECCION
             <input type="file" id="imagenes" multiple accept="image/*,video/*">
 
             <button id="btnSubir">
-                Subir recuerdos
+                Compartir fotografías
             </button>
 
             <div id="estado"></div>
@@ -383,32 +383,64 @@ SECCION
         </div>
 
     </section>
-
+    <script
+        src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
     <script>
-
-        const btn = document.getElementById("btnSubir");
-
 
         const input = document.getElementById("imagenes");
         const estado = document.getElementById("estado");
+        const boton = document.getElementById("btnSubir");
 
-        document.getElementById("btnSubir").onclick = async () => {
+        boton.onclick = async () => {
 
             if (input.files.length == 0) {
 
-                alert("Selecciona fotografías");
+                alert("Selecciona fotografías.");
 
                 return;
 
             }
 
+            boton.disabled = true;
+
             estado.innerHTML = "";
 
             for (const archivo of input.files) {
 
-                const base64 = await convertirBase64(archivo);
-
                 try {
+
+                    let archivoFinal = archivo;
+
+                    // SOLO comprimir imágenes
+                    if (archivo.type.startsWith("image/")) {
+
+                        estado.innerHTML += `<p>🖼 Comprimiendo ${archivo.name}...</p>`;
+
+                        archivoFinal = await imageCompression(archivo, {
+
+                            maxSizeMB: 1,             // Máximo 1 MB
+                            maxWidthOrHeight: 1800,   // Resolución máxima
+                            useWebWorker: true,
+                            initialQuality: 0.85
+
+                        });
+
+                        console.log("---------------");
+                        console.log("Imagen:", archivo.name);
+                        console.log("Original:", (archivo.size / 1024 / 1024).toFixed(2), "MB");
+                        console.log("Comprimida:", (archivoFinal.size / 1024 / 1024).toFixed(2), "MB");
+
+                    }
+
+                    else {
+
+                        console.log("Video:", archivo.name);
+
+                    }
+
+                    const base64 = await convertirBase64(archivoFinal);
+
+                    estado.innerHTML += `<p>☁ Subiendo ${archivo.name}...</p>`;
 
                     const respuesta = await fetch("/.netlify/functions/subir-foto", {
 
@@ -428,9 +460,17 @@ SECCION
 
                     const datos = await respuesta.json();
 
-                    console.log(datos);
+                    if (!respuesta.ok || !datos.ok) {
 
-                    estado.innerHTML += `<p>✅ ${archivo.name}</p>`;
+                        throw new Error(datos.error || "Error al subir.");
+
+                    }
+
+                    estado.innerHTML += `
+                <p style="color:green">
+                    ✅ ${archivo.name}
+                </p>
+            `;
 
                 }
 
@@ -438,21 +478,38 @@ SECCION
 
                     console.error(e);
 
-                    estado.innerHTML += `<p>❌ ${archivo.name}</p>`;
+                    estado.innerHTML += `
+                <p style="color:red">
+                    ❌ ${archivo.name}
+                </p>
+            `;
 
                 }
 
             }
 
-        }
+            estado.innerHTML += `
+        <br>
+        <h3>🤍 Gracias por compartir tus recuerdos.</h3>
+    `;
+
+            boton.disabled = false;
+
+        };
 
         function convertirBase64(file) {
 
-            return new Promise(resolve => {
+            return new Promise((resolve, reject) => {
 
                 const reader = new FileReader();
 
-                reader.onload = () => resolve(reader.result);
+                reader.onload = () => {
+
+                    resolve(reader.result);
+
+                };
+
+                reader.onerror = reject;
 
                 reader.readAsDataURL(file);
 
