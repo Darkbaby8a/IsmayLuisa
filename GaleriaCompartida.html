@@ -12,6 +12,191 @@
         rel="stylesheet">
 
     <style>
+        /*==================================
+GALERÍA MASONRY ELEGANTE
+==================================*/
+        /* ==========================================
+   CONTENEDOR PRINCIPAL DE LA GALERÍA
+   ========================================== */
+        .galeria-seccion {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 40px 25px;
+            background: #faf8f5;
+            /* Fondo crema suave */
+            border-radius: 24px;
+            border: 1px solid rgba(197, 160, 89, 0.35);
+            /* Borde dorado fino */
+            box-shadow: 0 15px 35px rgba(107, 17, 40, 0.05);
+        }
+
+        .galeria-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .galeria-titulo {
+            font-family: 'Cinzel Decorative', 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: #6b1128;
+            /* Guinda */
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .galeria-subtitulo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: #8c7355;
+            /* Tono dorado/café suave */
+            font-style: italic;
+        }
+
+        /* Decoración lineal en el encabezado */
+        .galeria-separador {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c5a059, transparent);
+            margin: 15px auto 0;
+        }
+
+        /* ==========================================
+   GRID / MASONRY DE FOTOS
+   ========================================== */
+        #galeriaBoda {
+            columns: 3 280px;
+            /* Columna fluida responsiva */
+            column-gap: 25px;
+        }
+
+        /* MARCO ELEGANTE PARA CADA FOTO */
+        .item-galeria {
+            position: relative;
+            break-inside: avoid;
+            margin-bottom: 25px;
+            padding: 12px 12px 16px 12px;
+            /* Espaciado interno tipo Paspartú */
+            background: #ffffff;
+            border-radius: 6px;
+            border: 1px solid #e8e2d8;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Efecto Hover: Eleva el marco y resalta el borde dorado */
+        .item-galeria:hover {
+            transform: translateY(-6px);
+            border-color: #c5a059;
+            /* Dorado */
+            box-shadow: 0 16px 30px rgba(107, 17, 40, 0.12);
+        }
+
+        .item-galeria-inner {
+            overflow: hidden;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .item-galeria img,
+        .item-galeria video {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .item-galeria:hover img {
+            transform: scale(1.05);
+            /* Zoom sutil dentro del marco */
+        }
+
+        /* Badge decorativo para Videos */
+        .badge-video {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(107, 17, 40, 0.85);
+            color: #ffffff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+        }
+
+        /* ==========================================
+   MODAL LIGHTBOX (VISUALIZADOR AMPLIA)
+   ========================================== */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(15, 10, 12, 0.92);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .lightbox-modal.activo {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-contenido {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 8px;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid #c5a059;
+        }
+
+        .lightbox-contenido img,
+        .lightbox-contenido video {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .lightbox-cerrar {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-cerrar:hover {
+            background: #6b1128;
+            border-color: #c5a059;
+            transform: rotate(90deg);
+        }
+
         :root {
             --guinda: #6b1128;
             --guinda-profundo: #4a0a1a;
@@ -496,7 +681,16 @@
     </section>
 
     <!-- GALERÍA DINÁMICA DE RECUERDOS -->
-    <div id="galeriaBoda"></div>
+    <section class="galeria-seccion">
+        <div class="galeria-header">
+            <h2 class="galeria-titulo">Nuestra Galería</h2>
+            <p class="galeria-subtitulo">Recuerdos compartidos por nuestros invitados</p>
+            <div class="galeria-separador"></div>
+        </div>
+
+        <!-- Contenedor dinámico de fotos -->
+        <div id="galeriaBoda"></div>
+    </section>
 
 </body>
 
@@ -588,6 +782,7 @@
                 // Limpiar input y recargar galería
                 input.value = "";
                 cargarFotos();
+
             }
 
             boton.disabled = false;
@@ -598,37 +793,110 @@
         // ==========================================
         // 2. CARGAR FOTOS EN LA GALERÍA
         // ==========================================
+        // ==========================================
+        // CARGAR FOTOS CON MARCO ELEGANTE Y LIGHTBOX
+        // ==========================================
         async function cargarFotos() {
-            if (!contenedorGaleria) return;
+            const contenedor = document.getElementById("galeriaBoda");
+            if (!contenedor) return;
 
             try {
                 const res = await fetch("/.netlify/functions/galeria");
-                if (!res.ok) throw new Error("No se pudo obtener la galería.");
+                if (!res.ok) throw new Error("Error al consultar la galería");
 
                 const fotos = await res.json();
-                contenedorGaleria.innerHTML = ""; // Limpiar antes de rellenar
+                contenedor.innerHTML = ""; // Limpiar previo
+
+                if (fotos.length === 0) {
+                    contenedor.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #8c7355; font-style: italic;">
+                    ✨ Aún no hay fotos en el álbum. ¡Sé el primero en subir un recuerdo!
+                </div>
+            `;
+                    return;
+                }
 
                 fotos.forEach(foto => {
-                    const div = document.createElement("div");
-                    div.className = "item-galeria";
+                    const card = document.createElement("div");
+                    card.className = "item-galeria";
 
                     if (foto.tipo === "image") {
-                        div.innerHTML = `<img src="${foto.url}" loading="lazy" alt="Recuerdo de boda">`;
+                        card.innerHTML = `
+                    <div class="item-galeria-inner">
+                        <img src="${foto.url}" loading="lazy" alt="Recuerdo Boda">
+                    </div>
+                `;
+                        card.onclick = () => abrirLightbox("image", foto.url);
                     } else {
-                        div.innerHTML = `
-                        <video controls preload="metadata">
+                        card.innerHTML = `
+                    <div class="item-galeria-inner">
+                        <div class="badge-video">
+                            ▶ Video
+                        </div>
+                        <video preload="metadata" muted>
                             <source src="${foto.original || foto.url}">
                         </video>
-                    `;
+                    </div>
+                `;
+                        card.onclick = () => abrirLightbox("video", foto.original || foto.url);
                     }
 
-                    contenedorGaleria.appendChild(div);
+                    contenedor.appendChild(card);
                 });
+
             } catch (error) {
-                console.error("Error cargando galería:", error);
+                console.error("Error al cargar la galería:", error);
             }
         }
 
+        // ==========================================
+        // SISTEMA LIGHTBOX (AMPLIAR RECUERDO)
+        // ==========================================
+        function inicializarLightbox() {
+            if (document.getElementById("lightboxModal")) return;
+
+            const modal = document.createElement("div");
+            modal.id = "lightboxModal";
+            modal.className = "lightbox-modal";
+            modal.innerHTML = `
+        <button class="lightbox-cerrar" id="btnCerrarLightbox">&times;</button>
+        <div class="lightbox-contenido" id="lightboxTarget"></div>
+    `;
+
+            document.body.appendChild(modal);
+
+            const cerrar = () => modal.classList.remove("activo");
+            document.getElementById("btnCerrarLightbox").onclick = cerrar;
+            modal.onclick = (e) => { if (e.target === modal) cerrar(); };
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") cerrar();
+            });
+        }
+
+        function abrirLightbox(tipo, url) {
+            const modal = document.getElementById("lightboxModal");
+            const target = document.getElementById("lightboxTarget");
+            if (!modal || !target) return;
+
+            if (tipo === "image") {
+                target.innerHTML = `<img src="${url}" alt="Foto ampliada">`;
+            } else {
+                target.innerHTML = `
+            <video controls autoplay style="max-height: 80vh; width: 100%;">
+                <source src="${url}">
+            </video>
+        `;
+            }
+
+            modal.classList.add("activo");
+        }
+
+        // Inicialización automática
+        document.addEventListener("DOMContentLoaded", () => {
+            inicializarLightbox();
+            cargarFotos();
+        });
         // ==========================================
         // 3. FUNCIONES AUXILIARES
         // ==========================================
@@ -675,8 +943,6 @@
         `;
         }
 
-        // Carga inicial de imágenes
-        cargarFotos();
     });
 </script>
 
