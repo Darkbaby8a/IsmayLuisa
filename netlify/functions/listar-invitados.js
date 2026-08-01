@@ -7,21 +7,20 @@ const pool = new Pool({
 
 export const handler = async () => {
   try {
-
     const { rows } = await pool.query(`
       SELECT
-        familia,
-        displayname,
+        familiaNombre,
+        FamiliaDesc,
         pases,
         COALESCE(pasesuti, 0) AS pasesuti,
         (pases - COALESCE(pasesuti, 0)) AS disponibles,
         acepto,
-        confirmado_en,
+        fechaaceptado,
         rechazo
 
 
-      FROM invitados
-      ORDER BY familia, displayname
+      FROM IsmaLuisa
+      ORDER BY familiaNombre, FamiliaDesc
     `);
 
     // ===== CALCULAR TOTALES =====
@@ -30,10 +29,10 @@ export const handler = async () => {
       total_aceptaron: 0,
       total_rechazaron: 0,
       total_pendientes: 0,
-      total_disponibles: 0
+      total_disponibles: 0,
     };
 
-    rows.forEach(i => {
+    rows.forEach((i) => {
       if (i.estado === "acepto") totales.total_aceptaron++;
       if (i.estado === "rechazo") totales.total_rechazaron++;
       if (i.estado === "pendiente") totales.total_pendientes++;
@@ -46,19 +45,17 @@ export const handler = async () => {
       body: JSON.stringify({
         ok: true,
         invitados: rows,
-        totales
+        totales,
       }),
     };
-
   } catch (error) {
-
     console.error("Error listar invitados:", error);
 
     return {
       statusCode: 500,
       body: JSON.stringify({
         ok: false,
-        error: "Error interno del servidor"
+        error: "Error interno del servidor",
       }),
     };
   }

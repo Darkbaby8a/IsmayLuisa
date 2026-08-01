@@ -10,8 +10,8 @@ export const handler = async (event) => {
     const { familia, pasesUsar } = JSON.parse(event.body);
 
     const { rows } = await pool.query(
-      `SELECT pases, pasesuti FROM invitados WHERE familia = $1`,
-      [familia]
+      `SELECT Pases, pasesuti FROM IsmaLuisa WHERE familiaNombre = $1`,
+      [familia],
     );
 
     if (!rows.length)
@@ -25,15 +25,17 @@ export const handler = async (event) => {
       };
 
     await pool.query(
-      `UPDATE invitados
+      `UPDATE IsmaLuisa
        SET pasesuti = COALESCE(pasesuti,0) + $1
-       WHERE familia = $2`,
-      [pasesUsar, familia]
+       WHERE familiaNombre = $2`,
+      [pasesUsar, familia],
     );
 
     return { statusCode: 200, body: JSON.stringify({ ok: true }) };
-
   } catch (err) {
-    return { statusCode: 500, body: JSON.stringify({ ok: false, error: err.message }) };
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ ok: false, error: err.message }),
+    };
   }
 };

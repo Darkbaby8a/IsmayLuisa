@@ -23,19 +23,19 @@ export const handler = async (event) => {
     const result = await pool.query(
       `
       SELECT
-        familia,
+        familiaNombre,
         pases,
         acepto,
-        displayname,
+        FamiliaDesc,
         rechazo,
         COALESCE(pasesuti, 0)      AS pasesusados,
         pases - COALESCE(pasesuti, 0) AS disponibles
       FROM public.invitados
-      WHERE displayname ILIKE $1
-      ORDER BY displayname
+      WHERE FamiliaDesc ILIKE $1
+      ORDER BY FamiliaDesc
       LIMIT 5;
       `,
-      [`%${nombre}%`]
+      [`%${nombre}%`],
     );
 
     if (result.rowCount === 0) {
@@ -49,9 +49,9 @@ export const handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({
         ok: true,
-        invitados: result.rows.map(r => ({
-          familia: r.familia,
-          displayname: r.displayname,
+        invitados: result.rows.map((r) => ({
+          familia: r.familiaNombre,
+          displayname: r.FamiliaDesc,
           pases: r.pases,
           usados: r.pasesusados,
           disponibles: r.disponibles,
@@ -60,7 +60,6 @@ export const handler = async (event) => {
         })),
       }),
     };
-
   } catch (error) {
     console.error("ERROR obtener invitado por nombre:", error);
 
