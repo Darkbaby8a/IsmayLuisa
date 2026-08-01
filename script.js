@@ -388,7 +388,7 @@ if (!familia) {
         contenedor.innerHTML = `
 
                     <img class="imagen-decorativa-confirmar"
-                    src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png">
+                    src="Imagenes/ArregloFlores.png">
 
                     <h2 class="titulo-confirmar">
                         Gracias por avisarnos
@@ -418,7 +418,7 @@ if (!familia) {
       contenedor.innerHTML = `
 
                 <img class="imagen-decorativa-confirmar"
-                src="https://teinvitoacelebrar.com/wp-content/uploads/2026/02/boda-sarah-y-rodrigo-11.png">
+                src="Imagenes/ArregloFlores.png">
 
                 <h2 class="titulo-confirmar">
 
@@ -434,9 +434,12 @@ if (!familia) {
 
                 <p class="texto-confirmar">
 
-                    Nos haría mucha ilusión contar con tu presencia.
+                    Nos haría mucha ilusión contar con tu presencia.<br>
 
-                    <br><br>
+                     Agradecemos de corazón tu apoyo respetando el número de pases especificados. <br>
+ Con el fin de mantener la calidez e intimidad del evento, la recepción estará reservada únicamente para los invitados listados en la confirmación. <br>
+ Si alguien de la familia no puede asistir favor de comunicárnoslo.<br>
+ Ya que cada lugar esta personalizado.<br>
 
                     Nos gustaría saber si asistirás a nuestro gran día.
 
@@ -446,7 +449,7 @@ if (!familia) {
 
                     <div>
 
-                        <span>Familia</span>
+                        
 
                         <strong>${datos.FamiliaDesc}</strong>
 
@@ -531,7 +534,7 @@ function mostrarPase() {
 <div class="dato-pase">
 <div class="dato-icono">👨‍👩‍👧</div>
 <div class="dato-info">
-<span>Familia</span>
+
 <strong>${datos.FamiliaDesc}</strong>
 </div>
 </div>
@@ -656,8 +659,11 @@ function actualizarPases() {
 
                     Nos haría mucha ilusión contar con tu presencia.
 
-                    <br><br>
-
+                    <br>
+ Agradecemos de corazón tu apoyo respetando el número de pases especificados. <br>
+ Con el fin de mantener la calidez e intimidad del evento, la recepción estará reservada únicamente para los invitados listados en la confirmación. <br>
+ Si alguien de la familia no puede asistir favor de comunicárnoslo.<br>
+ Ya que cada lugar esta personalizado.<br>
                     Nos gustaría saber si asistirás a nuestro gran día.
 
                 </p>
@@ -666,7 +672,7 @@ function actualizarPases() {
 
                     <div>
 
-                        <span>Familia</span>
+                        
 
                         <strong>${datos.FamiliaDesc}</strong>
 
