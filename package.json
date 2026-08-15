@@ -1,4 +1,7 @@
 {
+    "scripts": {
+    "build": "node obfuscate.js"
+  },
   "dependencies": {
     "busboy": "^1.6.0",
     "cloudinary": "^2.10.0",
