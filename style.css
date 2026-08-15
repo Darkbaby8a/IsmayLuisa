@@ -1213,7 +1213,36 @@ DIVISOR
     margin-bottom:12px;
     display:block;
 }
+.firma-historia {
+    margin: 28px 0 15px;
 
+    font-family: 'Cinzel', serif;
+    font-size: 1.25rem;
+
+    color: var(--guinda);
+
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.parrafos-historia .firma-historia {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.firma-final {
+    margin-top: 35px;
+
+    text-align: center;
+
+    font-size: 1.1rem;
+
+    letter-spacing: 3px;
+
+    color: var(--guinda);
+
+    font-style: italic;
+}
 /*======================
 RESPONSIVE
 =======================*/
