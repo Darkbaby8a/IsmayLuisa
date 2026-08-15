@@ -3287,3 +3287,37 @@ color:#1c1c1c;
 background:#d8b98a;
 color:#7b1e2b;
 }
+.powered-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 0 22px;
+    opacity: 0.55;
+}
+
+.powered-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: inherit;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.powered-footer img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.powered-footer strong {
+    font-weight: 600;
+}
+
+.powered-footer a:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
