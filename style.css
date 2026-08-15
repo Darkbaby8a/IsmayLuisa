@@ -320,13 +320,13 @@ body.mostrar-boda .contenido-principal {
 
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    justify-content:end;
     align-items:center;
 
     padding:20px;
     gap:10px;
 
-    background:rgba(99,13,22,.35);
+    background:rgba(99,13,22,.25);
 
     text-align:center;
     color:#ffffff;
@@ -870,225 +870,287 @@ body.mostrar-boda .contenido-principal {
 /* ==========================================================================
    SECCIÓN NUESTRA HISTORIA
    ========================================================================== */
-.seccion-historia{
-    position:relative;
-    padding:120px 0 150px;
-    overflow:hidden;
+/* =========================================
+   SECCIÓN HISTORIA
+========================================= */
+
+.seccion-historia {
+    position: relative;
+    padding: 120px 0 150px;
+    overflow: hidden;
 }
 
-.contenedor-historia{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    gap:70px;
-    padding:0 25px;
+.contenedor-historia {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 70px;
 }
 
-/*======================
-TEXTO
-=======================*/
 
-.columna-texto{
+/* =========================================
+   COLUMNA DE TEXTO
+========================================= */
 
-    flex:1;
+.columna-texto {
+    flex: 1;
 
-    background:#fff;
+    background: #fff;
+    padding: 55px;
 
-    padding:55px;
+    border-radius: 18px;
+    border: 1px solid var(--borde);
 
-    border-radius:18px;
-
-    border:1px solid var(--borde);
-
-    box-shadow:
-        0 18px 45px rgba(0,0,0,.08);
-
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
 }
 
-.subtitulo-historia{
+.subtitulo-historia {
+    position: relative;
 
-    position:relative;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.9rem;
 
-    font-family:'Cinzel Decorative',serif;
+    color: var(--texto);
 
-    font-size:2.9rem;
-
-    color:var(--texto);
-
-    margin-bottom:45px;
-
-    letter-spacing:2px;
-
+    margin-bottom: 45px;
+    letter-spacing: 2px;
 }
 
-.subtitulo-historia::after{
+.subtitulo-historia::after {
+    content: "";
 
-    content:"";
+    position: absolute;
+    left: 0;
+    bottom: -15px;
 
-    position:absolute;
+    width: 90px;
+    height: 3px;
 
-    left:0;
-    bottom:-15px;
+    border-radius: 50px;
 
-    width:90px;
-    height:3px;
-
-    border-radius:50px;
-
-    background:var(--guinda);
-
+    background: var(--guinda);
 }
 
-.parrafos-historia p{
 
-    color:var(--texto-sec);
+/* =========================================
+   PÁRRAFOS
+========================================= */
 
-    font-size:1.05rem;
+.parrafos-historia p {
+    color: var(--texto-sec);
 
-    line-height:2;
+    font-size: 1.05rem;
+    line-height: 2;
 
-    margin-bottom:22px;
-
+    margin-bottom: 22px;
 }
 
-.firma-historia{
-    margin-top:30px;
-    font-size:1.4rem;
-    color:#f3e8d0;
-    font-family:'Cinzel',serif;
+
+/* =========================================
+   FIRMA
+========================================= */
+
+.firma-historia {
+    margin-top: 30px;
+
+    font-size: 1.4rem;
+
+    color: var(--guinda);
+
+    font-family: 'Cinzel', serif;
 }
 
-.icono-corazon{
-    margin-top:18px;
+
+/* =========================================
+   CORAZÓN
+========================================= */
+
+.icono-corazon {
+    margin-top: 18px;
 }
 
-.icono-corazon svg{
+.icono-corazon svg {
+    width: 30px;
 
-    width:30px;
+    fill: var(--guinda);
 
-    fill:var(--guinda);
-
-    transition:.4s;
-
+    transition: transform 0.4s ease;
 }
 
-.icono-corazon:hover svg{
-
-    transform:scale(1.15);
-
+.icono-corazon:hover svg {
+    transform: scale(1.15);
 }
 
-@keyframes latido{
 
-    0%,100%{
-        transform:scale(1);
+/* =========================================
+   IMAGEN DE LA HISTORIA
+========================================= */
+
+.columna-historia {
+    flex: 1;
+
+    max-width: 560px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background: #fff;
+
+    border: 1px solid var(--borde);
+
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Marco interior */
+
+.columna-historia::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 14px;
+
+    border: 1px solid rgba(122, 22, 50, 0.25);
+
+    border-radius: 14px;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/* Imagen */
+
+.columna-historia img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    transition: transform 0.6s ease;
+}
+
+
+/* Efecto suave al pasar el mouse */
+
+.columna-historia:hover img {
+    transform: scale(1.02);
+}
+
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+
+.historia-animada {
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    animation: aparecerHistoria 1s ease forwards;
+}
+
+@keyframes aparecerHistoria {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
 
-    50%{
-        transform:scale(1.15);
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .seccion-historia {
+        padding: 80px 0 100px;
     }
 
+    .contenedor-historia {
+        flex-direction: column;
+
+        gap: 45px;
+    }
+
+    .columna-texto {
+        width: 100%;
+        padding: 40px 30px;
+    }
+
+    .columna-historia {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .subtitulo-historia {
+        font-size: 2.3rem;
+    }
 }
 
-/*======================
-CARRUSEL
-=======================*/
 
-.columna-carrusel{
+/* =========================================
+   CELULARES
+========================================= */
 
-    flex:1;
+@media (max-width: 600px) {
 
-    max-width:560px;
+    .seccion-historia {
+        padding: 60px 0 80px;
+    }
 
-    overflow:hidden;
+    .contenedor-historia {
+        padding: 0 18px;
+    }
 
-    border-radius:22px;
+    .columna-texto {
+        padding: 30px 22px;
 
-    background:white;
+        border-radius: 15px;
+    }
 
-    border:1px solid var(--borde);
+    .subtitulo-historia {
+        font-size: 2rem;
+        letter-spacing: 1px;
 
-    box-shadow:
+        margin-bottom: 35px;
+    }
 
-        0 18px 45px rgba(0,0,0,.12);
+    .parrafos-historia p {
+        font-size: 0.98rem;
+        line-height: 1.8;
+    }
 
-    position:relative;
+    .firma-historia {
+        font-size: 1.2rem;
+    }
 
+    .columna-historia {
+        border-radius: 18px;
+    }
+
+    .columna-historia::before {
+        inset: 10px;
+        border-radius: 12px;
+    }
 }
-
-.columna-carrusel::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:14px;
-
-    border:1px solid rgba(122,22,50,.25);
-
-    border-radius:14px;
-
-    pointer-events:none;
-
-    z-index:10;
-
-}
-
-.columna-carrusel .swiper{
-    width:100%;
-}
-
-.swiper-slide img{
-
-    width:100%;
-
-    aspect-ratio:4/5;
-
-    object-fit:cover;
-
-    transition:.6s;
-
-}
-
-.swiper-slide:hover img{
-
-    transform:scale(1.04);
-
-}
-
-.swiper-button-next,
-.swiper-button-prev{
-
-    width:44px;
-
-    height:44px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.9);
-
-    color:var(--guinda);
-
-    box-shadow:0 5px 18px rgba(0,0,0,.12);
-
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after{
-
-    font-size:17px;
-
-}
-
-.columna-carrusel .swiper-pagination-bullet{
-    background:#ffffff88;
-}
-
-.columna-carrusel .swiper-pagination-bullet-active{
-    background:#d7b97f;
-}
-
 /*======================
 DIVISOR
 =======================*/

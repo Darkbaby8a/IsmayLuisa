@@ -516,6 +516,10 @@ function mostrarPase() {
             Nos llena de alegría saber que nos acompañarás.
 
             <br><br>
+             Agradecemos de corazón tu apoyo respetando el número de pases especificados. <br>
+ Con el fin de mantener la calidez e intimidad del evento, la recepción estará reservada únicamente para los invitados listados en la confirmación. <br>
+ Si alguien de la familia no puede asistir favor de comunicárnoslo.<br>
+ Ya que cada lugar esta personalizado.<br>
 
             <strong>Este es tu pase de entrada.</strong>
 
