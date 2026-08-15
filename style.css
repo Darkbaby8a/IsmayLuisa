@@ -1233,7 +1233,7 @@ DIVISOR
 .firma-final {
     margin-top: 35px;
 
-    text-align: center;
+    text-align: justify;
 
     font-size: 1.1rem;
 
@@ -1270,7 +1270,7 @@ RESPONSIVE
 
     .firma-historia,
     .parrafos-historia{
-        text-align:center;
+        text-align:justify;
     }
 
     .icono-corazon{
