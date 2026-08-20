@@ -33,7 +33,7 @@ export const handler = async (event, context) => {
   try {
     // Consultar todos los invitados ordenados por los más recientes
     const query = `
-      SELECT id, "familiaNombre", "FamiliaDesc", "Mesa", "Pases" 
+      SELECT id, "familiaNombre", "FamiliaDesc", "Mesa", "Pases" ,acepto,rechazo
       FROM "IsmaLuisa" 
       ORDER BY id DESC;
     `;
