@@ -27,6 +27,15 @@ body {
     overflow-x: hidden;
     
 }
+
+@media (min-width: 769px) {
+  #body {
+    width: 30%;
+    position: relative;
+    margin: 0 auto;
+    background-color: #222;
+  }
+}
 .btn-modal-rechazar{
 
     background:#ffffff;
@@ -3320,13 +3329,4 @@ color:#7b1e2b;
 .powered-footer a:hover {
     opacity: 1;
     transform: translateY(-1px);
-}
-
-@media (min-width: 769px) {
-  #body {
-    width: 30%;
-    position: relative;
-    margin: 0 auto;
-    background-color: #222;
-  }
 }
