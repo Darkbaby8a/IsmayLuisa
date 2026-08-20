@@ -13,6 +13,47 @@
         rel="stylesheet">
 
     <style>
+        /* =========================
+   FILA ACEPTADA
+   ========================= */
+
+        .fila-aceptado {
+            background-color: #d9f7df !important;
+            color: #146c2e;
+        }
+
+        .fila-aceptado td {
+            background-color: #d9f7df !important;
+        }
+
+
+        /* =========================
+   FILA RECHAZADA
+   ========================= */
+
+        .fila-rechazado {
+            background-color: #f8d7da !important;
+            color: #842029;
+        }
+
+        .fila-rechazado td {
+            background-color: #f8d7da !important;
+        }
+
+
+        /* =========================
+   FILA PENDIENTE
+   ========================= */
+
+        .fila-pendiente {
+            background-color: #fff3cd !important;
+            color: #664d03;
+        }
+
+        .fila-pendiente td {
+            background-color: #fff3cd !important;
+        }
+
         .mensaje-copiado {
             position: fixed;
             bottom: 30px;
@@ -380,6 +421,14 @@
                     <div class="card">
                         <h3>Total Pases</h3>
                         <div class="numero" id="txtTotalPases">0</div>
+                    </div>
+                    <div class="card">
+                        <h3>Total Aceptados</h3>
+                        <div class="numero" id="txtaceptados">0</div>
+                    </div>
+                    <div class="card">
+                        <h3>Total Rechazos</h3>
+                        <div class="numero" id="txtRechazos">0</div>
                     </div>
                 </div>
 

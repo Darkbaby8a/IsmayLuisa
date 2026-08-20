@@ -1,5 +1,7 @@
 const tbody = document.getElementById("tablaCuerpo");
 const txtFamilias = document.getElementById("txtTotalFamilias");
+const txtaceptados = document.getElementById("txtaceptados");
+const txtRechazos = document.getElementById("txtRechazos");
 const txtPases = document.getElementById("txtTotalPases");
 const formBoda = document.getElementById("formConfirmarBoda");
 const btnSubmit = document.getElementById("btnConfirmarModal");
@@ -20,18 +22,43 @@ function cargarInvitados() {
     .then((res) => {
       datosGlobal = res.data;
 
+      // ==========================
+      // TOTALES
+      // ==========================
+
       txtFamilias.textContent = res.totalInvitados;
       txtPases.textContent = res.totalPases;
 
+      // Total de pases aceptados
+      const totalAceptados = datosGlobal
+        .filter((invitado) => Number(invitado.acepto) === 1)
+        .reduce((total, invitado) => {
+          return total + Number(invitado.Pases || 0);
+        }, 0);
+
+      // Total de pases rechazados
+      const totalRechazados = datosGlobal
+        .filter((invitado) => Number(invitado.rechazo) === 1)
+        .reduce((total, invitado) => {
+          return total + Number(invitado.Pases || 0);
+        }, 0);
+
+      txtaceptados.textContent = totalAceptados;
+      txtRechazos.textContent = totalRechazados;
+
+      // ==========================
+      // TABLA
+      // ==========================
+
       tbody.innerHTML = "";
 
-      if (datosGlobal.length == 0) {
+      if (datosGlobal.length === 0) {
         tbody.innerHTML = `
-                <tr>
-                    <td colspan="6" style="text-align:center;padding:30px;">
-                        No hay invitados registrados.
-                    </td>
-                </tr>
+                    <tr>
+                        <td colspan="7" style="text-align:center;padding:30px;">
+                            No hay invitados registrados.
+                        </td>
+                    </tr>
                 `;
 
         return;
@@ -39,40 +66,64 @@ function cargarInvitados() {
 
       datosGlobal.forEach((invitado) => {
         let estado = "Pendiente";
+        let claseEstado = "fila-pendiente";
 
-        if (invitado.acepto == 1) estado = "Aceptó";
+        if (Number(invitado.acepto) === 1) {
+          estado = "Aceptó";
+          claseEstado = "fila-aceptado";
+        }
 
-        if (invitado.rechazo == 1) estado = "Rechazó";
+        if (Number(invitado.rechazo) === 1) {
+          estado = "Rechazó";
+          claseEstado = "fila-rechazado";
+        }
 
         const fila = document.createElement("tr");
 
+        // Pintar toda la fila
+        fila.classList.add(claseEstado);
+
         fila.innerHTML = `
-                    <td><strong>#${invitado.id}</strong></td>
-                    <td>${invitado.FamiliaDesc}</td>
-                    <td>${invitado.Mesa}</td>
-                    <td>${invitado.Pases}</td>
-                    <td>${estado}</td>
-                  <td>
-<button class="btn-copiar-link" onclick="copiarLink('https://ismayluisa.netlify.app/?familia=${invitado.familiaNombre}')">
-Copiar enlace
-</button>
-</td>
+                    <td>
+                        <strong>#${invitado.id}</strong>
+                    </td>
 
                     <td>
+                        ${invitado.FamiliaDesc}
+                    </td>
 
+                    <td>
+                        ${invitado.Mesa}
+                    </td>
+
+                    <td>
+                        ${invitado.Pases}
+                    </td>
+
+                    <td>
+                        ${estado}
+                    </td>
+
+                    <td>
+                        <button 
+                            class="btn-copiar-link"
+                            onclick="copiarLink('https://ismayluisa.netlify.app/?familia=${encodeURIComponent(invitado.familiaNombre)}')">
+                            Copiar enlace
+                        </button>
+                    </td>
+
+                    <td>
                         <button
                             class="btn-editar"
                             onclick="editarInvitado(${invitado.id})">
-
                             ✏️ Editar
-
                         </button>
-                         <button
-        class="btn-eliminar"
-        onclick="eliminarInvitado(${invitado.id})">
-        🗑️
-    </button>
 
+                        <button
+                            class="btn-eliminar"
+                            onclick="eliminarInvitado(${invitado.id})">
+                            🗑️
+                        </button>
                     </td>
                 `;
 
@@ -83,11 +134,11 @@ Copiar enlace
       console.error(err);
 
       tbody.innerHTML = `
-            <tr>
-                <td colspan="6" style="color:red;text-align:center;padding:30px;">
-                    Error al cargar los datos.
-                </td>
-            </tr>
+                <tr>
+                    <td colspan="7" style="color:red;text-align:center;padding:30px;">
+                        Error al cargar los datos.
+                    </td>
+                </tr>
             `;
     });
 }
