@@ -3322,3 +3322,11 @@ color:#7b1e2b;
     transform: translateY(-1px);
 }
 
+@media (min-width: 769px) {
+  #body {
+    width: 30%;
+    position: relative;
+    margin: 0 auto;
+    background-color: #222;
+  }
+}
