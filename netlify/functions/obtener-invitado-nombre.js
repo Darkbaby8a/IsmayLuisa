@@ -31,8 +31,8 @@ export const handler = async (event) => {
         COALESCE(pasesuti, 0)  AS pasesuti,
         acepto,
         rechazo
-      FROM public.invitados
-      WHERE IsmaLuisa ILIKE $1
+      FROM "IsmaLuisa"
+      WHERE "familiaNombre" ILIKE $1
       ORDER BY FamiliaDesc
       LIMIT 5;
       `,
