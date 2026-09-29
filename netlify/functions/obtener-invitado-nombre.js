@@ -32,7 +32,7 @@ export const handler = async (event) => {
         acepto,
         rechazo
       FROM "IsmaLuisa"
-      WHERE "familiaNombre" ILIKE $1
+      WHERE "FamiliaDesc" ILIKE $1
       ORDER BY FamiliaDesc
       LIMIT 5;
       `,
