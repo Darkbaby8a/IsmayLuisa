@@ -23,15 +23,16 @@ export const handler = async (event) => {
     const result = await pool.query(
       `
       SELECT
-        familiaNombre,
-        pases,
+        id,
+        "familiaNombre"        AS familia,
+        "FamiliaDesc"          AS displayname,
+        "Mesa"                 AS mesa,
+        "Pases"                AS pases,
+        COALESCE(pasesuti, 0)  AS pasesuti,
         acepto,
-        FamiliaDesc,
-        rechazo,
-        COALESCE(pasesuti, 0)      AS pasesusados,
-        pases - COALESCE(pasesuti, 0) AS disponibles
+        rechazo
       FROM public.invitados
-      WHERE FamiliaDesc ILIKE $1
+      WHERE IsmaLuisa ILIKE $1
       ORDER BY FamiliaDesc
       LIMIT 5;
       `,
@@ -49,15 +50,7 @@ export const handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({
         ok: true,
-        invitados: result.rows.map((r) => ({
-          familia: r.familiaNombre,
-          displayname: r.FamiliaDesc,
-          pases: r.pases,
-          usados: r.pasesusados,
-          disponibles: r.disponibles,
-          acepto: r.acepto,
-          rechazo: r.rechazo,
-        })),
+        invitados: result.rows,
       }),
     };
   } catch (error) {
