@@ -5,25 +5,28 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 
+const headers = { "Content-Type": "application/json" };
+
 export const handler = async () => {
   try {
     const { rows } = await pool.query(`
       SELECT
-        familiaNombre,
-        FamiliaDesc,
-        pases,
-        COALESCE(pasesuti, 0) AS pasesuti,
-        (pases - COALESCE(pasesuti, 0)) AS disponibles,
+        id,
+        "familiaNombre",
+        "familiaNombre"        AS familia,
+        "FamiliaDesc",
+        "FamiliaDesc"          AS displayname,
+        "Mesa"                 AS mesa,
+        "Pases"                AS pases,
+        COALESCE(pasesuti, 0)  AS pasesuti,
+        ("Pases" - COALESCE(pasesuti, 0)) AS disponibles,
         acepto,
-        fechaaceptado,
-        rechazo
-
-
-      FROM IsmaLuisa
-      ORDER BY familiaNombre, FamiliaDesc
+        rechazo,
+        fechaaceptado
+      FROM "IsmaLuisa"
+      ORDER BY "familiaNombre", "FamiliaDesc"
     `);
 
-    // ===== CALCULAR TOTALES =====
     const totales = {
       total_invitados: rows.length,
       total_aceptaron: 0,
@@ -33,30 +36,23 @@ export const handler = async () => {
     };
 
     rows.forEach((i) => {
-      if (i.estado === "acepto") totales.total_aceptaron++;
-      if (i.estado === "rechazo") totales.total_rechazaron++;
-      if (i.estado === "pendiente") totales.total_pendientes++;
-
-      totales.total_disponibles += Number(i.disponibles);
+      if (i.rechazo === true) totales.total_rechazaron++;
+      else if (i.acepto === true) totales.total_aceptaron++;
+      else totales.total_pendientes++;
+      totales.total_disponibles += Number(i.disponibles) || 0;
     });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        ok: true,
-        invitados: rows,
-        totales,
-      }),
+      headers,
+      body: JSON.stringify({ ok: true, invitados: rows, totales }),
     };
   } catch (error) {
     console.error("Error listar invitados:", error);
-
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        ok: false,
-        error: "Error interno del servidor",
-      }),
+      headers,
+      body: JSON.stringify({ ok: false, error: "Error interno del servidor" }),
     };
   }
 };

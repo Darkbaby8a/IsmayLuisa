@@ -5,36 +5,71 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 
+const headers = { "Content-Type": "application/json" };
+
 export const handler = async (event) => {
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({ ok: false, message: "Método no permitido" }),
+    };
+  }
+
   try {
-    const { familia, pasesUsar } = JSON.parse(event.body);
+    const { id, pasesUsar } = JSON.parse(event.body || "{}");
+    const n = parseInt(pasesUsar, 10);
 
-    const { rows } = await pool.query(
-      `SELECT Pases, pasesuti FROM IsmaLuisa WHERE familiaNombre = $1`,
-      [familia],
-    );
-
-    if (!rows.length)
-      return { statusCode: 404, body: JSON.stringify({ ok: false }) };
-
-    const { pases, pasesuti = 0 } = rows[0];
-    if (pasesuti + pasesUsar > pases)
+    if (!id || !Number.isInteger(n) || n <= 0) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ ok: false, message: "Pases excedidos" }),
+        headers,
+        body: JSON.stringify({ ok: false, message: "Datos inválidos" }),
       };
+    }
 
-    await pool.query(
-      `UPDATE IsmaLuisa
-       SET pasesuti = COALESCE(pasesuti,0) + $1
-       WHERE familiaNombre = $2`,
-      [pasesUsar, familia],
+    // Actualización atómica: solo suma si aceptó y no excede los pases.
+    const { rows } = await pool.query(
+      `
+      UPDATE "IsmaLuisa"
+      SET pasesuti = COALESCE(pasesuti, 0) + $1::int
+      WHERE id = $2
+        AND acepto = true
+        AND COALESCE(rechazo, false) = false
+        AND COALESCE(pasesuti, 0) + $1::int <= "Pases"
+      RETURNING
+        id,
+        "familiaNombre" AS familia,
+        "FamiliaDesc"   AS displayname,
+        "Mesa"          AS mesa,
+        "Pases"         AS pases,
+        pasesuti
+      `,
+      [n, id],
     );
 
-    return { statusCode: 200, body: JSON.stringify({ ok: true }) };
+    if (!rows.length) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({
+          ok: false,
+          message:
+            "No se pudo registrar: pases excedidos o invitación no aceptada.",
+        }),
+      };
+    }
+
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ ok: true, invitado: rows[0] }),
+    };
   } catch (err) {
+    console.error("registrar-acceso:", err);
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({ ok: false, error: err.message }),
     };
   }

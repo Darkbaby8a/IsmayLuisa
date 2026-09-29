@@ -17,14 +17,28 @@
     }
 
     /* ===== BASE ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      width: 100%;
+      min-height: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
       margin: 0;
+      width: 100%;
+      min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--fondo);
+      overflow-x: hidden;
     }
 
     .access-body {
       min-height: 100vh;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -34,12 +48,12 @@
     .access-card {
       width: 100%;
       max-width: 520px;
-      /* ⬅️ MÁS ANCHA */
       background: #fff;
       border-radius: 26px;
       padding: 30px 26px;
       box-shadow: 0 25px 60px rgba(90, 15, 24, .25);
       border: 1px solid rgba(176, 147, 90, .45);
+      overflow: hidden;
     }
 
     /* ===== HEADER ===== */
@@ -48,6 +62,8 @@
       font-size: 2rem;
       color: var(--vino);
       letter-spacing: 2px;
+      margin: 0;
+      line-height: 1.2;
     }
 
     .separator-gold {
@@ -61,17 +77,22 @@
       display: flex;
       gap: 8px;
       margin-bottom: 24px;
+      width: 100%;
     }
 
     .tab {
       flex: 1;
-      padding: 14px;
+      min-width: 0;
+      padding: 14px 10px;
       border-radius: 40px;
       border: 1px solid rgba(176, 147, 90, .6);
       background: #fff;
       color: var(--vino);
       font-size: .9rem;
       letter-spacing: 1px;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .tab.active {
@@ -83,6 +104,7 @@
     /* ===== SECTIONS ===== */
     .section {
       display: none;
+      width: 100%;
     }
 
     .section.active {
@@ -94,51 +116,113 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--vino);
-      margin-bottom: 14px;
+      margin: 0 0 14px;
     }
 
     /* ===== QR ===== */
     .qr-frame {
+      width: 100%;
       padding: 14px;
       border-radius: 16px;
       border: 2px solid rgba(176, 147, 90, .6);
+      overflow: hidden;
+    }
+
+    #reader {
+      width: 100% !important;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    #reader video {
+      width: 100% !important;
+      height: auto !important;
+      max-width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    #reader__scan_region {
+      width: 100% !important;
+    }
+
+    #reader__scan_region img {
+      max-width: 100%;
     }
 
     /* ===== INPUTS ===== */
-    input {
+    input,
+    select {
       width: 100%;
-      padding: 16px;
+      max-width: 100%;
+      min-height: 52px;
+      padding: 14px 16px;
       border-radius: 14px;
       border: 1px solid rgba(176, 147, 90, .6);
       font-size: 1.05rem;
       margin-bottom: 14px;
+      background: #fff;
+      color: #222;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 3px rgba(176, 147, 90, .12);
+    }
+
+    /* Evita zoom automático en iPhone */
+    @media (max-width: 768px) {
+
+      input,
+      select,
+      button {
+        font-size: 16px;
+      }
     }
 
     /* ===== BUTTON ===== */
     .btn-primary {
       width: 100%;
-      padding: 18px;
+      min-height: 56px;
+      padding: 16px 18px;
       border-radius: 50px;
       background: linear-gradient(135deg, var(--vino), var(--vino-claro));
       color: #fff;
       border: none;
       font-size: 1.05rem;
       letter-spacing: 1px;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-primary:disabled {
+      cursor: not-allowed;
     }
 
     /* ===== INFO ===== */
     .info-box h3 {
       color: var(--vino);
-      margin-bottom: 14px;
+      margin: 0 0 14px;
       text-align: center;
       font-size: 1.4rem;
+      line-height: 1.3;
+      word-break: break-word;
     }
 
     .passes-info {
       display: flex;
       justify-content: space-between;
+      gap: 10px;
       font-size: 1rem;
       margin-bottom: 18px;
+    }
+
+    .passes-info span {
+      min-width: 0;
     }
 
     .disponibles-ok {
@@ -168,15 +252,26 @@
     .result-item {
       border: 1px solid rgba(176, 147, 90, .6);
       border-radius: 16px;
-      padding: 14px;
+      padding: 16px;
       margin-bottom: 12px;
       cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .result-item:hover {
+      background: rgba(176, 147, 90, .12);
+    }
+
+    .result-item:active {
+      background: rgba(176, 147, 90, .18);
     }
 
     .estado-mensaje {
       margin-top: 15px;
       font-weight: 600;
       font-size: 16px;
+      line-height: 1.4;
     }
 
     .estado-ok {
@@ -191,14 +286,25 @@
       color: #ef6c00;
     }
 
-
-    .result-item:hover {
-      background: rgba(176, 147, 90, .12);
+    /* ===== LISTA ===== */
+    #lista {
+      width: 100%;
     }
 
-    /* ===== LISTA ===== */
+    #totalesBox {
+      width: 100%;
+      line-height: 1.7;
+    }
+
+    .access-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .access-table {
       width: 100%;
+      min-width: 650px;
       font-size: .95rem;
       border-collapse: collapse;
     }
@@ -206,17 +312,153 @@
     .access-table th {
       color: var(--vino);
       border-bottom: 1px solid rgba(176, 147, 90, .4);
+      padding: 8px 6px;
+      white-space: nowrap;
+      text-align: left;
     }
 
     .access-table td {
-      padding: 8px 0;
+      padding: 10px 6px;
+      border-bottom: 1px solid rgba(176, 147, 90, .18);
+      vertical-align: middle;
+    }
+
+    /* ===== POPUP ===== */
+    #popupMesa {
+      padding: 16px !important;
+    }
+
+    #popupMesa>div {
+      width: 100% !important;
+      max-width: 360px !important;
+    }
+
+    /* ===== TABLET ===== */
+    @media (max-width: 768px) {
+      .access-body {
+        align-items: flex-start;
+        padding: 10px;
+      }
+
+      .access-card {
+        max-width: 600px;
+        margin: 10px auto;
+      }
     }
 
     /* ===== MOBILE ===== */
     @media (max-width: 480px) {
+      .access-body {
+        padding: 8px;
+      }
+
+      .access-card {
+        width: 100%;
+        margin: 0;
+        padding: 22px 16px;
+        border-radius: 22px;
+      }
+
+      .access-title {
+        font-size: 1.65rem;
+        letter-spacing: 1.5px;
+      }
+
+      .separator-gold {
+        margin: 10px 0 20px;
+      }
+
+      .access-tabs {
+        gap: 6px;
+        margin-bottom: 20px;
+      }
+
+      .tab {
+        padding: 13px 6px;
+        font-size: .82rem;
+        letter-spacing: .5px;
+      }
+
+      .section-label {
+        font-size: .78rem;
+        letter-spacing: 1.5px;
+      }
+
+      .qr-frame {
+        padding: 8px;
+        border-radius: 14px;
+      }
+
+      #reader {
+        width: 100% !important;
+      }
+
+      input,
+      select {
+        min-height: 54px;
+        padding: 14px;
+        margin-bottom: 12px;
+      }
+
+      .btn-primary {
+        min-height: 56px;
+        padding: 15px;
+      }
+
       .passes-info {
-        flex-direction: column;
-        gap: 8px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 14px;
+        background: rgba(176, 147, 90, .08);
+      }
+
+      .passes-info span:last-child {
+        grid-column: 1 / -1;
+        text-align: center;
+        font-size: 1.05rem;
+      }
+
+      .info-box h3 {
+        font-size: 1.3rem;
+      }
+
+      #totalesBox {
+        padding: 13px !important;
+        font-size: .9rem !important;
+      }
+
+      .access-table-wrapper {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+      }
+
+      .access-table {
+        min-width: 700px;
+        font-size: .9rem;
+      }
+    }
+
+    /* ===== MOBILE MUY PEQUEÑO ===== */
+    @media (max-width: 360px) {
+      .access-card {
+        padding: 18px 12px;
+        border-radius: 20px;
+      }
+
+      .access-title {
+        font-size: 1.45rem;
+      }
+
+      .tab {
+        padding: 12px 4px;
+        font-size: .76rem;
+      }
+
+      .passes-info {
+        font-size: .9rem;
       }
     }
   </style>
@@ -273,12 +515,12 @@
     </div>
 
     <!-- LISTA -->
-    <!-- LISTA -->
     <div id="lista" class="section">
-
       <p class="section-label">Filtros</p>
+
       <div id="totalesBox"
         style="margin-bottom:20px; padding:14px; border-radius:14px; background:rgba(176,147,90,.12); font-size:.95rem;">
+
         <strong>Resumen:</strong><br>
         Total invitados: <span id="totalInvitados">0</span><br>
         Aceptaron: <span id="totalAceptaron" style="color:green;font-weight:bold;">0</span><br>
@@ -304,23 +546,24 @@
 
       <br><br>
 
-      <table class="access-table">
-        <thead>
-          <tr>
-            <th>Familia</th>
-            <th>Nombre</th>
-            <th>Pases</th>
-            <th>Usados</th>
-            <th>Disponibles</th>
-            <th>Aceptó</th>
-            <th>Rechazó</th>
-            <th>Pendiente</th>
-          </tr>
-        </thead>
+      <div class="access-table-wrapper">
+        <table class="access-table">
+          <thead>
+            <tr>
+              <th>Familia</th>
+              <th>Nombre</th>
+              <th>Pases</th>
+              <th>Usados</th>
+              <th>Disponibles</th>
+              <th>Aceptó</th>
+              <th>Rechazó</th>
+              <th>Pendiente</th>
+            </tr>
+          </thead>
 
-
-        <tbody id="tabla"></tbody>
-      </table>
+          <tbody id="tabla"></tbody>
+        </table>
+      </div>
     </div>
 
 
