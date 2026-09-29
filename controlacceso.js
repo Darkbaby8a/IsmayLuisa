@@ -91,7 +91,7 @@ function iniciarQR() {
 
       detenerQR();
       alert(data.familia);
-      buscarPorFamilia(data.familia);
+      buscarPorFamilia(data.codigo);
     })
     .catch((err) => {
       qrScanner = null;
