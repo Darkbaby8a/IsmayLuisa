@@ -90,6 +90,7 @@ function iniciarQR() {
       }
 
       detenerQR();
+      alert(data.familia);
       buscarPorFamilia(data.familia);
     })
     .catch((err) => {
