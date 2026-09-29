@@ -90,7 +90,7 @@ function iniciarQR() {
       }
 
       detenerQR();
-      alert(data.familia);
+
       buscarPorFamilia(data.codigo);
     })
     .catch((err) => {
@@ -198,25 +198,25 @@ function seleccionar(i) {
     btn.disabled = true;
     btn.textContent = "Acceso Denegado";
     btn.style.opacity = "0.5";
-    estado.textContent = "🔴 Invitación rechazada";
+    estado.textContent = "Invitación rechazada";
     estado.className = "estado-mensaje estado-denegado";
   } else if (i.acepto !== true) {
     btn.disabled = true;
     btn.textContent = "Pendiente";
     btn.style.opacity = "0.5";
-    estado.textContent = "🟡 Invitación pendiente de confirmación";
+    estado.textContent = "Invitación pendiente de confirmación";
     estado.className = "estado-mensaje estado-pendiente";
   } else if (disponibles <= 0) {
     btn.disabled = true;
     btn.textContent = "Sin pases disponibles";
     btn.style.opacity = "0.5";
-    estado.textContent = "🔴 Todos los pases ya fueron utilizados";
+    estado.textContent = " Todos los pases ya fueron utilizados";
     estado.className = "estado-mensaje estado-denegado";
   } else {
     btn.disabled = false;
     btn.textContent = "Registrar Entrada";
     btn.style.opacity = "1";
-    estado.textContent = "🟢 Acceso permitido";
+    estado.textContent = "Acceso permitido";
     estado.className = "estado-mensaje estado-ok";
   }
 
@@ -239,7 +239,7 @@ function mostrarPopupMesa(inv, cantidad) {
 
   overlay.innerHTML = `
     <div style="background:#fff;border-radius:16px;padding:28px 24px;max-width:360px;width:100%;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.35);">
-      <div style="font-size:52px;line-height:1;">✅</div>
+      <div style="font-size:52px;line-height:1;"></div>
       <h2 style="margin:10px 0 4px;">Entrada registrada</h2>
       <p style="margin:0;color:#666;">${cantidad} pase(s) utilizados</p>
       <hr style="margin:16px 0;border:none;border-top:1px solid #eee;">
